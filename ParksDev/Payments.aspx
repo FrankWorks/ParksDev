@@ -173,7 +173,7 @@
                                 </tr>
                                 <tr>
                                     <td align="left">
-                                        Transfer Date:
+                                        Transaction Date:
                                     </td>
                                     <td>
                                         <asp:TextBox ID="TextBox6" runat="server" CssClass="mydatepickerclasser" />
