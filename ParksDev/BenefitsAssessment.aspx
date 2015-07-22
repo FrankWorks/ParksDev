@@ -124,7 +124,15 @@
 																			      }, width: 800
 																			  },
 																			  { jqModal: true,
-																			      reloadAfterSubmit: true,
+																			  reloadAfterSubmit: true,
+																			      caption: "Delete Benefit Assesment and it's Distrubution",
+																			      width: 400,
+																			      beforeShowForm: function (form) {
+																			          var sel_id = $("#<%=jQGridDemo.ClientID%>").jqGrid('getGridParam', 'selrow');
+																			          var entered = $("#<%=jQGridDemo.ClientID%>").jqGrid('getCell', sel_id, 'ENTERED');
+
+																			          $("td.delmsg",form).html("Do you really want delete transaction dated on =" + entered +
+                                                                                      "</b>?");},
 																			      beforeSubmit: function (response, postdata) {
 																			          $(this).jqGrid("setGridParam", { datatype: 'json' });
 																			          return [true, response.responseText];
