@@ -1,0 +1,1152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{732255BA-204C-4582-96D8-4BAFA0D97EAF}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ParksDev</RootNamespace>
+    <AssemblyName>ParksDev</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="ADConnectionString-Deployment" Order="1" Enabled="False">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="LDAP://parks.co.la.ca.us/DC=parks,DC=co,DC=la,DC=ca,DC=us" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\ADConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="FoxProDevConnectionString-Deployment" Order="2">
+          <Destination Path="" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=SAHQ-ITS-5354%3bInitial Catalog=FoxProDev%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\FoxProDevConnectionString-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+    <PublishDatabases>true</PublishDatabases>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+      </Objects>
+    </PublishDatabaseSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=4.1.7.1213, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.4.4.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Reports, Version=0.9.2507.38892, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Reports.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\img\add.png" />
+    <Content Include="Account\img\applications.png" />
+    <Content Include="Account\img\back.png" />
+    <Content Include="Account\img\bg.png" />
+    <Content Include="Account\img\binoculars.png" />
+    <Content Include="Account\img\bluebackr.png" />
+    <Content Include="Account\img\blurlite.png" />
+    <Content Include="Account\img\calculator.png" />
+    <Content Include="Account\img\calendar.png" />
+    <Content Include="Account\img\cancel.png" />
+    <Content Include="Account\img\CD.png" />
+    <Content Include="Account\img\CD_add.png" />
+    <Content Include="Account\img\CD_delete.png" />
+    <Content Include="Account\img\check.png" />
+    <Content Include="Account\img\clock.png" />
+    <Content Include="Account\img\close.png" />
+    <Content Include="Account\img\countyseal.png" />
+    <Content Include="Account\img\countyseal75.png" />
+    <Content Include="Account\img\delete.png" />
+    <Content Include="Account\img\document.png" />
+    <Content Include="Account\img\document_add.png" />
+    <Content Include="Account\img\document_delete.png" />
+    <Content Include="Account\img\document_edit.png" />
+    <Content Include="Account\img\down.png" />
+    <Content Include="Account\img\email.png" />
+    <Content Include="Account\img\favorites.png" />
+    <Content Include="Account\img\favorites_add.png" />
+    <Content Include="Account\img\favorites_delete.png" />
+    <Content Include="Account\img\folder.png" />
+    <Content Include="Account\img\folder_add.png" />
+    <Content Include="Account\img\folder_delete.png" />
+    <Content Include="Account\img\folder_open.png" />
+    <Content Include="Account\img\go.png" />
+    <Content Include="Account\img\group.png" />
+    <Content Include="Account\img\help.png" />
+    <Content Include="Account\img\home.png" />
+    <Content Include="Account\img\info.png" />
+    <Content Include="Account\img\lock.png" />
+    <Content Include="Account\img\movie.png" />
+    <Content Include="Account\img\openspacebanner.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Account\img\paste.png" />
+    <Content Include="Account\img\printer.png" />
+    <Content Include="Account\img\refresh.png" />
+    <Content Include="Account\img\report.png" />
+    <Content Include="Account\img\sandlite.png" />
+    <Content Include="Account\img\sand_texturelighter.jpg" />
+    <Content Include="Account\img\simplelite.png" />
+    <Content Include="Account\img\unlock.png" />
+    <Content Include="Account\img\up.png" />
+    <Content Include="Account\img\user.png" />
+    <Content Include="Account\img\user_add.png" />
+    <Content Include="Account\img\user_black.png" />
+    <Content Include="Account\img\user_delete.png" />
+    <Content Include="Account\img\user_white.png" />
+    <Content Include="Account\img\web.png" />
+    <Content Include="Account\img\zoom.png" />
+    <Content Include="Account\img\zoom_in.png" />
+    <Content Include="Account\img\zoom_out.png" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="AjaxControlToolkit.dll" />
+    <Content Include="AjaxControlToolkit.pdb" />
+    <Content Include="AjaxMin.dll" />
+    <Content Include="BenefitsAssessment.aspx" />
+    <Content Include="BenefitsAssessmentDistribution.aspx" />
+    <Content Include="clipboard.aspx" />
+    <Content Include="DAL\Totals.ashx" />
+    <Content Include="definitions.aspx" />
+    <Content Include="demo\accordion\actions.html" />
+    <Content Include="demo\accordion\ajax.html" />
+    <Content Include="demo\accordion\basic.html" />
+    <Content Include="demo\accordion\tools.html" />
+    <Content Include="demo\accordion\_content.html" />
+    <Content Include="demo\calendar\basic.html" />
+    <Content Include="demo\calendar\firstday.html" />
+    <Content Include="demo\combobox\actions.html" />
+    <Content Include="demo\combobox\basic.html" />
+    <Content Include="demo\combobox\customformat.html" />
+    <Content Include="demo\combobox\dynamicdata.html" />
+    <Content Include="demo\combobox\group.html" />
+    <Content Include="demo\combobox\multiple.html" />
+    <Content Include="demo\combobox\navigation.html" />
+    <Content Include="demo\combobox\remotedata.html" />
+    <Content Include="demo\combobox\remotejsonp.html" />
+    <Content Include="demo\combogrid\actions.html" />
+    <Content Include="demo\combogrid\basic.html" />
+    <Content Include="demo\combogrid\initvalue.html" />
+    <Content Include="demo\combogrid\multiple.html" />
+    <Content Include="demo\combogrid\navigation.html" />
+    <Content Include="demo\combotree\actions.html" />
+    <Content Include="demo\combotree\basic.html" />
+    <Content Include="demo\combotree\initvalue.html" />
+    <Content Include="demo\combotree\multiple.html" />
+    <Content Include="demo\combo\basic.html" />
+    <Content Include="demo\datagrid\aligncolumns.html" />
+    <Content Include="demo\datagrid\basic.html" />
+    <Content Include="demo\datagrid\cellediting.html" />
+    <Content Include="demo\datagrid\cellstyle.html" />
+    <Content Include="demo\datagrid\checkbox.html" />
+    <Content Include="demo\datagrid\clientpagination.html" />
+    <Content Include="demo\datagrid\columngroup.html" />
+    <Content Include="demo\datagrid\complextoolbar.html" />
+    <Content Include="demo\datagrid\contextmenu.html" />
+    <Content Include="demo\datagrid\custompager.html" />
+    <Content Include="demo\datagrid\footer.html" />
+    <Content Include="demo\datagrid\formatcolumns.html" />
+    <Content Include="demo\datagrid\frozencolumns.html" />
+    <Content Include="demo\datagrid\frozenrows.html" />
+    <Content Include="demo\datagrid\mergecells.html" />
+    <Content Include="demo\datagrid\multisorting.html" />
+    <Content Include="demo\datagrid\rowborder.html" />
+    <Content Include="demo\datagrid\rowediting.html" />
+    <Content Include="demo\datagrid\rowstyle.html" />
+    <Content Include="demo\datagrid\selection.html" />
+    <Content Include="demo\datagrid\simpletoolbar.html" />
+    <Content Include="demo\datagrid\transform.html" />
+    <Content Include="demo\datebox\basic.html" />
+    <Content Include="demo\datebox\dateformat.html" />
+    <Content Include="demo\datebox\events.html" />
+    <Content Include="demo\datebox\validate.html" />
+    <Content Include="demo\datetimebox\basic.html" />
+    <Content Include="demo\datetimebox\initvalue.html" />
+    <Content Include="demo\datetimebox\showseconds.html" />
+    <Content Include="demo\demo.css" />
+    <Content Include="demo\dialog\basic.html" />
+    <Content Include="demo\dialog\complextoolbar.html" />
+    <Content Include="demo\dialog\toolbarbuttons.html" />
+    <Content Include="demo\draggable\basic.html" />
+    <Content Include="demo\draggable\constain.html" />
+    <Content Include="demo\draggable\snap.html" />
+    <Content Include="demo\droppable\accept.html" />
+    <Content Include="demo\droppable\basic.html" />
+    <Content Include="demo\droppable\sort.html" />
+    <Content Include="demo\easyloader\basic.html" />
+    <Content Include="demo\form\basic.html" />
+    <Content Include="demo\form\load.html" />
+    <Content Include="demo\layout\addremove.html" />
+    <Content Include="demo\layout\autoheight.html" />
+    <Content Include="demo\layout\basic.html" />
+    <Content Include="demo\layout\complex.html" />
+    <Content Include="demo\layout\full.html" />
+    <Content Include="demo\layout\nestedlayout.html" />
+    <Content Include="demo\layout\nocollapsible.html" />
+    <Content Include="demo\layout\_content.html" />
+    <Content Include="demo\linkbutton\basic.html" />
+    <Content Include="demo\linkbutton\group.html" />
+    <Content Include="demo\linkbutton\iconalign.html" />
+    <Content Include="demo\linkbutton\plain.html" />
+    <Content Include="demo\linkbutton\toggle.html" />
+    <Content Include="demo\menubutton\actions.html" />
+    <Content Include="demo\menubutton\basic.html" />
+    <Content Include="demo\menu\basic.html" />
+    <Content Include="demo\menu\customitem.html" />
+    <Content Include="demo\menu\events.html" />
+    <Content Include="demo\messager\alert.html" />
+    <Content Include="demo\messager\basic.html" />
+    <Content Include="demo\messager\interactive.html" />
+    <Content Include="demo\messager\position.html" />
+    <Content Include="demo\numberbox\basic.html" />
+    <Content Include="demo\numberbox\format.html" />
+    <Content Include="demo\numberbox\range.html" />
+    <Content Include="demo\numberspinner\basic.html" />
+    <Content Include="demo\numberspinner\increment.html" />
+    <Content Include="demo\numberspinner\range.html" />
+    <Content Include="demo\pagination\basic.html" />
+    <Content Include="demo\pagination\custombuttons.html" />
+    <Content Include="demo\pagination\simple.html" />
+    <Content Include="demo\panel\basic.html" />
+    <Content Include="demo\panel\customtools.html" />
+    <Content Include="demo\panel\loadcontent.html" />
+    <Content Include="demo\panel\nestedpanel.html" />
+    <Content Include="demo\panel\paneltools.html" />
+    <Content Include="demo\panel\_content.html" />
+    <Content Include="demo\progressbar\basic.html" />
+    <Content Include="demo\propertygrid\basic.html" />
+    <Content Include="demo\propertygrid\customcolumns.html" />
+    <Content Include="demo\propertygrid\groupformat.html" />
+    <Content Include="demo\resizable\basic.html" />
+    <Content Include="demo\searchbox\basic.html" />
+    <Content Include="demo\searchbox\category.html" />
+    <Content Include="demo\slider\basic.html" />
+    <Content Include="demo\slider\formattip.html" />
+    <Content Include="demo\slider\rule.html" />
+    <Content Include="demo\slider\vertical.html" />
+    <Content Include="demo\splitbutton\actions.html" />
+    <Content Include="demo\splitbutton\basic.html" />
+    <Content Include="demo\tabs\autoheight.html" />
+    <Content Include="demo\tabs\basic.html" />
+    <Content Include="demo\tabs\fixedwidth.html" />
+    <Content Include="demo\tabs\hover.html" />
+    <Content Include="demo\tabs\images\modem.png" />
+    <Content Include="demo\tabs\images\pda.png" />
+    <Content Include="demo\tabs\images\scanner.png" />
+    <Content Include="demo\tabs\images\tablet.png" />
+    <Content Include="demo\tabs\nestedtabs.html" />
+    <Content Include="demo\tabs\striptools.html" />
+    <Content Include="demo\tabs\tabimage.html" />
+    <Content Include="demo\tabs\tabposition.html" />
+    <Content Include="demo\tabs\tabstools.html" />
+    <Content Include="demo\tabs\_content.html" />
+    <Content Include="demo\timespinner\actions.html" />
+    <Content Include="demo\timespinner\basic.html" />
+    <Content Include="demo\timespinner\range.html" />
+    <Content Include="demo\tooltip\ajax.html" />
+    <Content Include="demo\tooltip\basic.html" />
+    <Content Include="demo\tooltip\customcontent.html" />
+    <Content Include="demo\tooltip\customstyle.html" />
+    <Content Include="demo\tooltip\position.html" />
+    <Content Include="demo\tooltip\toolbar.html" />
+    <Content Include="demo\tooltip\tooltipdialog.html" />
+    <Content Include="demo\tooltip\_content.html" />
+    <Content Include="demo\tooltip\_dialog.html" />
+    <Content Include="demo\treegrid\actions.html" />
+    <Content Include="demo\treegrid\basic.html" />
+    <Content Include="demo\treegrid\clientpagination.html" />
+    <Content Include="demo\treegrid\contextmenu.html" />
+    <Content Include="demo\treegrid\editable.html" />
+    <Content Include="demo\treegrid\footer.html" />
+    <Content Include="demo\treegrid\reports.html" />
+    <Content Include="demo\tree\actions.html" />
+    <Content Include="demo\tree\animation.html" />
+    <Content Include="demo\tree\basic.html" />
+    <Content Include="demo\tree\checkbox.html" />
+    <Content Include="demo\tree\contextmenu.html" />
+    <Content Include="demo\tree\dnd.html" />
+    <Content Include="demo\tree\editable.html" />
+    <Content Include="demo\tree\icons.html" />
+    <Content Include="demo\tree\lines.html" />
+    <Content Include="demo\validatebox\basic.html" />
+    <Content Include="demo\validatebox\customtooltip.html" />
+    <Content Include="demo\window\basic.html" />
+    <Content Include="demo\window\customtools.html" />
+    <Content Include="demo\window\inlinewindow.html" />
+    <Content Include="demo\window\modalwindow.html" />
+    <Content Include="demo\window\windowlayout.html" />
+    <Content Include="HtmlAgilityPack.dll" />
+    <Content Include="img\add.png" />
+    <Content Include="img\applications.png" />
+    <Content Include="img\back.png" />
+    <Content Include="img\bg.png" />
+    <Content Include="img\binoculars.png" />
+    <Content Include="img\bluebackr.png" />
+    <Content Include="img\calculator.png" />
+    <Content Include="img\calendar.png" />
+    <Content Include="img\cancel.png" />
+    <Content Include="img\CD.png" />
+    <Content Include="img\CD_add.png" />
+    <Content Include="img\CD_delete.png" />
+    <Content Include="img\check.png" />
+    <Content Include="img\clock.png" />
+    <Content Include="img\close.png" />
+    <Content Include="img\delete.png" />
+    <Content Include="img\document.png" />
+    <Content Include="img\document_add.png" />
+    <Content Include="img\document_delete.png" />
+    <Content Include="img\document_edit.png" />
+    <Content Include="img\down.png" />
+    <Content Include="img\email.png" />
+    <Content Include="img\favorites.png" />
+    <Content Include="img\favorites_add.png" />
+    <Content Include="img\favorites_delete.png" />
+    <Content Include="img\folder.png" />
+    <Content Include="img\folder_add.png" />
+    <Content Include="img\folder_delete.png" />
+    <Content Include="img\folder_open.png" />
+    <Content Include="img\go.png" />
+    <Content Include="img\group.png" />
+    <Content Include="img\help.png" />
+    <Content Include="img\home.png" />
+    <Content Include="img\info.png" />
+    <Content Include="img\lock.png" />
+    <Content Include="img\movie.png" />
+    <Content Include="img\openspacebanner.png" />
+    <Content Include="img\paste.png" />
+    <Content Include="img\printer.png" />
+    <Content Include="img\refresh.png" />
+    <Content Include="img\report.png" />
+    <Content Include="img\unlock.png" />
+    <Content Include="img\countyseal.png" />
+    <Content Include="img\up.png" />
+    <Content Include="img\user.png" />
+    <Content Include="img\user_add.png" />
+    <Content Include="img\user_black.png" />
+    <Content Include="img\user_delete.png" />
+    <Content Include="img\user_white.png" />
+    <Content Include="img\web.png" />
+    <Content Include="img\zoom.png" />
+    <Content Include="img\zoom_in.png" />
+    <Content Include="img\zoom_out.png" />
+    <Content Include="jqeditTest.aspx" />
+    <Content Include="LICENSE.txt" />
+    <Content Include="MonthlyInterest.aspx" />
+    <Content Include="OSApplicaitons.aspx" />
+    <Content Include="Payments.aspx" />
+    <Content Include="Reports.aspx" />
+    <Content Include="reports\ReportsCalcAnnualRestricedAmount.aspx" />
+    <Content Include="reports\ReportsCalcAnnualRestricedAmountPF.aspx" />
+    <Content Include="reports\ReportsCalcYouthEmploymentGoal.aspx" />
+    <Content Include="reports\ReportsListMontlyInterest.aspx" />
+    <Content Include="reports\ReportsListOFAllocatedRevenuesByAgency.aspx" />
+    <Content Include="runbal.aspx" />
+    <Content Include="Scripts\datagrid-detailview.js" />
+    <Content Include="Scripts\grid.locale-en.js" />
+    <Content Include="Scripts\images\animated-overlay.gif" />
+    <Content Include="Scripts\images\ui-bg_diagonal-maze_20_6e4f1c_10x10.png" />
+    <Content Include="Scripts\images\ui-bg_diagonal-maze_40_000000_10x10.png" />
+    <Content Include="Scripts\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Scripts\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Scripts\images\ui-bg_fine-grain_10_eceadf_60x60.png" />
+    <Content Include="Scripts\images\ui-bg_fine-grain_10_f8f7f6_60x60.png" />
+    <Content Include="Scripts\images\ui-bg_fine-grain_15_eceadf_60x60.png" />
+    <Content Include="Scripts\images\ui-bg_fine-grain_15_f7f3de_60x60.png" />
+    <Content Include="Scripts\images\ui-bg_fine-grain_15_ffffff_60x60.png" />
+    <Content Include="Scripts\images\ui-bg_fine-grain_65_654b24_60x60.png" />
+    <Content Include="Scripts\images\ui-bg_fine-grain_68_b83400_60x60.png" />
+    <Content Include="Scripts\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Scripts\images\ui-bg_flat_55_999999_40x100.png" />
+    <Content Include="Scripts\images\ui-bg_flat_75_aaaaaa_40x100.png" />
+    <Content Include="Scripts\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Scripts\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Scripts\images\ui-bg_glass_45_0078ae_1x400.png" />
+    <Content Include="Scripts\images\ui-bg_glass_55_f8da4e_1x400.png" />
+    <Content Include="Scripts\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Scripts\images\ui-bg_glass_75_79c9ec_1x400.png" />
+    <Content Include="Scripts\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Scripts\images\ui-bg_gloss-wave_45_e14f1c_500x100.png" />
+    <Content Include="Scripts\images\ui-bg_gloss-wave_50_6eac2c_500x100.png" />
+    <Content Include="Scripts\images\ui-bg_gloss-wave_75_2191c0_500x100.png" />
+    <Content Include="Scripts\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Scripts\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Scripts\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Scripts\images\ui-icons_0078ae_256x240.png" />
+    <Content Include="Scripts\images\ui-icons_056b93_256x240.png" />
+    <Content Include="Scripts\images\ui-icons_222222_256x240.png" />
+    <Content Include="Scripts\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Scripts\images\ui-icons_3572ac_256x240.png" />
+    <Content Include="Scripts\images\ui-icons_8c291d_256x240.png" />
+    <Content Include="Scripts\images\ui-icons_b83400_256x240.png" />
+    <Content Include="Scripts\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Scripts\images\ui-icons_e0fdff_256x240.png" />
+    <Content Include="Scripts\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Scripts\images\ui-icons_f5e175_256x240.png" />
+    <Content Include="Scripts\images\ui-icons_f7a50d_256x240.png" />
+    <Content Include="Scripts\images\ui-icons_fbdb93_256x240.png" />
+    <Content Include="Scripts\images\ui-icons_fcd113_256x240.png" />
+    <Content Include="Scripts\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Scripts\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.custom.css" />
+    <Content Include="Scripts\jquery-ui-1.10.3.custom.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
+    <Content Include="Scripts\jquery.easyui.min.js" />
+    <Content Include="Scripts\jquery.floatingmessage.js" />
+    <Content Include="Scripts\jquery.jqGrid.js" />
+    <Content Include="Scripts\jquery.jqGrid.min.js" />
+    <Content Include="storedtest.aspx" />
+    <Content Include="Styles\EasyUiSite.css" />
+    <Content Include="Styles\images\animated-overlay.gif" />
+    <Content Include="Styles\images\ui-bg_diagonal-maze_20_6e4f1c_10x10.png" />
+    <Content Include="Styles\images\ui-bg_diagonal-maze_40_000000_10x10.png" />
+    <Content Include="Styles\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Styles\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Styles\images\ui-bg_fine-grain_10_eceadf_60x60.png" />
+    <Content Include="Styles\images\ui-bg_fine-grain_10_f8f7f6_60x60.png" />
+    <Content Include="Styles\images\ui-bg_fine-grain_15_eceadf_60x60.png" />
+    <Content Include="Styles\images\ui-bg_fine-grain_15_f7f3de_60x60.png" />
+    <Content Include="Styles\images\ui-bg_fine-grain_15_ffffff_60x60.png" />
+    <Content Include="Styles\images\ui-bg_fine-grain_65_654b24_60x60.png" />
+    <Content Include="Styles\images\ui-bg_fine-grain_68_b83400_60x60.png" />
+    <Content Include="Styles\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Styles\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Styles\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Styles\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Styles\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Styles\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Styles\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Styles\images\ui-icons_222222_256x240.png" />
+    <Content Include="Styles\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Styles\images\ui-icons_3572ac_256x240.png" />
+    <Content Include="Styles\images\ui-icons_8c291d_256x240.png" />
+    <Content Include="Styles\images\ui-icons_b83400_256x240.png" />
+    <Content Include="Styles\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Styles\images\ui-icons_fbdb93_256x240.png" />
+    <Content Include="Styles\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Styles\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Styles\jquery-ui-1.10.4.custom.css" />
+    <Content Include="Styles\jquery-ui.css" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Styles\ui.jqdropdownlist.css" />
+    <Content Include="Styles\ui.jqgrid.css" />
+    <Content Include="Styles\ui.jqtreeview.css" />
+    <Content Include="Support.aspx" />
+    <Content Include="themes\black\accordion.css" />
+    <Content Include="themes\black\calendar.css" />
+    <Content Include="themes\black\combo.css" />
+    <Content Include="themes\black\combobox.css" />
+    <Content Include="themes\black\datagrid.css" />
+    <Content Include="themes\black\datebox.css" />
+    <Content Include="themes\black\dialog.css" />
+    <Content Include="themes\black\easyui.css" />
+    <Content Include="themes\black\images\accordion_arrows.png" />
+    <Content Include="themes\black\images\blank.gif" />
+    <Content Include="themes\black\images\calendar_arrows.png" />
+    <Content Include="themes\black\images\combo_arrow.png" />
+    <Content Include="themes\black\images\datagrid_icons.png" />
+    <Content Include="themes\black\images\datebox_arrow.png" />
+    <Content Include="themes\black\images\layout_arrows.png" />
+    <Content Include="themes\black\images\linkbutton_bg.png" />
+    <Content Include="themes\black\images\loading.gif" />
+    <Content Include="themes\black\images\menu_arrows.png" />
+    <Content Include="themes\black\images\messager_icons.png" />
+    <Content Include="themes\black\images\pagination_icons.png" />
+    <Content Include="themes\black\images\panel_tools.png" />
+    <Content Include="themes\black\images\searchbox_button.png" />
+    <Content Include="themes\black\images\slider_handle.png" />
+    <Content Include="themes\black\images\spinner_arrows.png" />
+    <Content Include="themes\black\images\tabs_icons.png" />
+    <Content Include="themes\black\images\tree_icons.png" />
+    <Content Include="themes\black\images\validatebox_warning.png" />
+    <Content Include="themes\black\layout.css" />
+    <Content Include="themes\black\linkbutton.css" />
+    <Content Include="themes\black\menu.css" />
+    <Content Include="themes\black\menubutton.css" />
+    <Content Include="themes\black\messager.css" />
+    <Content Include="themes\black\pagination.css" />
+    <Content Include="themes\black\panel.css" />
+    <Content Include="themes\black\progressbar.css" />
+    <Content Include="themes\black\propertygrid.css" />
+    <Content Include="themes\black\searchbox.css" />
+    <Content Include="themes\black\slider.css" />
+    <Content Include="themes\black\spinner.css" />
+    <Content Include="themes\black\splitbutton.css" />
+    <Content Include="themes\black\tabs.css" />
+    <Content Include="themes\black\tooltip.css" />
+    <Content Include="themes\black\tree.css" />
+    <Content Include="themes\black\validatebox.css" />
+    <Content Include="themes\black\window.css" />
+    <Content Include="themes\bootstrap\accordion.css" />
+    <Content Include="themes\bootstrap\calendar.css" />
+    <Content Include="themes\bootstrap\combo.css" />
+    <Content Include="themes\bootstrap\combobox.css" />
+    <Content Include="themes\bootstrap\datagrid.css" />
+    <Content Include="themes\bootstrap\datebox.css" />
+    <Content Include="themes\bootstrap\dialog.css" />
+    <Content Include="themes\bootstrap\easyui.css" />
+    <Content Include="themes\bootstrap\images\accordion_arrows.png" />
+    <Content Include="themes\bootstrap\images\blank.gif" />
+    <Content Include="themes\bootstrap\images\calendar_arrows.png" />
+    <Content Include="themes\bootstrap\images\combo_arrow.png" />
+    <Content Include="themes\bootstrap\images\datagrid_icons.png" />
+    <Content Include="themes\bootstrap\images\datebox_arrow.png" />
+    <Content Include="themes\bootstrap\images\layout_arrows.png" />
+    <Content Include="themes\bootstrap\images\linkbutton_bg.png" />
+    <Content Include="themes\bootstrap\images\loading.gif" />
+    <Content Include="themes\bootstrap\images\menu_arrows.png" />
+    <Content Include="themes\bootstrap\images\messager_icons.png" />
+    <Content Include="themes\bootstrap\images\pagination_icons.png" />
+    <Content Include="themes\bootstrap\images\panel_tools.png" />
+    <Content Include="themes\bootstrap\images\searchbox_button.png" />
+    <Content Include="themes\bootstrap\images\slider_handle.png" />
+    <Content Include="themes\bootstrap\images\spinner_arrows.png" />
+    <Content Include="themes\bootstrap\images\tabs_icons.png" />
+    <Content Include="themes\bootstrap\images\tree_icons.png" />
+    <Content Include="themes\bootstrap\images\validatebox_warning.png" />
+    <Content Include="themes\bootstrap\layout.css" />
+    <Content Include="themes\bootstrap\linkbutton.css" />
+    <Content Include="themes\bootstrap\menu.css" />
+    <Content Include="themes\bootstrap\menubutton.css" />
+    <Content Include="themes\bootstrap\messager.css" />
+    <Content Include="themes\bootstrap\pagination.css" />
+    <Content Include="themes\bootstrap\panel.css" />
+    <Content Include="themes\bootstrap\progressbar.css" />
+    <Content Include="themes\bootstrap\propertygrid.css" />
+    <Content Include="themes\bootstrap\searchbox.css" />
+    <Content Include="themes\bootstrap\slider.css" />
+    <Content Include="themes\bootstrap\spinner.css" />
+    <Content Include="themes\bootstrap\splitbutton.css" />
+    <Content Include="themes\bootstrap\tabs.css" />
+    <Content Include="themes\bootstrap\tooltip.css" />
+    <Content Include="themes\bootstrap\tree.css" />
+    <Content Include="themes\bootstrap\validatebox.css" />
+    <Content Include="themes\bootstrap\window.css" />
+    <Content Include="themes\default\accordion.css" />
+    <Content Include="themes\default\calendar.css" />
+    <Content Include="themes\default\combo.css" />
+    <Content Include="themes\default\combobox.css" />
+    <Content Include="themes\default\datagrid.css" />
+    <Content Include="themes\default\datebox.css" />
+    <Content Include="themes\default\dialog.css" />
+    <Content Include="themes\default\easyui.css" />
+    <Content Include="themes\default\images\accordion_arrows.png" />
+    <Content Include="themes\default\images\blank.gif" />
+    <Content Include="themes\default\images\calendar_arrows.png" />
+    <Content Include="themes\default\images\combo_arrow.png" />
+    <Content Include="themes\default\images\datagrid_icons.png" />
+    <Content Include="themes\default\images\datebox_arrow.png" />
+    <Content Include="themes\default\images\layout_arrows.png" />
+    <Content Include="themes\default\images\linkbutton_bg.png" />
+    <Content Include="themes\default\images\loading.gif" />
+    <Content Include="themes\default\images\menu_arrows.png" />
+    <Content Include="themes\default\images\messager_icons.png" />
+    <Content Include="themes\default\images\pagination_icons.png" />
+    <Content Include="themes\default\images\panel_tools.png" />
+    <Content Include="themes\default\images\searchbox_button.png" />
+    <Content Include="themes\default\images\slider_handle.png" />
+    <Content Include="themes\default\images\spinner_arrows.png" />
+    <Content Include="themes\default\images\tabs_icons.png" />
+    <Content Include="themes\default\images\tree_icons.png" />
+    <Content Include="themes\default\images\validatebox_warning.png" />
+    <Content Include="themes\default\layout.css" />
+    <Content Include="themes\default\linkbutton.css" />
+    <Content Include="themes\default\menu.css" />
+    <Content Include="themes\default\menubutton.css" />
+    <Content Include="themes\default\messager.css" />
+    <Content Include="themes\default\pagination.css" />
+    <Content Include="themes\default\panel.css" />
+    <Content Include="themes\default\progressbar.css" />
+    <Content Include="themes\default\propertygrid.css" />
+    <Content Include="themes\default\searchbox.css" />
+    <Content Include="themes\default\slider.css" />
+    <Content Include="themes\default\spinner.css" />
+    <Content Include="themes\default\splitbutton.css" />
+    <Content Include="themes\default\tabs.css" />
+    <Content Include="themes\default\tooltip.css" />
+    <Content Include="themes\default\tree.css" />
+    <Content Include="themes\default\validatebox.css" />
+    <Content Include="themes\default\window.css" />
+    <Content Include="themes\gray\accordion.css" />
+    <Content Include="themes\gray\calendar.css" />
+    <Content Include="themes\gray\combo.css" />
+    <Content Include="themes\gray\combobox.css" />
+    <Content Include="themes\gray\datagrid.css" />
+    <Content Include="themes\gray\datebox.css" />
+    <Content Include="themes\gray\dialog.css" />
+    <Content Include="themes\gray\easyui.css" />
+    <Content Include="themes\gray\images\accordion_arrows.png" />
+    <Content Include="themes\gray\images\blank.gif" />
+    <Content Include="themes\gray\images\calendar_arrows.png" />
+    <Content Include="themes\gray\images\combo_arrow.png" />
+    <Content Include="themes\gray\images\datagrid_icons.png" />
+    <Content Include="themes\gray\images\datebox_arrow.png" />
+    <Content Include="themes\gray\images\layout_arrows.png" />
+    <Content Include="themes\gray\images\linkbutton_bg.png" />
+    <Content Include="themes\gray\images\loading.gif" />
+    <Content Include="themes\gray\images\menu_arrows.png" />
+    <Content Include="themes\gray\images\messager_icons.png" />
+    <Content Include="themes\gray\images\pagination_icons.png" />
+    <Content Include="themes\gray\images\panel_tools.png" />
+    <Content Include="themes\gray\images\searchbox_button.png" />
+    <Content Include="themes\gray\images\slider_handle.png" />
+    <Content Include="themes\gray\images\spinner_arrows.png" />
+    <Content Include="themes\gray\images\tabs_icons.png" />
+    <Content Include="themes\gray\images\tree_icons.png" />
+    <Content Include="themes\gray\images\validatebox_warning.png" />
+    <Content Include="themes\gray\layout.css" />
+    <Content Include="themes\gray\linkbutton.css" />
+    <Content Include="themes\gray\menu.css" />
+    <Content Include="themes\gray\menubutton.css" />
+    <Content Include="themes\gray\messager.css" />
+    <Content Include="themes\gray\pagination.css" />
+    <Content Include="themes\gray\panel.css" />
+    <Content Include="themes\gray\progressbar.css" />
+    <Content Include="themes\gray\propertygrid.css" />
+    <Content Include="themes\gray\searchbox.css" />
+    <Content Include="themes\gray\slider.css" />
+    <Content Include="themes\gray\spinner.css" />
+    <Content Include="themes\gray\splitbutton.css" />
+    <Content Include="themes\gray\tabs.css" />
+    <Content Include="themes\gray\tooltip.css" />
+    <Content Include="themes\gray\tree.css" />
+    <Content Include="themes\gray\validatebox.css" />
+    <Content Include="themes\gray\window.css" />
+    <Content Include="themes\icon.css" />
+    <Content Include="themes\icons\back.png" />
+    <Content Include="themes\icons\blank.gif" />
+    <Content Include="themes\icons\cancel.png" />
+    <Content Include="themes\icons\cut.png" />
+    <Content Include="themes\icons\edit_add.png" />
+    <Content Include="themes\icons\edit_remove.png" />
+    <Content Include="themes\icons\filesave.png" />
+    <Content Include="themes\icons\help.png" />
+    <Content Include="themes\icons\mini_add.png" />
+    <Content Include="themes\icons\mini_edit.png" />
+    <Content Include="themes\icons\mini_refresh.png" />
+    <Content Include="themes\icons\no.png" />
+    <Content Include="themes\icons\ok.png" />
+    <Content Include="themes\icons\pencil.png" />
+    <Content Include="themes\icons\print.png" />
+    <Content Include="themes\icons\redo.png" />
+    <Content Include="themes\icons\reload.png" />
+    <Content Include="themes\icons\search.png" />
+    <Content Include="themes\icons\sum.png" />
+    <Content Include="themes\icons\tip.png" />
+    <Content Include="themes\icons\undo.png" />
+    <Content Include="themes\metro\accordion.css" />
+    <Content Include="themes\metro\calendar.css" />
+    <Content Include="themes\metro\combo.css" />
+    <Content Include="themes\metro\combobox.css" />
+    <Content Include="themes\metro\datagrid.css" />
+    <Content Include="themes\metro\datebox.css" />
+    <Content Include="themes\metro\dialog.css" />
+    <Content Include="themes\metro\easyui.css" />
+    <Content Include="themes\metro\images\accordion_arrows.png" />
+    <Content Include="themes\metro\images\blank.gif" />
+    <Content Include="themes\metro\images\calendar_arrows.png" />
+    <Content Include="themes\metro\images\combo_arrow.png" />
+    <Content Include="themes\metro\images\datagrid_icons.png" />
+    <Content Include="themes\metro\images\datebox_arrow.png" />
+    <Content Include="themes\metro\images\layout_arrows.png" />
+    <Content Include="themes\metro\images\linkbutton_bg.png" />
+    <Content Include="themes\metro\images\loading.gif" />
+    <Content Include="themes\metro\images\menu_arrows.png" />
+    <Content Include="themes\metro\images\messager_icons.png" />
+    <Content Include="themes\metro\images\pagination_icons.png" />
+    <Content Include="themes\metro\images\panel_tools.png" />
+    <Content Include="themes\metro\images\searchbox_button.png" />
+    <Content Include="themes\metro\images\slider_handle.png" />
+    <Content Include="themes\metro\images\spinner_arrows.png" />
+    <Content Include="themes\metro\images\tabs_icons.png" />
+    <Content Include="themes\metro\images\tree_icons.png" />
+    <Content Include="themes\metro\images\validatebox_warning.png" />
+    <Content Include="themes\metro\layout.css" />
+    <Content Include="themes\metro\linkbutton.css" />
+    <Content Include="themes\metro\menu.css" />
+    <Content Include="themes\metro\menubutton.css" />
+    <Content Include="themes\metro\messager.css" />
+    <Content Include="themes\metro\pagination.css" />
+    <Content Include="themes\metro\panel.css" />
+    <Content Include="themes\metro\progressbar.css" />
+    <Content Include="themes\metro\propertygrid.css" />
+    <Content Include="themes\metro\searchbox.css" />
+    <Content Include="themes\metro\slider.css" />
+    <Content Include="themes\metro\spinner.css" />
+    <Content Include="themes\metro\splitbutton.css" />
+    <Content Include="themes\metro\tabs.css" />
+    <Content Include="themes\metro\tooltip.css" />
+    <Content Include="themes\metro\tree.css" />
+    <Content Include="themes\metro\validatebox.css" />
+    <Content Include="themes\metro\window.css" />
+    <Content Include="Totals.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="YEG.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BenefitsAssessment.aspx.cs">
+      <DependentUpon>BenefitsAssessment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BenefitsAssessment.aspx.designer.cs">
+      <DependentUpon>BenefitsAssessment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BenefitsAssessmentDistribution.aspx.cs">
+      <DependentUpon>BenefitsAssessmentDistribution.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BenefitsAssessmentDistribution.aspx.designer.cs">
+      <DependentUpon>BenefitsAssessmentDistribution.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="clipboard.aspx.cs">
+      <DependentUpon>clipboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="clipboard.aspx.designer.cs">
+      <DependentUpon>clipboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\agenciesCode.ashx.cs">
+      <DependentUpon>agenciesCode.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Agency.ashx.cs">
+      <DependentUpon>Agency.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\agenFunds.ashx.cs">
+      <DependentUpon>agenFunds.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\agenInterest.ashx.cs">
+      <DependentUpon>agenInterest.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\BADdetails.ashx.cs">
+      <DependentUpon>BADdetails.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\BADedit.ashx.cs">
+      <DependentUpon>BADedit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\benefitADD.ashx.cs">
+      <DependentUpon>benefitADD.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\BenefitsAssessmentDistribution.ashx.cs">
+      <DependentUpon>BenefitsAssessmentDistribution.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Definitions.ashx.cs">
+      <DependentUpon>Definitions.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Definitions_Detail.ashx.cs">
+      <DependentUpon>Definitions_Detail.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\getTest.ashx.cs">
+      <DependentUpon>getTest.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\monthIadd.ashx.cs">
+      <DependentUpon>monthIadd.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\MonthlyInterest.ashx.cs">
+      <DependentUpon>MonthlyInterest.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\MonthlyInterestDetail.ashx.cs">
+      <DependentUpon>MonthlyInterestDetail.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\postTest.ashx.cs">
+      <DependentUpon>postTest.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\RunBalMonth.ashx.cs">
+      <DependentUpon>RunBalMonth.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\RunningBal.ashx.cs">
+      <DependentUpon>RunningBal.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\runningBalG.ashx.cs">
+      <DependentUpon>runningBalG.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\totalMonths.ashx.cs">
+      <DependentUpon>totalMonths.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Totals.ashx.cs">
+      <DependentUpon>Totals.ashx</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="definitions.aspx.cs">
+      <DependentUpon>definitions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="definitions.aspx.designer.cs">
+      <DependentUpon>definitions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EasyUI.Master.cs">
+      <DependentUpon>EasyUI.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EasyUI.Master.designer.cs">
+      <DependentUpon>EasyUI.Master</DependentUpon>
+    </Compile>
+    <Compile Include="FOXPRO2linq.designer.cs">
+      <DependentUpon>FOXPRO2linq.dbml</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="jqeditTest.aspx.cs">
+      <DependentUpon>jqeditTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jqeditTest.aspx.designer.cs">
+      <DependentUpon>jqeditTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MonthlyInterest.aspx.cs">
+      <DependentUpon>MonthlyInterest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MonthlyInterest.aspx.designer.cs">
+      <DependentUpon>MonthlyInterest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OSApplicaitons.aspx.cs">
+      <DependentUpon>OSApplicaitons.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OSApplicaitons.aspx.designer.cs">
+      <DependentUpon>OSApplicaitons.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Payments.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Payments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Payments.aspx.designer.cs">
+      <DependentUpon>Payments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports.aspx.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="reports\ReportsCalcAnnualRestricedAmount.aspx.cs">
+      <DependentUpon>ReportsCalcAnnualRestricedAmount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reports\ReportsCalcAnnualRestricedAmount.aspx.designer.cs">
+      <DependentUpon>ReportsCalcAnnualRestricedAmount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="reports\ReportsCalcAnnualRestricedAmountPF.aspx.cs">
+      <DependentUpon>ReportsCalcAnnualRestricedAmountPF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reports\ReportsCalcAnnualRestricedAmountPF.aspx.designer.cs">
+      <DependentUpon>ReportsCalcAnnualRestricedAmountPF.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="reports\ReportsCalcYouthEmploymentGoal.aspx.cs">
+      <DependentUpon>ReportsCalcYouthEmploymentGoal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reports\ReportsCalcYouthEmploymentGoal.aspx.designer.cs">
+      <DependentUpon>ReportsCalcYouthEmploymentGoal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="reports\ReportsListMontlyInterest.aspx.cs">
+      <DependentUpon>ReportsListMontlyInterest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reports\ReportsListMontlyInterest.aspx.designer.cs">
+      <DependentUpon>ReportsListMontlyInterest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="reports\ReportsListOFAllocatedRevenuesByAgency.aspx.cs">
+      <DependentUpon>ReportsListOFAllocatedRevenuesByAgency.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="reports\ReportsListOFAllocatedRevenuesByAgency.aspx.designer.cs">
+      <DependentUpon>ReportsListOFAllocatedRevenuesByAgency.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="runbal.aspx.cs">
+      <DependentUpon>runbal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="runbal.aspx.designer.cs">
+      <DependentUpon>runbal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="storedtest.aspx.cs">
+      <DependentUpon>storedtest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="storedtest.aspx.designer.cs">
+      <DependentUpon>storedtest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Support.aspx.cs">
+      <DependentUpon>Support.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Support.aspx.designer.cs">
+      <DependentUpon>Support.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Totals.aspx.cs">
+      <DependentUpon>Totals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Totals.aspx.designer.cs">
+      <DependentUpon>Totals.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YEG.aspx.cs">
+      <DependentUpon>YEG.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YEG.aspx.designer.cs">
+      <DependentUpon>YEG.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="bin\" />
+    <Folder Include="Styles\App_LocalResources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DAL\MonthlyInterest.ashx" />
+    <Content Include="DAL\BenefitsAssessmentDistribution.ashx" />
+    <Content Include="DAL\Agency.ashx" />
+    <Content Include="DAL\RunningBal.ashx" />
+    <Content Include="DAL\MonthlyInterestDetail.ashx" />
+    <Content Include="DAL\runningBalG.ashx" />
+    <Content Include="DAL\RunBalMonth.ashx" />
+    <Content Include="DAL\Definitions.ashx" />
+    <Content Include="DAL\BADdetails.ashx" />
+    <Content Include="DAL\totalMonths.ashx" />
+    <Content Include="DAL\Definitions_Detail.ashx" />
+    <Content Include="DAL\postTest.ashx" />
+    <Content Include="DAL\getTest.ashx" />
+    <Content Include="DAL\agenciesCode.ashx" />
+    <Content Include="DAL\agenFunds.ashx" />
+    <Content Include="DAL\benefitADD.ashx" />
+    <Content Include="DAL\BADedit.ashx" />
+    <Content Include="DAL\monthIadd.ashx" />
+    <Content Include="App_Browsers\ie.browser" />
+    <Content Include="App_Browsers\firefox.browser" />
+    <Content Include="AjaxControlToolkitSampleSite.zip" />
+    <None Include="ClassDiagram1.cd" />
+    <Content Include="DAL\agenInterest.ashx" />
+    <None Include="demo\accordion\datagrid_data1.json" />
+    <None Include="demo\combobox\combobox_data1.json" />
+    <None Include="demo\combobox\combobox_data2.json" />
+    <None Include="demo\combogrid\datagrid_data1.json" />
+    <None Include="demo\combotree\tree_data1.json" />
+    <None Include="demo\datagrid\datagrid_data1.json" />
+    <None Include="demo\datagrid\datagrid_data2.json" />
+    <None Include="demo\datagrid\products.json" />
+    <None Include="demo\form\form_data1.json" />
+    <None Include="demo\layout\datagrid_data1.json" />
+    <None Include="demo\layout\propertygrid_data1.json" />
+    <None Include="demo\layout\tree_data1.json" />
+    <None Include="demo\propertygrid\propertygrid_data1.json" />
+    <None Include="demo\tabs\tree_data1.json" />
+    <None Include="demo\treegrid\treegrid_data1.json" />
+    <None Include="demo\treegrid\treegrid_data2.json" />
+    <None Include="demo\treegrid\treegrid_data3.json" />
+    <None Include="demo\tree\tree_data1.json" />
+    <None Include="demo\tree\tree_data2.json" />
+    <Content Include="EasyUI.Master" />
+    <None Include="FOXPRO2linq.dbml.layout">
+      <DependentUpon>FOXPRO2linq.dbml</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="Site.Master" />
+    <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Dev Local Publish.pubxml" />
+    <None Include="Properties\PublishProfiles\new dev web server.pubxml" />
+    <None Include="Properties\PublishProfiles\sahq dev webserver.pubxml" />
+    <None Include="themes\black\images\Thumbs.db" />
+    <None Include="themes\bootstrap\images\Thumbs.db" />
+    <None Include="themes\default\images\Thumbs.db" />
+    <None Include="themes\gray\images\Thumbs.db" />
+    <None Include="themes\metro\images\Thumbs.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FOXPRO2linq.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>FOXPRO2linq.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>14692</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/MS</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

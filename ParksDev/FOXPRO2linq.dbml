@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FOXPRODEV" Class="FOXPRO2linqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=SAHQ-ITS-5354\DEVSQL;Initial Catalog=FOXPRODEV;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="FOXPRODEVConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AGENCIES" Member="AGENCies">
+    <Type Name="AGENCY">
+      <Column Name="AGE_CODE" Type="System.Double" DbType="Float NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AGENCY" Member="AGENCY1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="NAME" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ATP_CODE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DIS_CODE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ADR1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ADR2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CITY" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ZIP" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="AMTMTC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AMTDEV" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AMTYEG" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LUPD_USER" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="LUPD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LUPD_TIME" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="AGENCY_AGENCCALC" Member="AGENCCALCs" ThisKey="AGE_CODE" OtherKey="AGE_CODE" Type="AGENCCALC" />
+      <Association Name="AGENCY_AGENFUND" Member="AGENFUNDs" ThisKey="AGE_CODE" OtherKey="AGE_CODE" Type="AGENFUND" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AGENCCALCS" Member="AGENCCALCs">
+    <Type Name="AGENCCALC">
+      <Column Name="ACA_CODE" Type="System.Double" DbType="Float NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AGE_CODE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CTP_CODE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NO_PARC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PCT_BAS" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FY_EST" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FY_FEE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COMMENTS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="LUPD_USER" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="LUPD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LUPD_TIME" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="AGENCY_AGENCCALC" Member="AGENCY" ThisKey="AGE_CODE" OtherKey="AGE_CODE" Type="AGENCY" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AGENFUNDS" Member="AGENFUNDs">
+    <Type Name="AGENFUND">
+      <Column Name="AGF_CODE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AGE_CODE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FTP_CODE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AMT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="COMMENTS" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="LUPD_USER" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="LUPD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LUPD_TIME" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="AGENFUND_FUNDTYPE" Member="FUNDTYPEs" ThisKey="FTP_CODE" OtherKey="FTP_CODE" Type="FUNDTYPE" />
+      <Association Name="AGENCY_AGENFUND" Member="AGENCY" ThisKey="AGE_CODE" OtherKey="AGE_CODE" Type="AGENCY" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FUNDTYPES" Member="FUNDTYPEs">
+    <Type Name="FUNDTYPE">
+      <Column Name="FTP_CODE" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="HEADER" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FUND_TYPE" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FUND_ABRV" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CALCULATED" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FUND_AMT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="AGENFUND_FUNDTYPE" Member="AGENFUND" ThisKey="FTP_CODE" OtherKey="FTP_CODE" Type="AGENFUND" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

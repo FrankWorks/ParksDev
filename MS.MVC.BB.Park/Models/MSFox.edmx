@@ -1,0 +1,735 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FOXPRODEVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FOXPRODEV.dbo.AdminPass' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="AdminPass">
+          <Property Name="Full_Data_Maint_Priv" Type="nvarchar" MaxLength="10" />
+          <Property Name="Admin_Priv" Type="nvarchar" MaxLength="10" />
+        </EntityType>-->
+        <EntityType Name="AGENBALANCFY">
+          <Key>
+            <PropertyRef Name="ABF_CODE" />
+          </Key>
+          <Property Name="ABF_CODE" Type="float" Nullable="false" />
+          <Property Name="AGE_CODE" Type="float" />
+          <Property Name="FY" Type="float" />
+          <Property Name="AMT_BEG" Type="float" />
+          <Property Name="AMT_BAS" Type="float" />
+          <Property Name="AMT_TRA" Type="float" />
+          <Property Name="AMT_INT" Type="float" />
+          <Property Name="MTC_EST" Type="float" />
+          <Property Name="YEG_BEG" Type="float" />
+          <Property Name="YEG_TOT" Type="float" />
+          <Property Name="YEG_CAL" Type="float" />
+          <Property Name="YEG_TRA" Type="float" />
+          <Property Name="FEE_BEG" Type="float" />
+          <Property Name="FEE_CAL" Type="float" />
+          <Property Name="FEE_PAY" Type="float" />
+          <Property Name="LUPD_USER" Type="nvarchar" MaxLength="255" />
+          <Property Name="LUPD_DATE" Type="datetime" />
+          <Property Name="LUPD_TIME" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FOXPRODEV.dbo.AGENBALANMONTH' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="AGENBALANMONTH">
+          <Property Name="ABM_CODE" Type="float" />
+          <Property Name="AGE_CODE" Type="float" />
+          <Property Name="FY" Type="float" />
+          <Property Name="YEAR" Type="float" />
+          <Property Name="MONTH" Type="float" />
+          <Property Name="AMT_BEG" Type="float" />
+          <Property Name="AMT_BAS" Type="float" />
+          <Property Name="AMT_TRA" Type="float" />
+          <Property Name="AMT_INT" Type="float" />
+          <Property Name="FEE_PAY" Type="float" />
+          <Property Name="AVERAGE" Type="float" />
+          <Property Name="LUPD_USER" Type="nvarchar" MaxLength="255" />
+          <Property Name="LUPD_DATE" Type="datetime" />
+          <Property Name="LUPD_TIME" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FOXPRODEV.dbo.AGENBENEFITS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="AGENBENEFITS">
+          <Property Name="ABA_CODE" Type="float" />
+          <Property Name="BAS_CODE" Type="float" />
+          <Property Name="AGE_CODE" Type="float" />
+          <Property Name="BAS" Type="float" />
+          <Property Name="FEE" Type="float" />
+          <Property Name="AVERAGE" Type="float" />
+          <Property Name="LUPD_USER" Type="nvarchar" MaxLength="255" />
+          <Property Name="LUPD_DATE" Type="datetime" />
+          <Property Name="LUPD_TIME" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <EntityType Name="AGENCCALCS">
+          <Key>
+            <PropertyRef Name="ACA_CODE" />
+          </Key>
+          <Property Name="ACA_CODE" Type="float" Nullable="false" />
+          <Property Name="AGE_CODE" Type="float" />
+          <Property Name="CTP_CODE" Type="float" />
+          <Property Name="NO_PARC" Type="float" />
+          <Property Name="PCT_BAS" Type="float" />
+          <Property Name="FY_EST" Type="float" />
+          <Property Name="FY_FEE" Type="float" />
+          <Property Name="COMMENTS" Type="nvarchar" MaxLength="255" />
+          <Property Name="LUPD_USER" Type="nvarchar" MaxLength="255" />
+          <Property Name="LUPD_DATE" Type="datetime" />
+          <Property Name="LUPD_TIME" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="AGENCIES">
+          <Key>
+            <PropertyRef Name="AGE_CODE" />
+          </Key>
+          <Property Name="AGE_CODE" Type="float" Nullable="false" />
+          <Property Name="AGENCY" Type="nvarchar" MaxLength="255" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="ATP_CODE" Type="float" />
+          <Property Name="DIS_CODE" Type="float" />
+          <Property Name="ADR1" Type="nvarchar" MaxLength="255" />
+          <Property Name="ADR2" Type="nvarchar" MaxLength="255" />
+          <Property Name="CITY" Type="nvarchar" MaxLength="255" />
+          <Property Name="ZIP" Type="nvarchar" MaxLength="255" />
+          <Property Name="AMTMTC" Type="float" />
+          <Property Name="AMTDEV" Type="float" />
+          <Property Name="AMTYEG" Type="float" />
+          <Property Name="LUPD_USER" Type="nvarchar" MaxLength="255" />
+          <Property Name="LUPD_DATE" Type="datetime" />
+          <Property Name="LUPD_TIME" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FOXPRODEV.dbo.AGENCYTYPES' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="AGENCYTYPES">
+          <Property Name="ATP_CODE" Type="float" />
+          <Property Name="AGE_TYPE" Type="nvarchar" MaxLength="255" />
+          <Property Name="COUNT" Type="float" />
+          <Property Name="GOVWIDE" Type="nvarchar" MaxLength="255" />
+          <Property Name="FULL_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="NO_PARCEL" Type="float" />
+          <Property Name="PCT_BA" Type="float" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FOXPRODEV.dbo.AGENFUNDS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="AGENFUNDS">
+          <Property Name="AGF_CODE" Type="float" />
+          <Property Name="AGE_CODE" Type="float" />
+          <Property Name="FTP_CODE" Type="float" />
+          <Property Name="AMT" Type="float" />
+          <Property Name="COMMENTS" Type="nvarchar" MaxLength="255" />
+          <Property Name="LUPD_USER" Type="nvarchar" MaxLength="255" />
+          <Property Name="LUPD_DATE" Type="datetime" />
+          <Property Name="LUPD_TIME" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FOXPRODEV.dbo.BENEFITS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BENEFITS">
+          <Key>
+            <PropertyRef Name="DISTRIB" />
+          </Key>
+          <Property Name="BAS_CODE" Type="float" />
+          <Property Name="ENTERED" Type="datetime" />
+          <Property Name="PROCESSED" Type="datetime" />
+          <Property Name="TC" Type="nvarchar" MaxLength="255" />
+          <Property Name="TD" Type="nvarchar" MaxLength="255" />
+          <Property Name="REFERENCE" Type="nvarchar" MaxLength="255" />
+          <Property Name="BAS" Type="float" />
+          <Property Name="FEE" Type="float" />
+          <Property Name="AVERAGE" Type="float" />
+          <Property Name="COMMENTS" Type="nvarchar" MaxLength="255" />
+          <Property Name="DISTRIB" Type="bit" Nullable="false" />
+          <Property Name="LUPD_USER" Type="nvarchar" MaxLength="255" />
+          <Property Name="LUPD_DATE" Type="datetime" />
+          <Property Name="LUPD_TIME" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="CALTYPES">
+          <Key>
+            <PropertyRef Name="CTP_CODE" />
+          </Key>
+          <Property Name="CTP_CODE" Type="float" Nullable="false" />
+          <Property Name="CALC_TYPE" Type="nvarchar" MaxLength="255" />
+          <Property Name="FY_FROM" Type="float" />
+          <Property Name="FY_TO" Type="float" />
+          <Property Name="ANNUALLY" Type="float" />
+          <Property Name="NO_PARC" Type="float" />
+          <Property Name="PRC_BAS" Type="float" />
+          <Property Name="YEAR_FR" Type="float" />
+          <Property Name="MONTH_FR" Type="float" />
+          <Property Name="YEAR_TO" Type="float" />
+          <Property Name="MONTH_TO" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FOXPRODEV.dbo.DISTRICT' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="DISTRICT">
+          <Property Name="DIS_CODE" Type="float" />
+          <Property Name="DISTRICT" Type="nvarchar" MaxLength="255" />
+          <Property Name="FULLNAME" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FOXPRODEV.dbo.FUNDTYPES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FUNDTYPES">
+          <Key>
+            <PropertyRef Name="CALCULATED" />
+          </Key>
+          <Property Name="FTP_CODE" Type="float" />
+          <Property Name="HEADER" Type="nvarchar" MaxLength="255" />
+          <Property Name="FUND_TYPE" Type="nvarchar" MaxLength="255" />
+          <Property Name="FUND_ABRV" Type="nvarchar" MaxLength="255" />
+          <Property Name="CALCULATED" Type="bit" Nullable="false" />
+          <Property Name="FUND_AMT" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FOXPRODEV.dbo.INTEREST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="INTEREST">
+          <Key>
+            <PropertyRef Name="DISTRIB" />
+          </Key>
+          <Property Name="INT_CODE" Type="float" />
+          <Property Name="ENTERED" Type="datetime" />
+          <Property Name="YEAR" Type="float" />
+          <Property Name="MONTH" Type="float" />
+          <Property Name="INT" Type="float" />
+          <Property Name="COMMENTS" Type="nvarchar" MaxLength="255" />
+          <Property Name="DISTRIB" Type="bit" Nullable="false" />
+          <Property Name="LUPD_USER" Type="nvarchar" MaxLength="255" />
+          <Property Name="LUPD_DATE" Type="datetime" />
+          <Property Name="LUPD_TIME" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FOXPRODEV.dbo.R_CARA_TABLE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="R_CARA_TABLE">
+          <Key>
+            <PropertyRef Name="Full_name" />
+          </Key>
+          <Property Name="Cank" Type="bigint" />
+          <Property Name="AGE_CODE" Type="float" />
+          <Property Name="AGENCY" Type="nvarchar" MaxLength="255" />
+          <Property Name="Full_name" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="FY" Type="float" />
+          <Property Name="CALC_TYPE" Type="nvarchar" MaxLength="255" />
+          <Property Name="PCT_BAS" Type="float" />
+          <Property Name="ANNUALLY" Type="float" />
+          <Property Name="YEG_TOT" Type="float" />
+          <Property Name="YEG_TRA_SUM" Type="float" />
+          <Property Name="AMTMTC" Type="float" />
+          <Property Name="MTC_EST" Type="float" />
+          <Property Name="MTC_EST_SUM" Type="float" />
+          <Property Name="YEG_CAL" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FOXPRODEV.dbo.TRANSACTIONTYPES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TRANSACTIONTYPES">
+          <Key>
+            <PropertyRef Name="PLUS_SIGN" />
+          </Key>
+          <Property Name="TTP_CODE" Type="float" />
+          <Property Name="TRAN_TYPE" Type="nvarchar" MaxLength="255" />
+          <Property Name="PLUS_SIGN" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FOXPRODEV.dbo.TRANSFERS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TRANSFERS">
+          <Property Name="TRA_CODE" Type="float" />
+          <Property Name="TTP_CODE" Type="float" />
+          <Property Name="AGE_CODE" Type="float" />
+          <Property Name="MINOBJ" Type="nvarchar" MaxLength="255" />
+          <Property Name="TC" Type="nvarchar" MaxLength="255" />
+          <Property Name="TD" Type="nvarchar" MaxLength="255" />
+          <Property Name="REFERENCE" Type="nvarchar" MaxLength="255" />
+          <Property Name="PROCESSED" Type="datetime" />
+          <Property Name="TRANDATE" Type="datetime" />
+          <Property Name="TRA" Type="float" />
+          <Property Name="AVERAGE" Type="float" />
+          <Property Name="COMMENTS" Type="nvarchar" MaxLength="255" />
+          <Property Name="LUPD_USER" Type="nvarchar" MaxLength="255" />
+          <Property Name="LUPD_DATE" Type="datetime" />
+          <Property Name="LUPD_TIME" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FOXPRODEV.dbo.YOUTHCREDITS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="YOUTHCREDITS">
+          <Property Name="ycr_code" Type="float" />
+          <Property Name="entered" Type="datetime" />
+          <Property Name="by" Type="nvarchar" MaxLength="255" />
+          <Property Name="age_code" Type="float" />
+          <Property Name="ytp_code" Type="float" />
+          <Property Name="fy" Type="float" />
+          <Property Name="processed" Type="datetime" />
+          <Property Name="yeg" Type="float" />
+          <Property Name="grantno" Type="nvarchar" MaxLength="255" />
+          <Property Name="project" Type="nvarchar" MaxLength="255" />
+          <Property Name="noyouths" Type="float" />
+          <Property Name="nohours" Type="float" />
+          <Property Name="work" Type="nvarchar" MaxLength="255" />
+          <Property Name="employer" Type="nvarchar" MaxLength="255" />
+          <Property Name="periodfr" Type="datetime" />
+          <Property Name="periodto" Type="datetime" />
+          <Property Name="comments" Type="nvarchar" MaxLength="255" />
+          <Property Name="lupd_user" Type="nvarchar" MaxLength="255" />
+          <Property Name="lupd_date" Type="datetime" />
+          <Property Name="lupd_time" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FOXPRODEV.dbo.YOUTHCREDITTYPE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="YOUTHCREDITTYPE">
+          <Key>
+            <PropertyRef Name="PLUS_SIGN" />
+          </Key>
+          <Property Name="YTP_CODE" Type="float" />
+          <Property Name="YEGCR_TYPE" Type="nvarchar" MaxLength="255" />
+          <Property Name="PLUS_SIGN" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="FOXPRODEVModelStoreContainer">
+          <EntitySet Name="AGENBALANCFY" EntityType="Self.AGENBALANCFY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AGENCCALCS" EntityType="Self.AGENCCALCS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AGENCIES" EntityType="Self.AGENCIES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CALTYPES" EntityType="Self.CALTYPES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BENEFITS" EntityType="Self.BENEFITS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BENEFITS].[BAS_CODE] AS [BAS_CODE], 
+    [BENEFITS].[ENTERED] AS [ENTERED], 
+    [BENEFITS].[PROCESSED] AS [PROCESSED], 
+    [BENEFITS].[TC] AS [TC], 
+    [BENEFITS].[TD] AS [TD], 
+    [BENEFITS].[REFERENCE] AS [REFERENCE], 
+    [BENEFITS].[BAS] AS [BAS], 
+    [BENEFITS].[FEE] AS [FEE], 
+    [BENEFITS].[AVERAGE] AS [AVERAGE], 
+    [BENEFITS].[COMMENTS] AS [COMMENTS], 
+    [BENEFITS].[DISTRIB] AS [DISTRIB], 
+    [BENEFITS].[LUPD_USER] AS [LUPD_USER], 
+    [BENEFITS].[LUPD_DATE] AS [LUPD_DATE], 
+    [BENEFITS].[LUPD_TIME] AS [LUPD_TIME]
+    FROM [dbo].[BENEFITS] AS [BENEFITS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FUNDTYPES" EntityType="Self.FUNDTYPES" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FUNDTYPES].[FTP_CODE] AS [FTP_CODE], 
+    [FUNDTYPES].[HEADER] AS [HEADER], 
+    [FUNDTYPES].[FUND_TYPE] AS [FUND_TYPE], 
+    [FUNDTYPES].[FUND_ABRV] AS [FUND_ABRV], 
+    [FUNDTYPES].[CALCULATED] AS [CALCULATED], 
+    [FUNDTYPES].[FUND_AMT] AS [FUND_AMT]
+    FROM [dbo].[FUNDTYPES] AS [FUNDTYPES]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="INTEREST" EntityType="Self.INTEREST" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [INTEREST].[INT_CODE] AS [INT_CODE], 
+    [INTEREST].[ENTERED] AS [ENTERED], 
+    [INTEREST].[YEAR] AS [YEAR], 
+    [INTEREST].[MONTH] AS [MONTH], 
+    [INTEREST].[INT] AS [INT], 
+    [INTEREST].[COMMENTS] AS [COMMENTS], 
+    [INTEREST].[DISTRIB] AS [DISTRIB], 
+    [INTEREST].[LUPD_USER] AS [LUPD_USER], 
+    [INTEREST].[LUPD_DATE] AS [LUPD_DATE], 
+    [INTEREST].[LUPD_TIME] AS [LUPD_TIME]
+    FROM [dbo].[INTEREST] AS [INTEREST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="R_CARA_TABLE" EntityType="Self.R_CARA_TABLE" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [R_CARA_TABLE].[Cank] AS [Cank], 
+    [R_CARA_TABLE].[AGE_CODE] AS [AGE_CODE], 
+    [R_CARA_TABLE].[AGENCY] AS [AGENCY], 
+    [R_CARA_TABLE].[Full_name] AS [Full_name], 
+    [R_CARA_TABLE].[NAME] AS [NAME], 
+    [R_CARA_TABLE].[FY] AS [FY], 
+    [R_CARA_TABLE].[CALC_TYPE] AS [CALC_TYPE], 
+    [R_CARA_TABLE].[PCT_BAS] AS [PCT_BAS], 
+    [R_CARA_TABLE].[ANNUALLY] AS [ANNUALLY], 
+    [R_CARA_TABLE].[YEG_TOT] AS [YEG_TOT], 
+    [R_CARA_TABLE].[YEG_TRA_SUM] AS [YEG_TRA_SUM], 
+    [R_CARA_TABLE].[AMTMTC] AS [AMTMTC], 
+    [R_CARA_TABLE].[MTC_EST] AS [MTC_EST], 
+    [R_CARA_TABLE].[MTC_EST_SUM] AS [MTC_EST_SUM], 
+    [R_CARA_TABLE].[YEG_CAL] AS [YEG_CAL]
+    FROM [dbo].[R_CARA_TABLE] AS [R_CARA_TABLE]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TRANSACTIONTYPES" EntityType="Self.TRANSACTIONTYPES" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TRANSACTIONTYPES].[TTP_CODE] AS [TTP_CODE], 
+    [TRANSACTIONTYPES].[TRAN_TYPE] AS [TRAN_TYPE], 
+    [TRANSACTIONTYPES].[PLUS_SIGN] AS [PLUS_SIGN]
+    FROM [dbo].[TRANSACTIONTYPES] AS [TRANSACTIONTYPES]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="YOUTHCREDITTYPE" EntityType="Self.YOUTHCREDITTYPE" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [YOUTHCREDITTYPE].[YTP_CODE] AS [YTP_CODE], 
+    [YOUTHCREDITTYPE].[YEGCR_TYPE] AS [YEGCR_TYPE], 
+    [YOUTHCREDITTYPE].[PLUS_SIGN] AS [PLUS_SIGN]
+    FROM [dbo].[YOUTHCREDITTYPE] AS [YOUTHCREDITTYPE]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FOXPRODEVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AGENBALANCFY">
+          <Key>
+            <PropertyRef Name="ABF_CODE" />
+          </Key>
+          <Property Name="ABF_CODE" Type="Double" Nullable="false" />
+          <Property Name="AGE_CODE" Type="Double" />
+          <Property Name="FY" Type="Double" />
+          <Property Name="AMT_BEG" Type="Double" />
+          <Property Name="AMT_BAS" Type="Double" />
+          <Property Name="AMT_TRA" Type="Double" />
+          <Property Name="AMT_INT" Type="Double" />
+          <Property Name="MTC_EST" Type="Double" />
+          <Property Name="YEG_BEG" Type="Double" />
+          <Property Name="YEG_TOT" Type="Double" />
+          <Property Name="YEG_CAL" Type="Double" />
+          <Property Name="YEG_TRA" Type="Double" />
+          <Property Name="FEE_BEG" Type="Double" />
+          <Property Name="FEE_CAL" Type="Double" />
+          <Property Name="FEE_PAY" Type="Double" />
+          <Property Name="LUPD_USER" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LUPD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="LUPD_TIME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AGENCCALC">
+          <Key>
+            <PropertyRef Name="ACA_CODE" />
+          </Key>
+          <Property Name="ACA_CODE" Type="Double" Nullable="false" />
+          <Property Name="AGE_CODE" Type="Double" />
+          <Property Name="CTP_CODE" Type="Double" />
+          <Property Name="NO_PARC" Type="Double" />
+          <Property Name="PCT_BAS" Type="Double" />
+          <Property Name="FY_EST" Type="Double" />
+          <Property Name="FY_FEE" Type="Double" />
+          <Property Name="COMMENTS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LUPD_USER" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LUPD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="LUPD_TIME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AGENCy">
+          <Key>
+            <PropertyRef Name="AGE_CODE" />
+          </Key>
+          <Property Name="AGE_CODE" Type="Double" Nullable="false" />
+          <Property Name="AGENCY1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ATP_CODE" Type="Double" />
+          <Property Name="DIS_CODE" Type="Double" />
+          <Property Name="ADR1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ADR2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CITY" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ZIP" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AMTMTC" Type="Double" />
+          <Property Name="AMTDEV" Type="Double" />
+          <Property Name="AMTYEG" Type="Double" />
+          <Property Name="LUPD_USER" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LUPD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="LUPD_TIME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CALTYPE">
+          <Key>
+            <PropertyRef Name="CTP_CODE" />
+          </Key>
+          <Property Name="CTP_CODE" Type="Double" Nullable="false" />
+          <Property Name="CALC_TYPE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FY_FROM" Type="Double" />
+          <Property Name="FY_TO" Type="Double" />
+          <Property Name="ANNUALLY" Type="Double" />
+          <Property Name="NO_PARC" Type="Double" />
+          <Property Name="PRC_BAS" Type="Double" />
+          <Property Name="YEAR_FR" Type="Double" />
+          <Property Name="MONTH_FR" Type="Double" />
+          <Property Name="YEAR_TO" Type="Double" />
+          <Property Name="MONTH_TO" Type="Double" />
+        </EntityType>
+        <EntityType Name="BENEFIT">
+          <Key>
+            <PropertyRef Name="DISTRIB" />
+          </Key>
+          <Property Name="BAS_CODE" Type="Double" />
+          <Property Name="ENTERED" Type="DateTime" Precision="3" />
+          <Property Name="PROCESSED" Type="DateTime" Precision="3" />
+          <Property Name="TC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="REFERENCE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BAS" Type="Double" />
+          <Property Name="FEE" Type="Double" />
+          <Property Name="AVERAGE" Type="Double" />
+          <Property Name="COMMENTS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DISTRIB" Type="Boolean" Nullable="false" />
+          <Property Name="LUPD_USER" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LUPD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="LUPD_TIME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FUNDTYPE">
+          <Key>
+            <PropertyRef Name="CALCULATED" />
+          </Key>
+          <Property Name="FTP_CODE" Type="Double" />
+          <Property Name="HEADER" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FUND_TYPE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FUND_ABRV" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CALCULATED" Type="Boolean" Nullable="false" />
+          <Property Name="FUND_AMT" Type="Double" />
+        </EntityType>
+        <EntityType Name="INTEREST">
+          <Key>
+            <PropertyRef Name="DISTRIB" />
+          </Key>
+          <Property Name="INT_CODE" Type="Double" />
+          <Property Name="ENTERED" Type="DateTime" Precision="3" />
+          <Property Name="YEAR" Type="Double" />
+          <Property Name="MONTH" Type="Double" />
+          <Property Name="INT" Type="Double" />
+          <Property Name="COMMENTS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DISTRIB" Type="Boolean" Nullable="false" />
+          <Property Name="LUPD_USER" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LUPD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="LUPD_TIME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="R_CARA_TABLE">
+          <Key>
+            <PropertyRef Name="Full_name" />
+          </Key>
+          <Property Name="Cank" Type="Int64" />
+          <Property Name="AGE_CODE" Type="Double" />
+          <Property Name="AGENCY" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Full_name" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FY" Type="Double" />
+          <Property Name="CALC_TYPE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PCT_BAS" Type="Double" />
+          <Property Name="ANNUALLY" Type="Double" />
+          <Property Name="YEG_TOT" Type="Double" />
+          <Property Name="YEG_TRA_SUM" Type="Double" />
+          <Property Name="AMTMTC" Type="Double" />
+          <Property Name="MTC_EST" Type="Double" />
+          <Property Name="MTC_EST_SUM" Type="Double" />
+          <Property Name="YEG_CAL" Type="Double" />
+        </EntityType>
+        <EntityType Name="TRANSACTIONTYPE">
+          <Key>
+            <PropertyRef Name="PLUS_SIGN" />
+          </Key>
+          <Property Name="TTP_CODE" Type="Double" />
+          <Property Name="TRAN_TYPE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PLUS_SIGN" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="YOUTHCREDITTYPE">
+          <Key>
+            <PropertyRef Name="PLUS_SIGN" />
+          </Key>
+          <Property Name="YTP_CODE" Type="Double" />
+          <Property Name="YEGCR_TYPE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PLUS_SIGN" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="FOXPRODEVEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AGENBALANCFies" EntityType="Self.AGENBALANCFY" />
+          <EntitySet Name="AGENCCALCS" EntityType="Self.AGENCCALC" />
+          <EntitySet Name="AGENCIES" EntityType="Self.AGENCy" />
+          <EntitySet Name="CALTYPES" EntityType="Self.CALTYPE" />
+          <EntitySet Name="BENEFITS" EntityType="Self.BENEFIT" />
+          <EntitySet Name="FUNDTYPES" EntityType="Self.FUNDTYPE" />
+          <EntitySet Name="INTERESTs" EntityType="Self.INTEREST" />
+          <EntitySet Name="R_CARA_TABLE" EntityType="Self.R_CARA_TABLE" />
+          <EntitySet Name="TRANSACTIONTYPES" EntityType="Self.TRANSACTIONTYPE" />
+          <EntitySet Name="YOUTHCREDITTYPEs" EntityType="Self.YOUTHCREDITTYPE" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FOXPRODEVModelStoreContainer" CdmEntityContainer="FOXPRODEVEntities">
+          <EntitySetMapping Name="AGENBALANCFies">
+            <EntityTypeMapping TypeName="FOXPRODEVModel.AGENBALANCFY">
+              <MappingFragment StoreEntitySet="AGENBALANCFY">
+                <ScalarProperty Name="ABF_CODE" ColumnName="ABF_CODE" />
+                <ScalarProperty Name="AGE_CODE" ColumnName="AGE_CODE" />
+                <ScalarProperty Name="FY" ColumnName="FY" />
+                <ScalarProperty Name="AMT_BEG" ColumnName="AMT_BEG" />
+                <ScalarProperty Name="AMT_BAS" ColumnName="AMT_BAS" />
+                <ScalarProperty Name="AMT_TRA" ColumnName="AMT_TRA" />
+                <ScalarProperty Name="AMT_INT" ColumnName="AMT_INT" />
+                <ScalarProperty Name="MTC_EST" ColumnName="MTC_EST" />
+                <ScalarProperty Name="YEG_BEG" ColumnName="YEG_BEG" />
+                <ScalarProperty Name="YEG_TOT" ColumnName="YEG_TOT" />
+                <ScalarProperty Name="YEG_CAL" ColumnName="YEG_CAL" />
+                <ScalarProperty Name="YEG_TRA" ColumnName="YEG_TRA" />
+                <ScalarProperty Name="FEE_BEG" ColumnName="FEE_BEG" />
+                <ScalarProperty Name="FEE_CAL" ColumnName="FEE_CAL" />
+                <ScalarProperty Name="FEE_PAY" ColumnName="FEE_PAY" />
+                <ScalarProperty Name="LUPD_USER" ColumnName="LUPD_USER" />
+                <ScalarProperty Name="LUPD_DATE" ColumnName="LUPD_DATE" />
+                <ScalarProperty Name="LUPD_TIME" ColumnName="LUPD_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AGENCCALCS">
+            <EntityTypeMapping TypeName="FOXPRODEVModel.AGENCCALC">
+              <MappingFragment StoreEntitySet="AGENCCALCS">
+                <ScalarProperty Name="ACA_CODE" ColumnName="ACA_CODE" />
+                <ScalarProperty Name="AGE_CODE" ColumnName="AGE_CODE" />
+                <ScalarProperty Name="CTP_CODE" ColumnName="CTP_CODE" />
+                <ScalarProperty Name="NO_PARC" ColumnName="NO_PARC" />
+                <ScalarProperty Name="PCT_BAS" ColumnName="PCT_BAS" />
+                <ScalarProperty Name="FY_EST" ColumnName="FY_EST" />
+                <ScalarProperty Name="FY_FEE" ColumnName="FY_FEE" />
+                <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+                <ScalarProperty Name="LUPD_USER" ColumnName="LUPD_USER" />
+                <ScalarProperty Name="LUPD_DATE" ColumnName="LUPD_DATE" />
+                <ScalarProperty Name="LUPD_TIME" ColumnName="LUPD_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AGENCIES">
+            <EntityTypeMapping TypeName="FOXPRODEVModel.AGENCy">
+              <MappingFragment StoreEntitySet="AGENCIES">
+                <ScalarProperty Name="AGE_CODE" ColumnName="AGE_CODE" />
+                <ScalarProperty Name="AGENCY1" ColumnName="AGENCY" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ATP_CODE" ColumnName="ATP_CODE" />
+                <ScalarProperty Name="DIS_CODE" ColumnName="DIS_CODE" />
+                <ScalarProperty Name="ADR1" ColumnName="ADR1" />
+                <ScalarProperty Name="ADR2" ColumnName="ADR2" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+                <ScalarProperty Name="AMTMTC" ColumnName="AMTMTC" />
+                <ScalarProperty Name="AMTDEV" ColumnName="AMTDEV" />
+                <ScalarProperty Name="AMTYEG" ColumnName="AMTYEG" />
+                <ScalarProperty Name="LUPD_USER" ColumnName="LUPD_USER" />
+                <ScalarProperty Name="LUPD_DATE" ColumnName="LUPD_DATE" />
+                <ScalarProperty Name="LUPD_TIME" ColumnName="LUPD_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CALTYPES">
+            <EntityTypeMapping TypeName="FOXPRODEVModel.CALTYPE">
+              <MappingFragment StoreEntitySet="CALTYPES">
+                <ScalarProperty Name="CTP_CODE" ColumnName="CTP_CODE" />
+                <ScalarProperty Name="CALC_TYPE" ColumnName="CALC_TYPE" />
+                <ScalarProperty Name="FY_FROM" ColumnName="FY_FROM" />
+                <ScalarProperty Name="FY_TO" ColumnName="FY_TO" />
+                <ScalarProperty Name="ANNUALLY" ColumnName="ANNUALLY" />
+                <ScalarProperty Name="NO_PARC" ColumnName="NO_PARC" />
+                <ScalarProperty Name="PRC_BAS" ColumnName="PRC_BAS" />
+                <ScalarProperty Name="YEAR_FR" ColumnName="YEAR_FR" />
+                <ScalarProperty Name="MONTH_FR" ColumnName="MONTH_FR" />
+                <ScalarProperty Name="YEAR_TO" ColumnName="YEAR_TO" />
+                <ScalarProperty Name="MONTH_TO" ColumnName="MONTH_TO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BENEFITS">
+            <EntityTypeMapping TypeName="FOXPRODEVModel.BENEFIT">
+              <MappingFragment StoreEntitySet="BENEFITS">
+                <ScalarProperty Name="BAS_CODE" ColumnName="BAS_CODE" />
+                <ScalarProperty Name="ENTERED" ColumnName="ENTERED" />
+                <ScalarProperty Name="PROCESSED" ColumnName="PROCESSED" />
+                <ScalarProperty Name="TC" ColumnName="TC" />
+                <ScalarProperty Name="TD" ColumnName="TD" />
+                <ScalarProperty Name="REFERENCE" ColumnName="REFERENCE" />
+                <ScalarProperty Name="BAS" ColumnName="BAS" />
+                <ScalarProperty Name="FEE" ColumnName="FEE" />
+                <ScalarProperty Name="AVERAGE" ColumnName="AVERAGE" />
+                <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+                <ScalarProperty Name="DISTRIB" ColumnName="DISTRIB" />
+                <ScalarProperty Name="LUPD_USER" ColumnName="LUPD_USER" />
+                <ScalarProperty Name="LUPD_DATE" ColumnName="LUPD_DATE" />
+                <ScalarProperty Name="LUPD_TIME" ColumnName="LUPD_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FUNDTYPES">
+            <EntityTypeMapping TypeName="FOXPRODEVModel.FUNDTYPE">
+              <MappingFragment StoreEntitySet="FUNDTYPES">
+                <ScalarProperty Name="FTP_CODE" ColumnName="FTP_CODE" />
+                <ScalarProperty Name="HEADER" ColumnName="HEADER" />
+                <ScalarProperty Name="FUND_TYPE" ColumnName="FUND_TYPE" />
+                <ScalarProperty Name="FUND_ABRV" ColumnName="FUND_ABRV" />
+                <ScalarProperty Name="CALCULATED" ColumnName="CALCULATED" />
+                <ScalarProperty Name="FUND_AMT" ColumnName="FUND_AMT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INTERESTs">
+            <EntityTypeMapping TypeName="FOXPRODEVModel.INTEREST">
+              <MappingFragment StoreEntitySet="INTEREST">
+                <ScalarProperty Name="INT_CODE" ColumnName="INT_CODE" />
+                <ScalarProperty Name="ENTERED" ColumnName="ENTERED" />
+                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+                <ScalarProperty Name="MONTH" ColumnName="MONTH" />
+                <ScalarProperty Name="INT" ColumnName="INT" />
+                <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+                <ScalarProperty Name="DISTRIB" ColumnName="DISTRIB" />
+                <ScalarProperty Name="LUPD_USER" ColumnName="LUPD_USER" />
+                <ScalarProperty Name="LUPD_DATE" ColumnName="LUPD_DATE" />
+                <ScalarProperty Name="LUPD_TIME" ColumnName="LUPD_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_CARA_TABLE">
+            <EntityTypeMapping TypeName="FOXPRODEVModel.R_CARA_TABLE">
+              <MappingFragment StoreEntitySet="R_CARA_TABLE">
+                <ScalarProperty Name="Cank" ColumnName="Cank" />
+                <ScalarProperty Name="AGE_CODE" ColumnName="AGE_CODE" />
+                <ScalarProperty Name="AGENCY" ColumnName="AGENCY" />
+                <ScalarProperty Name="Full_name" ColumnName="Full_name" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="FY" ColumnName="FY" />
+                <ScalarProperty Name="CALC_TYPE" ColumnName="CALC_TYPE" />
+                <ScalarProperty Name="PCT_BAS" ColumnName="PCT_BAS" />
+                <ScalarProperty Name="ANNUALLY" ColumnName="ANNUALLY" />
+                <ScalarProperty Name="YEG_TOT" ColumnName="YEG_TOT" />
+                <ScalarProperty Name="YEG_TRA_SUM" ColumnName="YEG_TRA_SUM" />
+                <ScalarProperty Name="AMTMTC" ColumnName="AMTMTC" />
+                <ScalarProperty Name="MTC_EST" ColumnName="MTC_EST" />
+                <ScalarProperty Name="MTC_EST_SUM" ColumnName="MTC_EST_SUM" />
+                <ScalarProperty Name="YEG_CAL" ColumnName="YEG_CAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRANSACTIONTYPES">
+            <EntityTypeMapping TypeName="FOXPRODEVModel.TRANSACTIONTYPE">
+              <MappingFragment StoreEntitySet="TRANSACTIONTYPES">
+                <ScalarProperty Name="TTP_CODE" ColumnName="TTP_CODE" />
+                <ScalarProperty Name="TRAN_TYPE" ColumnName="TRAN_TYPE" />
+                <ScalarProperty Name="PLUS_SIGN" ColumnName="PLUS_SIGN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YOUTHCREDITTYPEs">
+            <EntityTypeMapping TypeName="FOXPRODEVModel.YOUTHCREDITTYPE">
+              <MappingFragment StoreEntitySet="YOUTHCREDITTYPE">
+                <ScalarProperty Name="YTP_CODE" ColumnName="YTP_CODE" />
+                <ScalarProperty Name="YEGCR_TYPE" ColumnName="YEGCR_TYPE" />
+                <ScalarProperty Name="PLUS_SIGN" ColumnName="PLUS_SIGN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="FOXPRO2linq">
+  <DataContextMoniker Name="/FOXPRO2linqDataContext" />
+  <nestedChildShapes>
+    <classShape Id="f1f993c4-0cb7-4652-ad72-8b9bfda45af5" absoluteBounds="0.5, 0.5, 2, 3.23266845703125">
+      <DataClassMoniker Name="/FOXPRO2linqDataContext/AGENCY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="648853a0-a119-4cd6-8ca5-3a74a3b7a6cd" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 2.67266845703125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="80dfcae2-46c2-4944-beec-fa8e5e92fe67" absoluteBounds="3.5, 0.625, 2, 2.5752791341145831">
+      <DataClassMoniker Name="/FOXPRO2linqDataContext/AGENCCALC" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5076befb-ce1b-4da6-aa90-9b120e4c9dbc" absoluteBounds="3.5149999999999997, 1.085, 1.9700000000000002, 2.015279134114583" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="98c24f03-3274-4443-98b4-5c5a7ad9bd42" absoluteBounds="3.5, 3.875, 2, 2.0822371419270831">
+      <DataClassMoniker Name="/FOXPRO2linqDataContext/AGENFUND" />
+      <nestedChildShapes>
+        <elementListCompartment Id="571e9e64-c10f-4ddc-92e0-58b621c9ffd9" absoluteBounds="3.515, 4.335, 1.9700000000000002, 1.5222371419270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2d85bbea-0335-442f-8e4e-f3b183a71888" absoluteBounds="1.125, 4.375, 2, 1.75354248046875">
+      <DataClassMoniker Name="/FOXPRO2linqDataContext/FUNDTYPE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="362cd216-99fe-4c34-9206-0f8491c56382" absoluteBounds="1.1400000000000001, 4.835, 1.9700000000000002, 1.19354248046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 1.91263956705729); (3.5 : 1.91263956705729)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FOXPRO2linqDataContext/AGENCY/AGENCY_AGENCCALC" />
+      <nodes>
+        <classShapeMoniker Id="f1f993c4-0cb7-4652-ad72-8b9bfda45af5" />
+        <classShapeMoniker Id="80dfcae2-46c2-4944-beec-fa8e5e92fe67" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.78125 : 3.73266845703125); (0.78125 : 4.09375); (3.5 : 4.09375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FOXPRO2linqDataContext/AGENCY/AGENCY_AGENFUND" />
+      <nodes>
+        <classShapeMoniker Id="f1f993c4-0cb7-4652-ad72-8b9bfda45af5" />
+        <classShapeMoniker Id="98c24f03-3274-4443-98b4-5c5a7ad9bd42" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5 : 5.16611857096354); (3.125 : 5.16611857096354)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FOXPRO2linqDataContext/AGENFUND/AGENFUND_FUNDTYPE" />
+      <nodes>
+        <classShapeMoniker Id="98c24f03-3274-4443-98b4-5c5a7ad9bd42" />
+        <classShapeMoniker Id="2d85bbea-0335-442f-8e4e-f3b183a71888" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

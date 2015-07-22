@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParksDev", "ParksDev\ParksDev.csproj", "{732255BA-204C-4582-96D8-4BAFA0D97EAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.MVC.Park", "MS.MVC.Park\MS.MVC.Park.csproj", "{0503E802-9AF2-4387-99A4-50C759E821F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.MVC.ParkTests", "MS.MVC.ParkTests\MS.MVC.ParkTests.csproj", "{0F54531D-462F-4B28-ADD8-A10275A48BF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.MVC.MS.Park", "MS.MVC.MS.Park\MS.MVC.MS.Park.csproj", "{7E4FD308-3C71-432E-87D7-464E0F2F160A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.MVC.MS.Park.Tests", "MS.MVC.MS.Park.Tests\MS.MVC.MS.Park.Tests.csproj", "{AF73606C-469B-4BA4-B0E8-0961FB09CCB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.MVC.BB.Park", "MS.MVC.BB.Park\MS.MVC.BB.Park.csproj", "{7F88E760-CFA0-4D95-ACD2-3CB76C9E4AE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JQGridDemo", "..\..\..\..\Downloads\JQGridDemo2014-09-30\JQGridDemo\JQGridDemo\JQGridDemo.csproj", "{01B9921A-D217-4772-B3BC-A9FF65C05F73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{732255BA-204C-4582-96D8-4BAFA0D97EAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{732255BA-204C-4582-96D8-4BAFA0D97EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{732255BA-204C-4582-96D8-4BAFA0D97EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{732255BA-204C-4582-96D8-4BAFA0D97EAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0503E802-9AF2-4387-99A4-50C759E821F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0503E802-9AF2-4387-99A4-50C759E821F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0503E802-9AF2-4387-99A4-50C759E821F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0503E802-9AF2-4387-99A4-50C759E821F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F54531D-462F-4B28-ADD8-A10275A48BF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F54531D-462F-4B28-ADD8-A10275A48BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F54531D-462F-4B28-ADD8-A10275A48BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F54531D-462F-4B28-ADD8-A10275A48BF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E4FD308-3C71-432E-87D7-464E0F2F160A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E4FD308-3C71-432E-87D7-464E0F2F160A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E4FD308-3C71-432E-87D7-464E0F2F160A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E4FD308-3C71-432E-87D7-464E0F2F160A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF73606C-469B-4BA4-B0E8-0961FB09CCB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF73606C-469B-4BA4-B0E8-0961FB09CCB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF73606C-469B-4BA4-B0E8-0961FB09CCB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF73606C-469B-4BA4-B0E8-0961FB09CCB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F88E760-CFA0-4D95-ACD2-3CB76C9E4AE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F88E760-CFA0-4D95-ACD2-3CB76C9E4AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F88E760-CFA0-4D95-ACD2-3CB76C9E4AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F88E760-CFA0-4D95-ACD2-3CB76C9E4AE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01B9921A-D217-4772-B3BC-A9FF65C05F73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01B9921A-D217-4772-B3BC-A9FF65C05F73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01B9921A-D217-4772-B3BC-A9FF65C05F73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01B9921A-D217-4772-B3BC-A9FF65C05F73}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
