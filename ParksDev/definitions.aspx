@@ -140,7 +140,8 @@
 						    }
 						},
 						{ name: 'YEAR_TO', index: 'YEAR_TO', width: 20, align: 'center' },
-						{ name: 'PCT_BAS', index: 'PCT_BAS', width: 50, align: 'right', editable: true, sorttype: 'float', cellsformat: 'p', formatter: 'number', formatoptions: { suffix: '%', decimalSeparator: ".", thousandsSeparator: " ", decimalPlaces: 5} },
+						//{ name: 'PCT_BAS', index: 'PCT_BAS', width: 50, align: 'right', editable: true, sorttype: 'float', cellsformat: 'p', formatter: 'number', formatoptions: { suffix: '%', decimalSeparator: ".", thousandsSeparator: " ", decimalPlaces: 5} },
+                        { name: 'PCT_BAS', index: 'PCT_BAS', width: 50, align: 'right', editable: true, sorttype: 'float', cellsformat: 'p', formatter: PercentageFormatter, unformat: unPercentageFormatter },
 						{ name: 'FY_EST', index: 'FY_EST', width: 50, align: 'right', formatter: 'currency',sorttype: 'float',
 						    formatoptions: { decimalSeparator: ".",
 						        thousandsSeparator: ",",
@@ -209,7 +210,14 @@
 
 
 			} // end getAgGrid
+		    function PercentageFormatter(cellvalue, options, rowObject) {
 
+		        return cellvalue * 100 + "%";
+		    }
+		    function unPercentageFormatter(cellvalue, options) {
+
+		        return cellvalue.replace("%", "");
+		    }
 			function getFundingGrid(fundingFlag, ageID) {
 
 				if (fundingFlag == "no")
