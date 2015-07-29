@@ -402,6 +402,7 @@
     <Content Include="MonthlyInterest.aspx" />
     <Content Include="OSApplicaitons.aspx" />
     <Content Include="Payments.aspx" />
+    <Content Include="PaymentsR2.aspx" />
     <Content Include="Reports.aspx" />
     <Content Include="reports\ReportsCalcAnnualRestricedAmount.aspx" />
     <Content Include="reports\ReportsCalcAnnualRestricedAmountPF.aspx" />
@@ -755,9 +756,10 @@
     <Content Include="themes\metro\validatebox.css" />
     <Content Include="themes\metro\window.css" />
     <Content Include="Totals.aspx" />
-    <Content Include="Web.config">
+    <Content Include="DAL\PaymentsR2.ashx" />
+    <None Include="Web.config">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -865,6 +867,10 @@
     <Compile Include="DAL\MonthlyInterestDetail.ashx.cs">
       <DependentUpon>MonthlyInterestDetail.ashx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\ObjPayments.cs" />
+    <Compile Include="DAL\PaymentsR2.ashx.cs">
+      <DependentUpon>PaymentsR2.ashx</DependentUpon>
+    </Compile>
     <Compile Include="DAL\postTest.ashx.cs">
       <DependentUpon>postTest.ashx</DependentUpon>
     </Compile>
@@ -940,6 +946,13 @@
     </Compile>
     <Compile Include="Payments.aspx.designer.cs">
       <DependentUpon>Payments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentsR2.aspx.cs">
+      <DependentUpon>PaymentsR2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentsR2.aspx.designer.cs">
+      <DependentUpon>PaymentsR2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

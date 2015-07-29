@@ -1,10 +1,6 @@
-﻿<%@ Page Title="Agencies - Definitions and Calculation Quotas" Language="C#" AutoEventWireup="true" CodeBehind="definitions.aspx.cs"  MasterPageFile="~/Site.master" Inherits="ParksDev.defenitions" %>
-
-
-
-<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-
-	<style type="text/css">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PaymentsR2.aspx.cs" Inherits="ParksDev.PaymentsR2" %>
+<asp:Content ID="HeaderContent" ContentPlaceHolderID="HeadContent" runat="server">
+    <style type="text/css">
 		.style1
 		{
 			width: 100%;
@@ -14,46 +10,53 @@
 	<script type="text/javascript">
 		$(function () {
 
-			getGrid("a", "0");
-			getAgGrid("no", "0"); // get detail grid
+			getGrid("", "","Step1");
+			//getAgGrid("no", "0"); // get detail grid
 			getAgencyDropDown();
 			getAngencyTypeDropDown();
 			getDistrictTypeDropDown();
-			getFundingGrid("no", 0);
-
+			//getFundingGrid("no", 0);
+			getagencyFiscalYearDropDown()
 			// get the Master Grid
-			function getGrid(agency, atype) {
+			function getGrid(agency, agencyFiscalYear, flag) {
 				$("#<%=jQGridDemo.ClientID%>").jqGrid({
-					url: "DAL/Definitions.ashx?agencies=" + agency + "&agencyType=" + atype,
+				    url: "DAL/PaymentsR2.ashx?agencies=" + agency + "&agencyFiscalYear=" + agencyFiscalYear + "&switch=" + flag,
 					datatype: "json",
-					colNames: ['Agency', 'Department', 'Type of Agency', 'District', 'Address 1', 'Address 2', 'City', 'Zip', 'Development', 'Maintenance', 'YEG Total', 'AGE_CODE'],
+					colNames: ['TC', 'TD', 'Reference', 'Processed', 'Transferred', 'Trans. Amount', 'ADB', 'MinObj', 'Last Updated By', 'On Date', 'Code'],
 					colModel: [
-													{ name: 'AGENCY', index: 'AGENCY', width: 100, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true, sorttype:'text'},
-													{ name: 'NAME', index: 'NAME', width: 150, search: false, hidden: true, editable: true, editrules: { edithidden: true }, hidedlg: true },
-													{ name: 'ATP_CODE', index: 'ATP_CODE', width: 150, search: false, hidden: true, editable: true, editrules: { edithidden: true }, hidedlg: true },
-													{ name: 'DIS_CODE', index: 'DIS_CODE', width: 150, search: false, hidden: true, editable: true, editrules: { edithidden: true }, hidedlg: true },
-													{ name: 'ADR1', index: 'ADR1', width: 150, search: false, hidden: true, editable: true, editrules: { edithidden: true }, hidedlg: true },
-													{ name: 'ADR2', index: 'ADR2', width: 150, search: false, hidden: true, editable: true, editrules: { edithidden: true }, hidedlg: true },
-													{ name: 'CITY', index: 'CITY', width: 150, search: false, hidden: true, editable: true, editrules: { edithidden: true }, hidedlg: true },
-													{ name: 'ZIP', index: 'ZIP', width: 150, search: false, hidden: true, editable: true, editrules: { edithidden: true }, hidedlg: true },
-													{ name: 'AMTDEV', index: 'AMTDEV', width: 100, search: false, align: 'right', formatter: 'currency', 
-														formatoptions: { decimalSeparator: ".",
-															thousandsSeparator: ",", prefix: "$"
-														}, editable: true , sorttype: 'float'
+													{ name: 'TC', index: 'TC', width: 100, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true, sorttype:'text'},
+													{ name: 'TD', index: 'TD', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true },
+													{ name: 'Reference', index: 'Reference', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true },
+													{
+													    name: 'Processed', index: 'Processed', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true, formatter: 'date',
+                                                        formatoptions: {
+                                                            srcformat: 'ISO8601Long',
+                                                            newformat: 'm/d/Y',
+                                                            defaultValue: null // does nothing!
+                                                        },
 													},
-													{ name: 'AMTMTC', index: 'AMTMTC', width: 100, search: false, align: 'right', formatter: 'currency',
-														formatoptions: { decimalSeparator: ".",
-															thousandsSeparator: ",",
-															prefix: "$"
-														}, editable: true, sorttype: 'float'
+													{
+													    name: 'Transferred', index: 'Transferred', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true, formatter: 'date',
+													    formatoptions: {
+													        srcformat: 'ISO8601Long',
+													        newformat: 'm/d/Y',
+													        defaultValue: null // does nothing!
+													    },
 													},
-													{ name: 'AMTYEG', index: 'AMTYEG', width: 150, search: false, align: 'right', formatter: 'currency',
-														formatoptions: { decimalSeparator: ".",
-															thousandsSeparator: ",",
-															prefix: "$"
-														}, editable: true, sorttype: 'float'
+													{ name: 'TRA', index: 'TRA', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true },
+													{ name: 'Average', index: 'Average', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true },
+													{ name: 'MinObj', index: 'MinObj', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true },
+                                                    { name: 'LUPD_USER', index: 'LUPD_USER', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true },
+													{
+													    name: 'LUPD_DATE', index: 'LUPD_DATE', width: 100, search: false, align: 'right', formatter: 'date',
+													    formatoptions: {
+													        srcformat: 'ISO8601Long',
+													        newformat: 'm/d/Y',
+													        defaultValue: null // does nothing!
+													    },
 													},
-													{ name: 'AGE_CODE', index: 'AGE_CODE', width: 150, search: false, hidden: true, editable: true, editrules: { edithidden: false }, hidedlg: true }
+													{ name: 'TRA_CODE', index: 'TRA_CODE', width: 100, search: false, align: 'right', editable: false, sorttype: 'float'}
+													
 											  ],
 					rowNum: 10,
 					rowList: [10, 20, 40, 60],
@@ -65,7 +68,7 @@
 					viewrecords: true,
 					sortorder: "desc",
 					loadonce: true,
-					caption: "AGENCY", 
+					caption: "Payments Lookup", 
 
 					onSelectRow: function (ids) {
 						selRowId = $("#<%=jQGridDemo.ClientID%>").jqGrid('getGridParam', 'selrow');
@@ -308,29 +311,45 @@
 					});
 				});
 			}
-
+			function getagencyFiscalYearDropDown()
+			{
+			    $.getJSON("DAL/PaymentsR2.ashx?agencies=null&agencyFiscalYear=null&switch=Step2",function(data){
+			        var fiscalYear_options = $("#agencyFiscalYear");
+			        $.each(data,function (name,item) {
+			            fiscalYear_options.append($("<option />").val(item.FiscalYear).text(item.FiscalYear));
+    
+			        });
+			    });
+			}
 			function getAngencyTypeDropDown() {
-				$.getJSON("DAL/Definitions.ashx?agencies=0&agencyType=t", function (data) {
-					var options = $("#agencyTypeID");
-					$.each(data, function (name, item) {
-						options.append($("<option />").val(item.ATP_CODE).text(item.AGE_TYPE));
-					});
-				});
+				//$.getJSON("DAL/Definitions.ashx?agencies=0&agencyType=t", function (data) {
+				//	var options = $("#agencyTypeID");
+				//	$.each(data, function (name, item) {
+				//		options.append($("<option />").val(item.ATP_CODE).text(item.AGE_TYPE));
+				//	});
+				//});
 			}
 
 			function getDistrictTypeDropDown() {
-				$.getJSON("DAL/Definitions.ashx?distType=d", function (data) {
-					var options = $("#districtType");
-					$.each(data, function (name, item) {
-						options.append($("<option />").val(item.DIS_CODE).text(item.FULLNAME));
-					});
-				});
+				//$.getJSON("DAL/Definitions.ashx?distType=d", function (data) {
+				//	var options = $("#districtType");
+				//	$.each(data, function (name, item) {
+				//		options.append($("<option />").val(item.DIS_CODE).text(item.FULLNAME));
+				//	});
+				//});
 			}
 
 			$("#agencyType").change(function () {
 				var selValue = $('#agencyType').val();
-				$("#<%=jQGridDemo.ClientID%>").jqGrid('setGridParam', { url: "DAL/Definitions.ashx?agencies=" + selValue + "&agencyType=0", datatype: "json", page: 1 }).trigger("reloadGrid");
+				$("#<%=jQGridDemo.ClientID%>").jqGrid('setGridParam', { url: "DAL/PaymentsR2.ashx?agencies=" + selValue + "&agencyFiscalYear=null + &flag=Step1", datatype: "json", page: 1 }).trigger("reloadGrid");
 			});
+
+		    $("#agencyFiscalYear").change(function () {
+		        var selValue = $('#agencyType').val();
+		        var selagencyFiscalYear = $("#agencyFiscalYear").val();
+		        $("#<%=jQGridDemo.ClientID%>").jqGrid('setGridParam', { url: "DAL/PaymentsR2.ashx?agencies=" + selValue + "&agencyFiscalYear=" + selagencyFiscalYear + "&flag=Step1", datatype: "json", page: 1 }).trigger("reloadGrid");
+		    });
+
 
 			$("#agencyTypeID").change(function () {
 				var selValue = $('#agencyTypeID').val();
@@ -345,15 +364,10 @@
 
 
 		});
-    </script>    
-
-
+    </script>   
 </asp:Content>
-
-<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-
-
-<h1 class="page_head">Agencies - Definitions and Calculation Quotas</h1><br />
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<h1 class="page_head">Payments</h1><br />
 
 
 
@@ -366,8 +380,8 @@
 				<tr>
 					<td width="5%" align="right"><img src="img/binoculars.png" height="20px" width="20px" style="vertical-align:middle" /></td>
 					<td width="45%" align="center"><b>Agency Name:</b> <select id='agencyType'></select></td>    
-					<td width="25%" align="center"><b>Agency Type:</b> <select id='agencyTypeID'></select></td>
-					<td width="25%" align="center"><b>District:</b> <select id='districtType'></select></td>
+					<td width="25%" align="center"><b>Fiscal Year:</b> <select id='agencyFiscalYear'></select></td>
+					<%--<td width="25%" align="center"><b>District:</b> <select id='districtType'></select></td>--%>
 				</tr>
 			</table>
  
@@ -382,154 +396,17 @@
 		 <!--Detail-->
 		 <br />
 		 <div id="AgencyDetail">
-			<asp:Table ID="jqGridInterestDetail" runat="server"></asp:Table>
+			<asp:Table ID="jqGridInterestDetail" runat="server" visible="false"></asp:Table>
 	 
-			<div id="jqGInterestDetailPager"></div>                
+			<div id="jqGInterestDetailPager" runat="server" visible="false"></div>                
 		 </div>
 		 <br />
 		 <!--Funding-->
 		 <div id="AgencyFunding">
-			<asp:Table ID="jqGridFunding" runat="server"></asp:Table>
+			<asp:Table ID="jqGridFunding" runat="server" Visible="false"></asp:Table>
 			<div id="jqGridFundingPager"></div>
 		 </div>
 
 <br /><br />
-<!--
-	<div> <%--first--%>
-	<asp:DropDownList runat="server" ID="agencydropdownlist" DataSourceID="agenciessource" DataTextField="AGENCY" DataValueField="AGE_CODE" OnSelectedIndexChanged="agencyselect" AutoPostBack="true" CssClass="bold" />
-	<br /><br />
-	<div id="secondDiv" runat="server" visible="false"> <%--second--%>
 
-
-	<asp:Panel runat="server" ID="editPanel" Visible="False"  
-		CssClass="editingpanel" BackColor="White" 
-		BorderColor="Black" BorderStyle="Groove" Width="900px"
-		Height="300px" BorderWidth="2" >
-	   <asp:Label runat="server" ID="formAgencyLabel" Text="Agency: " /><asp:TextBox runat="server" ID="formAgency" Width="150px" />
-	   <br />
-	   <asp:Label runat="server" ID="formDeptLabel" Text="Deaprtment: " /><asp:TextBox runat="server" ID="formDept" Width="150px" />
-	   <br />
-	   <asp:Label runat="server" ID="formAgencyTypeLabel" Text="Type of Agency: " /><asp:DropDownList runat="server" ID="formAgencyType"  /> to be completed sorry
-
-
-		<br />    <asp:Button runat="server" ID="editpanelclose" Text="Close" OnClick="closeEditPanel" />
-	   </asp:Panel>
-
-
-	<asp:SqlDataSource  ID="agenciessource" 
-						runat="server" 
-						DataSourceMode="DataSet"   
-						ConnectionString="<%$ ConnectionStrings:FoxProDevConnectionString %>"
-						SelectCommand="SELECT AGENCY, AGE_CODE FROM [AGENCIES] ORDER BY [AGE_CODE]" />
-
-		<asp:Label text="here" runat="server" ID="test21" Visible="false"></asp:Label>
-		
-
-		<table border="0" width="100%">
-			<tr>
-				<td>
-					<asp:Table ID="Table1" runat="server" Height="125px" Width="300px" BorderColor="Transparent" BorderWidth="0" >
-						<asp:TableRow ID="TableRow1" runat="server" BorderColor="Transparent" BorderWidth="0" Width="100%">
-										<asp:TableCell ID="TableCell1" runat="server" BorderColor="Transparent" BorderWidth="2">Development
-										</asp:TableCell>
-										<asp:TableCell ID="TableCell2" runat="server" BorderColor="Transparent" BorderWidth="2" HorizontalAlign="Right"><asp:Label runat="server" ID="DEVAMT" />
-										</asp:TableCell>
-						</asp:TableRow>
-						<asp:TableRow>
-										<asp:TableCell ID="TableCell3" runat="server" BorderColor="Transparent" BorderWidth="2">Maintenance
-										</asp:TableCell>
-										<asp:TableCell ID="TableCell4" runat="server" BorderColor="Transparent" BorderWidth="2" HorizontalAlign="Right"><asp:Label runat="server" ID="MTCAMT" />
-										</asp:TableCell>
-
-						</asp:TableRow>
-						<asp:TableRow>
-										<asp:TableCell ID="TableCell5" runat="server" BorderColor="Transparent" BorderWidth="2">YEG Total
-										</asp:TableCell>
-										<asp:TableCell ID="TableCell6" runat="server" BorderColor="Transparent" BorderWidth="2" HorizontalAlign="Right"><asp:Label runat="server" ID="YEGAMT" />	
-										</asp:TableCell>
-						</asp:TableRow>            
-					</asp:Table>
-			</td>
-			<td> 
-			<table border="0" width="400px">
-				<tr>
-					<td>Agency Name: <asp:Label runat="server" ID="AgencyInfo" Visible="true" /></td>
-				</tr>
-				<tr>
-				   <td>Department: <asp:Label runat="server" ID="NameInfo"  /></td>
-				</tr>
-				<tr>
-					<td>Agency Type: <asp:Label runat="server" ID="AgeTypeInfo" /></td>
-				</tr>
-				<tr>
-					<td>District: <asp:Label runat="server" ID="DistrictInfo" /><br /></td>
-				</tr>
-				<tr>
-				   <td>Address: <asp:Label runat="server" ID="ADR1Info" /><br /></td>
-				</tr>
-<%--                <tr>
-					<td><asp:Label runat="server" ID="ADR2Info" /><br /></td>
-				</tr>--%>
-				<tr>
-					<td>City: <asp:Label runat="server" ID="CityInfo" />                ZIP: <asp:Label runat="server" ID="ZipInfo" /></td>
-				</tr>
-					</table>
-			</td>
-			</tr>
-			</table>
-			</div>  <%--second--%>
-			</div> <%--first--%>
-	<br /> 
-	
-
-		<asp:GridView ID="agecalGrid" runat="server" AutoGenerateColumns="false" BorderColor="Transparent"  Width="100%" BorderWidth="0" GridLines="None" >
-				  <Columns>
-				  <asp:TemplateField HeaderText="From" ItemStyle-HorizontalAlign="Right">
-					<ItemTemplate>
-						<%#getMonth(Convert.ToInt32(Eval("MONTH_FR")))%> <%#Eval("YEAR_FR")%>
-					</ItemTemplate>
-				  </asp:TemplateField>
-
-				  <asp:TemplateField Headertext=" "> <%--  hyphen --%>
-					<ItemTemplate></ItemTemplate></asp:TemplateField><asp:TemplateField HeaderText="To" ItemStyle-HorizontalAlign="Right"> 
-					<ItemTemplate>
-						<%#getMonth(Convert.ToInt32(Eval("MONTH_TO")))%> <%#Eval("YEAR_TO")%>
-					</ItemTemplate>
-					</asp:TemplateField>
-
-				   <asp:TemplateField Headertext="% from benefits ASSESEMNT" ItemStyle-HorizontalAlign="Center">
-					<ItemTemplate>
-					  <%#(Convert.ToDecimal(Eval("PCT_BAS"))*100).ToString("0.#####")%>%</ItemTemplate>
-					  </asp:TemplateField>
-						<asp:BoundField HeaderText="est. Maintenence" DataField="FY_EST"  ItemStyle-HorizontalAlign="Center" NullDisplayText="0" DataFormatString="{0:C2}"/>
-						<asp:BoundField HeaderText="FY FEE" DataField="FY_FEE" DataFormatString="{0:C2}" ItemStyle-HorizontalAlign="Center" NullDisplayText="0" />
-				  </Columns>   
-			 </asp:GridView>
-			 <br />
-			 
-			 
-			 
-
-			 <asp:GridView ID="fundingGridView" runat="server" AutoGenerateColumns="false" Width="100%">
-				<Columns>
-				<asp:TemplateField HeaderText="Funding" ItemStyle-HorizontalAlign="Left">
-					<ItemTemplate>
-					   <%#Eval("FUND_TYPE")%>
-					</ItemTemplate>
-				</asp:TemplateField>
-				<asp:TemplateField HeaderText="Funding Amount" ItemStyle-HorizontalAlign="Right">
-					<ItemTemplate>
-						<%#String.Format("{0:C}",(Convert.ToDecimal(Eval("AMT"))))%>
-					</ItemTemplate>
-				</asp:TemplateField>
-				</Columns>
-			 </asp:GridView>
-
-
-
-
-			 <br /><br />
-			 <asp:Button runat="server" ID="editButton" Text="NEW" OnClick="openEditPanel" />
-
--->
 </asp:Content>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParksDev", "ParksDev\ParksDev.csproj", "{732255BA-204C-4582-96D8-4BAFA0D97EAF}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MS.MVC.BB.Park", "MS.MVC.BB.Park\MS.MVC.BB.Park.csproj", "{7F88E760-CFA0-4D95-ACD2-3CB76C9E4AE2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JQGridDemo", "..\..\..\..\Downloads\JQGridDemo2014-09-30\JQGridDemo\JQGridDemo\JQGridDemo.csproj", "{01B9921A-D217-4772-B3BC-A9FF65C05F73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H3.MVC", "..\..\..\..\Documents\Visual Studio 2013\Projects\H3\H3.MVC\H3.MVC.csproj", "{14BB277F-B781-4B63-A681-3F8AB3004B0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{01B9921A-D217-4772-B3BC-A9FF65C05F73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01B9921A-D217-4772-B3BC-A9FF65C05F73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01B9921A-D217-4772-B3BC-A9FF65C05F73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14BB277F-B781-4B63-A681-3F8AB3004B0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14BB277F-B781-4B63-A681-3F8AB3004B0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14BB277F-B781-4B63-A681-3F8AB3004B0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14BB277F-B781-4B63-A681-3F8AB3004B0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
