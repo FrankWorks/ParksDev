@@ -381,7 +381,7 @@
                                 </tr>
                                 <tr>
                                     <td align="left">
-                                        Transfer Date:
+                                        Transaction Date:
                                     </td>
                                     <td style="background-color:#c6c6c6">
                                         <asp:Label ID="TranDate" runat="server" style="background-color:#c6c6c6;"  />

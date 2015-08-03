@@ -113,7 +113,9 @@ namespace ParksDev.DAL
                     //now to distribute
                     //get bas_code and bas of last entry
 
-                    SqlCommand getbascommand = new SqlCommand("SELECT * FROM [FOXPRODEV].[dbo].[BENEFITS] WHERE [ENTERED] in (select max([ENTERED]) from [FOXPRODEV].[dbo].[BENEFITS])", addconn);
+                    //SqlCommand getbascommand = new SqlCommand("SELECT * FROM [FOXPRODEV].[dbo].[BENEFITS] WHERE [ENTERED] in (select max([ENTERED]) from [FOXPRODEV].[dbo].[BENEFITS])", addconn);
+
+                    SqlCommand getbascommand = new SqlCommand("SELECT * FROM [FOXPRODEV].[dbo].[BENEFITS] WHERE [BAS_CODE] in (select max([bas_code]) from [FOXPRODEV].[dbo].[BENEFITS])", addconn);
 
                     SqlDataAdapter getbasda = new SqlDataAdapter(getbascommand);
                     DataTable BAS_table = new DataTable();

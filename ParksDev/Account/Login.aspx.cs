@@ -17,6 +17,38 @@ namespace ParksDev.Account
         {
             TextBox tb = (TextBox)LoginUser.FindControl("UserName");
             tb.Focus();
+
+        }
+
+        protected void LoginButton_Click(object sender, EventArgs e)
+        {
+            //string usernname = Request.Form["UserName"];
+            //TextBox tbUserName = (TextBox)LoginUser.FindControl("UserName");
+            //string username = tbUserName.Text;
+
+            //string username = this.LoginUser.UserName.Trim();
+
+            //string password = this.LoginUser.Password.Trim();
+
+
+            //TextBox tbPassword = (TextBox)LoginUser.FindControl("Password");
+            //string password = tbPassword.Text;
+            //CheckBox ckRemberMe =(CheckBox)LoginUser.FindControl("RememberMe");
+
+            //if (ckRemberMe.Checked )
+            //{
+            //    HttpCookie mycookie = new HttpCookie("LoginDetail");
+            //    mycookie.Values["Username"] = username;
+            //    mycookie.Values["Password"] = password;
+
+            //    mycookie.Expires = System.DateTime.Now.AddDays(1);
+
+            //    Response.Cookies.Add(mycookie);
+
+
+                
+                
+            //}
         }
     }
 }
