@@ -21,7 +21,8 @@ namespace ParksDev.DAL
 
             string connection = ConfigurationManager.ConnectionStrings["FoxProDevConnectionString"].ConnectionString;
             SqlConnection conn = new SqlConnection(connection);
-            SqlCommand cmd = new SqlCommand("SELECT [FOXPRODEV].[dbo].[AGENCIES].[AGENCY],[FOXPRODEV].[dbo].[AGENBENEFITS].[ABA_CODE], [FOXPRODEV].[dbo].[AGENBENEFITS].[BAS],[FOXPRODEV].[dbo].[AGENBENEFITS].[FEE],[FOXPRODEV].[dbo].[AGENBENEFITS].[AVERAGE],[FOXPRODEV].[dbo].[AGENBENEFITS].[AVERAGE] FROM [FOXPRODEV].[dbo].[AGENBENEFITS] left outer join [FOXPRODEV].[dbo].[AGENCIES] on [AGENBENEFITS].[AGE_CODE] = [AGENCIES].[AGE_CODE] where [FOXPRODEV].[dbo].[AGENBENEFITS].[BAS_CODE] =" + bascode + "order by [AGENBENEFITS].[AGE_CODE]", conn);
+            //SqlCommand cmd = new SqlCommand("SELECT [FOXPRODEV].[dbo].[AGENCIES].[AGENCY],[FOXPRODEV].[dbo].[AGENBENEFITS].[ABA_CODE], [FOXPRODEV].[dbo].[AGENBENEFITS].[BAS],[FOXPRODEV].[dbo].[AGENBENEFITS].[FEE],[FOXPRODEV].[dbo].[AGENBENEFITS].[AVERAGE],[FOXPRODEV].[dbo].[AGENBENEFITS].[AVERAGE] FROM [FOXPRODEV].[dbo].[AGENBENEFITS] left outer join [FOXPRODEV].[dbo].[AGENCIES] on [AGENBENEFITS].[AGE_CODE] = [AGENCIES].[AGE_CODE] where [FOXPRODEV].[dbo].[AGENBENEFITS].[BAS_CODE] =" + bascode + "order by [AGENBENEFITS].[AGE_CODE]", conn);
+            SqlCommand cmd = new SqlCommand("SELECT [FOXPRODEV].[dbo].[AGENCIES].[AGENCY],[FOXPRODEV].[dbo].[AGENBENEFITS].[ABA_CODE], [FOXPRODEV].[dbo].[AGENBENEFITS].[BAS],[FOXPRODEV].[dbo].[AGENBENEFITS].[FEE],[FOXPRODEV].[dbo].[AGENBENEFITS].[AVERAGE],[FOXPRODEV].[dbo].[AGENBENEFITS].[AVERAGE], [FOXPRODEV].[dbo].[AGENCIES].atp_code, [FOXPRODEV].[dbo].[AGENCIES].age_code FROM [FOXPRODEV].[dbo].[AGENBENEFITS] left outer join [FOXPRODEV].[dbo].[AGENCIES] on [AGENBENEFITS].[AGE_CODE] = [AGENCIES].[AGE_CODE] where [FOXPRODEV].[dbo].[AGENBENEFITS].[BAS_CODE] =" + bascode + "order by AGENCIES.ATP_CODE, [AGENBENEFITS].[AGE_CODE]", conn);
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
@@ -36,6 +37,11 @@ namespace ParksDev.DAL
                 mi.FEE = dr["FEE"].ToString();
                 mi.AVERAGE = dr["AVERAGE"].ToString();
                 mi.ABA_CODE = dr["ABA_CODE"].ToString();
+                // 2 More Properites are mapped for soart informaiton to dispaly agencies into proper groups, such as Distict / County Entities 
+                // on 8/3/2015
+                // Frank Kim
+                mi.ATP_CODE = dr["ATP_CODE"].ToString();
+                mi.AGE_CODE = dr["AGE_CODE"].ToString();
 
                 list.Add(mi);
             }
@@ -60,5 +66,8 @@ namespace ParksDev.DAL
         public string FEE       { get; set; }
         public string AVERAGE   { get; set; }
         public string ABA_CODE { get; set; }
+        public string ATP_CODE { get; set; }
+        public string AGE_CODE { get; set; }
+
     }
 }

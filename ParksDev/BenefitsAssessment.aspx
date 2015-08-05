@@ -158,8 +158,9 @@
                 $("#<%=jqGridInterestDetail.ClientID%>").jqGrid({
                     url: "DAL/BADdetails.ashx?bascode=" + bascode,
                     datatype: "json",
-                    colNames: ['AGENCY', 'AMOUNT POSTED', 'COLLECTED DEBT SERVICE', 'AVERAGE DAILY BALANCE', 'ABA_CODE'],
+                    colNames: ['ATP_CODE', 'AGENCY', 'AMOUNT POSTED', 'COLLECTED DEBT SERVICE', 'AVERAGE DAILY BALANCE', 'ABA_CODE'],
                     colModel: [
+                                    { name: 'ATP_CODE', index: 'ATP_CODE', width: 100, hidden: true },
                                     { name: 'AGENCY', index: 'AGENCY', width: 100 },
                                     { name: 'BAS', index: 'BAS', width: 100, align: 'right', formatter: 'currency', editable: true, sorttype: 'float', formatoptions: { decimalSeparator: ".",
                                         thousandsSeparator: ",",
@@ -183,9 +184,10 @@
                     width: gridWidth,
                     height: '70%',
                     pager: '#jqGInterestDetailPager',
-                    sortname: 'AGENCY',
                     viewrecords: true,
-                    sortorder: "desc",
+                    multiSort: true,
+                    sortname: 'ATP_CODE,Agency',
+                    sortorder: "asc",
                     loadonce: true,
                     caption: "Agency Distributions",
                     editurl: "DAL/BADedit.ashx"

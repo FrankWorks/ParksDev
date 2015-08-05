@@ -381,9 +381,13 @@
     <Content Include="img\lock.png" />
     <Content Include="img\movie.png" />
     <Content Include="img\openspacebanner.png" />
+    <Content Include="img\OSD Logo Only.png" />
+    <Content Include="img\OSD Logo with Text.png" />
     <Content Include="img\paste.png" />
     <Content Include="img\printer.png" />
     <Content Include="img\refresh.png" />
+    <Content Include="img\Reginal Park and OSD In Line.png" />
+    <Content Include="img\Reginal Park and OSD Medium.png" />
     <Content Include="img\report.png" />
     <Content Include="img\unlock.png" />
     <Content Include="img\countyseal.png" />

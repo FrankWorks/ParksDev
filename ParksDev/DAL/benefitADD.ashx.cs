@@ -146,11 +146,18 @@ namespace ParksDev.DAL
                         PCTadapter.Fill(PCTtable); //fill datatable with data from dataadapter
 
                         float rightNOWpct = float.Parse(PCTtable.Rows[0]["PCT_BAS"].ToString()); //get the PCT_BAS value
-
+                        //System.Diagnostics.Debug.WriteLine("We Will test Age_CODE: {0} and PCT_BAS: {1}", ACcycler, rightNOWpct );
+                        
                         SqlCommand AGENBENcommand = new SqlCommand("addAgenBen", adderconn);
                         AGENBENcommand.CommandType = CommandType.StoredProcedure;
 
-                        float bas_amount = latest_bas * rightNOWpct; //the bas for this paticular agency
+                        //float bas_amount = latest_bas * rightNOWpct; //the bas for this paticular agency
+
+                        // Round Up to the nearest .XX 
+                        // 08/04/2015 
+                        // Frank Kim
+                        float bas_amount = (float)Math.Round(latest_bas * rightNOWpct, 2,MidpointRounding.AwayFromZero); //the bas for this paticular agency
+                        System.Diagnostics.Debug.WriteLine("We Will test Age_CODE: {0}            and BAS_Amount:         {1}", ACcycler, bas_amount);
 
                         AGENBENcommand.Parameters.Add("@bascode", SqlDbType.Float).Value = latest_bas_code;
                         AGENBENcommand.Parameters.Add("@age_code", SqlDbType.Float).Value = ACcycler;
