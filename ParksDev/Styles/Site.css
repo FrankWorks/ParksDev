@@ -103,14 +103,15 @@ span
 
 .header
 {
+    background-position: left 6px;
     position: relative;
     margin: 0px;
     padding: 0px;
-    background: ##B3AD95;
-    width: 100%; /*background-image:url('../Account/img/openspacebanner.png'); */;
-    background-image: url('../img/Reginal Park and OSD In Line.png');
+    width: 100%;
+    background-image: url('../img/RPOSDbanner.png');
     background-size: auto;
-    background-color: #B3AD95;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
 }
 
 .header h1

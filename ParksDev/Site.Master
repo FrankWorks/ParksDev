@@ -38,7 +38,7 @@
     <form runat="server">
     <div class="page">
         <div class="header">
-            <div class="title" style="height:112px">
+            <div class="title" style="height:100px">
 <%--                  <asp:Image ID="banner" runat="server" ImageUrl="~/Account/img/openspacebanner.png" /> 
 --%>           </div>
             <div class="loginDisplay">
