@@ -70,7 +70,8 @@
                                     formatoptions: { decimalSeperator: ".",
                                         thousandsSeperator: ",",
                                         prefix: "$"
-                                    }
+                                    },
+                                    editoptions:{dataInit:function(el){$(el).maskMoney();}}
                                 },
                                 { name: 'FEE', index: 'FEE', width: 100, align: 'right', formatter: 'currency', hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true, sorttype: 'float',
                                     formatoptions: { decimalSeperator: ".",

@@ -471,6 +471,8 @@
     <Content Include="Scripts\jquery.floatingmessage.js" />
     <Content Include="Scripts\jquery.jqGrid.js" />
     <Content Include="Scripts\jquery.jqGrid.min.js" />
+    <Content Include="Scripts\jquery.maskMoney.js" />
+    <Content Include="Scripts\jquery.maskMoney.min.js" />
     <Content Include="storedtest.aspx" />
     <Content Include="Styles\EasyUiSite.css" />
     <Content Include="Styles\images\animated-overlay.gif" />
