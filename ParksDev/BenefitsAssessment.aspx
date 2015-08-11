@@ -146,6 +146,8 @@
 																			          }
 																			      }
 																			  }
+
+
                 ); // end of jqGrid - navGrid
                 jQuery("#<%=jQGridDemo.ClientID%>").setGridParam({ datatype: 'json' }).trigger("reloadGrid", [{ current: true}]);
                 $("#<%=jQGridDemo.ClientID%>").jqGrid('filterToolbar', { stringResult: true, searchOnEnter: false });
@@ -180,7 +182,8 @@
                                     },
                                     { name: 'ABA_CODE', index: 'ABA_CODE', hidden: true, editable: true, editrules: { edithidden: false }, hidedlg: true }
                               ],
-                    rowNum: 18,
+                    //rowNum: 18,
+                    rowNum: 100,
                     //                    rowList: [15, 20, 40, 60],
                     width: gridWidth,
                     height: '70%',
@@ -191,9 +194,16 @@
                     sortorder: "asc",
                     loadonce: true,
                     caption: "Agency Distributions",
+                    footerrow: true,
+                    loadComplete: function () {
+                        var $self = $(this),
+                            sum = $self.jqGrid("getCol", "BAS", true, "sum");
+
+                        $self.jqGrid("footerData", "set", { AGENCY: "Total:", BAS: sum });
+                    },
                     editurl: "DAL/BADedit.ashx"
                 });
-                $("#<%=jqGridInterestDetail.ClientID%>").jqGrid('navGrid', '#jqGInterestDetailPager', { edit: true, add: false, del: false, search: false, refresh: false },
+                $("#<%=jqGridInterestDetail.ClientID%>").jqGrid('navGrid', '#jqGInterestDetailPager', { edit: true, add: false, del: false, search: false, refresh: false, excel:true },
                                                                                                         { jqModal: true,
                                                                                                             closeAfterEdit: true,
                                                                                                             reloadAfterSubmit: true,
@@ -203,6 +213,119 @@
                                                                                                             }, width: 800
                                                                                                         }
                                                                                                     );
+                // Below is custom Button on 8/10/2015 Frank Kim
+
+
+  //              $("#<%=jqGridInterestDetail.ClientID%>").jqGrid('navButtonAdd', '#jqGInterestDetailPager',
+  //               {
+  //                   caption: "", buttonicon: "ui-icon-calculator", title: "Export",
+  //                   onClickButton: function () {
+  //                       exportGrid();
+  //                       //ExportDataToExcel("#<%=jqGridInterestDetail.ClientID%>")
+  //                       <%--                         var renderstring = "";
+  //                       var name = 'Total';
+  //                       var value = '10000';
+  //                                  // $("#<%=jqGridInterestDetail.ClientID%>").jqGrid('GridUnload');
+  //                       alert("The GRAND Total Amount:  " + value);
+  //                       $('.ui-icon-calculator').remove();
+  //                       //renderstring += '<div style="position: relative; margin: 4px; overflow: hidden;">' + name + ': ' + value + '</div>'; --%>
+  //                       $('.ui-icon-calculator').remove();
+  //                  }
+
+  //              });
+
+                function exportGrid() {
+
+                    mya = $("#<%=jqGridInterestDetail.ClientID%>").getDataIDs(); // Get All IDs
+
+                    var data = $("#<%=jqGridInterestDetail.ClientID%>").getRowData(mya[0]); // Get First row to get the
+
+                    // labels
+
+                    var colNames = new Array();
+
+                    var ii = 0;
+
+                    for (var i in data) {
+
+                        colNames[ii++] = i;
+
+                    } // capture col names
+
+                    var html = "<html><head>"
+
+                            + "<style script=&quot;css/text&quot;>"
+
+                            + "table.tableList_1 th {border:1px solid black; text-align:center; "
+
+                            + "vertical-align: middle; padding:5px;}"
+
+                            + "table.tableList_1 td {border:1px solid black; text-align: left; vertical-align: top; padding:5px;}"
+
+                            + "</style>"
+
+                            + "</head>"
+
+                            + "<body style=&quot;page:land;&quot;>";
+
+                    for (var k = 0; k < colNames.length; k++) {
+
+                        html = html + "<th>" + colNames[k] + "</th>";
+
+                    }
+
+                    html = html + "</tr>"; // Output header with end of line
+
+                    for (i = 0; i < mya.length; i++) {
+
+                        html = html + "<tr>";
+
+                        data = $("#<%=jqGridInterestDetail.ClientID%>").getRowData(mya[i]); // get each row
+
+                        for (var j = 0; j < colNames.length; j++) {
+
+                            html = html + "<td>" + data[colNames[j]] + "</td>"; // output each Row as
+
+                            // tab delimited
+
+                        }
+
+                        html = html + "</tr>"; // output each row with end of line
+
+                    }
+
+                    html = html + "</table></body></html>"; // end of line at the end
+
+                    alert(html);
+
+                    html = html.replace(/'/g, '&apos;');
+
+                    //  var form = "<form name='pdfexportform' action='generategrid' method='post'>";
+
+                    //  form = form + "<input type='hidden' name='pdfBuffer' value='" + html + "'>";
+
+                    //  form = form + "</form><script>document.pdfexportform.submit();</sc"
+
+                    //      + "ript>";
+
+                    //  OpenWindow = window.open('', '');
+
+                    //  OpenWindow.document.write(form);
+
+                    //  OpenWindow.document.close();
+
+                }
+                function ExportDataToExcel(tableCtrl) {
+                    ExportJQGridDataToExcel(tableCtrl,"sample.xlsx");
+                }
+ 
+                function ExportJQGridDataToExcel(tableCtrl, excelFilename) {
+                    var allJQGridData = $(tableCtrl).jqGrid('getGridParam', 'data');
+                    // var allJQGridData = $(tableCtrl).jqGrid('getRowData');
+                    var jqgridRowIDs = $(tableCtrl).getDataIDs(); // Fetch the RowIDs for this grid
+                    var headerData = $(tableCtrl).getRowData(jqgridRowIDs[0]);
+                }
+
                 $("#<%=jqGridInterestDetail.ClientID%>").jqGrid('setGridParam', { url: "DAL/BADdetails.ashx?bascode=" + bascode, datatype: "json", page: 1 }).trigger("reloadGrid");
 
             }

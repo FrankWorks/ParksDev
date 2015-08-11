@@ -21,6 +21,7 @@
         <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/jquery-ui-1.10.4.custom.js"));%>" type="text/javascript"></script>
         <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/grid.locale-en.js"));%>" type="text/javascript"></script>
         <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/jquery.jqGrid.js"));%>" type="text/javascript"></script>
+        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/grid.import.js"));%>" type="text/javascript"></script>
         <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/Jquery.maskMoney.min.js"));%>" type="text/javascript"></script>
         
 

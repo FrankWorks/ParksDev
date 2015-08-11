@@ -132,6 +132,7 @@ namespace ParksDev
 
         public void buttonedit(object sender, EventArgs e)
         {
+
             grantsEntry1.Visible = false;
             grantsEntr2.Visible = false;
             grantsEntr3.Visible = false;
@@ -530,7 +531,26 @@ namespace ParksDev
                 grantsEntry1.Visible = false;
             }
 
-           
+          // User reqeust text fields display only
+            editPAY.Enabled = false;
+            editAVG.Enabled = false;
+            editPRA.Enabled = false;
+            editRR.Enabled = false;
+            editFCBA.Enabled = false;
+            editCFR.Enabled = false;
+            editTRA.Enabled = false;
+            editTF.Enabled = false;
+            editUF.Enabled = false;
+
+
+          // click on the Enter Grants Button per user Reqeust 
+
+            grantsEntry1.Visible = true;
+            grantsEntr2.Visible = false;
+            grantsEntr3.Visible = false;
+            grantsEntr4.Visible = false;
+            //editgrantcmd();
+            editgrantcmd(sender, e);
         }
 
         public void buttoneditcancel(object sender, EventArgs e)

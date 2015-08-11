@@ -416,6 +416,7 @@
     <Content Include="reports\ReportsListOFAllocatedRevenuesByAgency.aspx" />
     <Content Include="runbal.aspx" />
     <Content Include="Scripts\datagrid-detailview.js" />
+    <Content Include="Scripts\grid.import.js" />
     <Content Include="Scripts\grid.locale-en.js" />
     <Content Include="Scripts\images\animated-overlay.gif" />
     <Content Include="Scripts\images\ui-bg_diagonal-maze_20_6e4f1c_10x10.png" />

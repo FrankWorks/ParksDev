@@ -68,6 +68,13 @@
 					viewrecords: true,
 					sortorder: "desc",
 					loadonce: true,
+                    //footerrow: true,
+                    //loadComplete: function () {
+                    //    var $self = $(this),
+                    //        sum = $self.jqGrid("getCol", "TRA", false, "sum");
+
+                    //    $self.jqGrid("footerData", "set", { Transferred: "Total:", TRA: sum });
+                    //},
 					caption: "Payments Lookup", 
 
 					onSelectRow: function (ids) {
