@@ -169,6 +169,7 @@
                                         </asp:DropDownList><%-- <asp:CheckBox ID="CheckBox1" runat="server" Text="Filter" AutoPostBack="true" ToolTip="Filter Results"  OnCheckedChanged="buttonClickFirst"  />
                                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" DataSourceMode="DataSet" ConnectionString="<%$ConnectionStrings:FoxProDevConnectionString%>"
                                             SelectCommand="Select * from AGENCIES order by AGENCY"></asp:SqlDataSource> //commented out because its same list as above --%>
+                                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Create</asp:LinkButton>
                                     </td>
                                 </tr>
                                 <tr>
@@ -362,7 +363,7 @@
                                             DataTextField="AGENCY" DataValueField="AGE_CODE" BackColor="#c6c6c6">
                                         </asp:DropDownList> <asp:CheckBox ID="ageFilter" runat="server" Text="Filter" AutoPostBack="true" ToolTip="Filter Results"  OnCheckedChanged="buttonClickFirst"  />
                                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" DataSourceMode="DataSet" ConnectionString="<%$ConnectionStrings:FoxProDevConnectionString%>"
-                                            SelectCommand="Select * from AGENCIES order by AGENCY"></asp:SqlDataSource>
+                                            SelectCommand="Select * from Payees order by AGENCY"></asp:SqlDataSource>
                                     </td>
                                 </tr>
                                  <tr>

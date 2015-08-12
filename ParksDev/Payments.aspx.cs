@@ -1680,6 +1680,12 @@ namespace ParksDev
             //payCommand.Dispose();
             payConnection.Close();
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            LinkButton1.Attributes.Add("href", "http://win-b7o3hk7ooqq.parks.co.la.ca.us/hb3.kendo.mvc.web/payee/");
+            LinkButton1.Attributes.Add("target", "_blank");
+        }
         }// end payment class
     
 }//end ParkDev namespace
