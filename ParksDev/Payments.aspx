@@ -169,7 +169,9 @@
                                         </asp:DropDownList><%-- <asp:CheckBox ID="CheckBox1" runat="server" Text="Filter" AutoPostBack="true" ToolTip="Filter Results"  OnCheckedChanged="buttonClickFirst"  />
                                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" DataSourceMode="DataSet" ConnectionString="<%$ConnectionStrings:FoxProDevConnectionString%>"
                                             SelectCommand="Select * from AGENCIES order by AGENCY"></asp:SqlDataSource> //commented out because its same list as above --%>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Create</asp:LinkButton>
+   
+<a href="http://win-b7o3hk7ooqq.parks.co.la.ca.us/hb3.kendo.mvc.web/payee/",
+                                                       onclick="window.open(this.href,'mywindow','menubar=0,resizable=1, height=' + screen.height - 50 + ',width= ' + screen.width - 50);return false;">Create</a>
                                     </td>
                                 </tr>
                                 <tr>
