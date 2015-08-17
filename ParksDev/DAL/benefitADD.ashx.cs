@@ -173,9 +173,16 @@ namespace ParksDev.DAL
                         getpct.Dispose();
                      
                     }
-
-
-
+                    //
+                    // Here is 2nd Part of Rebalence Benefit Redisribtuion
+                    //
+                    SqlConnection Reconn = new SqlConnection(connectionString);
+                    Reconn.Open();
+                    SqlCommand ReDistributecommand = new SqlCommand("uspRedestributeBenefitAmount", Reconn);
+                    ReDistributecommand.Parameters.Add("@bas_code", SqlDbType.Int).Value = latest_bas_code;
+                    ReDistributecommand.CommandType = CommandType.StoredProcedure;
+                    ReDistributecommand.ExecuteNonQuery();
+                    Reconn.Close();
                 }
             }
 
