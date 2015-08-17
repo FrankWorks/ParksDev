@@ -161,10 +161,10 @@
                 $("#<%=jqGridInterestDetail.ClientID%>").jqGrid({
                     url: "DAL/BADdetails.ashx?bascode=" + bascode,
                     datatype: "json",
-                    colNames: ['ATP_CODE', 'AGENCY', 'AMOUNT POSTED', 'COLLECTED DEBT SERVICE', 'AVERAGE DAILY BALANCE', 'ABA_CODE'],
+                    colNames: ['ATP_CODE', 'AGENCY', 'AMOUNT POSTED', 'COLLECTED DEBT SERVICE', 'AVERAGE DAILY BALANCE', 'ABA_CODE', 'UNIT_CODE'],
                     colModel: [
                                     { name: 'ATP_CODE', index: 'ATP_CODE', width: 100, hidden: true },
-                                    { name: 'AGENCY', index: 'AGENCY', width: 100 },
+                                    { name: 'AGENCY', index: 'AGENCY', width: 200 },
                                     { name: 'BAS', index: 'BAS', width: 100, align: 'right', formatter: 'currency', editable: true, sorttype: 'float', formatoptions: { decimalSeparator: ".",
                                         thousandsSeparator: ",",
                                         prefix: "$"
@@ -180,7 +180,9 @@
                                         prefix: "$"
                                     }
                                     },
-                                    { name: 'ABA_CODE', index: 'ABA_CODE', hidden: true, editable: true, editrules: { edithidden: false }, hidedlg: true }
+                                    { name: 'ABA_CODE', index: 'ABA_CODE', hidden: true, editable: true, editrules: { edithidden: false }, hidedlg: true },
+                                    { name: 'Unit_Code', index: 'Unit_Code', width: 100, hidden: false, editable: true, editrules: { edithidden: false }, hidedlg: true }
+
                               ],
                     //rowNum: 18,
                     rowNum: 100,
@@ -189,9 +191,9 @@
                     height: '70%',
                     pager: '#jqGInterestDetailPager',
                     viewrecords: true,
-                    multiSort: true,
-                    sortname: 'ATP_CODE,Agency',
-                    sortorder: "asc",
+                    //multiSort: true,
+                    //sortname: 'Unit_Code',
+                    //sortorder: "asc",
                     loadonce: true,
                     caption: "Agency Distributions",
                     footerrow: true,

@@ -171,7 +171,7 @@
                                             SelectCommand="Select * from AGENCIES order by AGENCY"></asp:SqlDataSource> //commented out because its same list as above --%>
    
 <a href="http://win-b7o3hk7ooqq.parks.co.la.ca.us/hb3.kendo.mvc.web/payee/",
-                                                       onclick="window.open(this.href,'mywindow','menubar=0,resizable=1, height=' + screen.height - 50 + ',width= ' + screen.width - 50);return false;">Create</a>
+                                                       onclick="window.open(this.href,'mywindow','menubar=0,resizable=1, height=' + screen.height  + ',width= ' + screen.width );return false;">Create</a>
                                     </td>
                                 </tr>
                                 <tr>
