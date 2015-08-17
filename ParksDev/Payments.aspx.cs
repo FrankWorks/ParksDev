@@ -27,6 +27,7 @@ namespace ParksDev
             if (!IsPostBack)
             {
                 fillOut();
+                buttonedit(sender, e);
 
             }
         }
@@ -52,7 +53,7 @@ namespace ParksDev
             {
 
                 fillOut();                
-
+                
              }
             else { rowIndex = rowLimit; }
         }
