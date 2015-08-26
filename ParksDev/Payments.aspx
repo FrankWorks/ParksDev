@@ -61,7 +61,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h1 class="page_head">
-        Payments (Adjustments, Transfers)
+       Payments (Adjustments, Transfers)
     </h1>
     <br />
 
@@ -88,6 +88,9 @@
     <asp:Button ID="button5" runat="server" Text="Edit" Width="75" OnClick="buttonedit" />
     <asp:Button ID="buttonnew" runat="server" Text="New" Width="75" OnClick="buttonnewclicked" />
         <asp:Button ID="javatest" runat="server" Text="javatest" Width="75" OnClick="javatester" Visible="false"/>
+<a href="paymentsR2.aspx",
+                                                       onclick="window.open(this.href,'mywindow','menubar=0,resizable=1, height=' + screen.height / 2  + ',width= ' + screen.width /2 );return false;">Search</a>
+
 
     <br />
     <br />

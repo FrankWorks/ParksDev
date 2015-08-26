@@ -57,27 +57,39 @@ namespace ParksDev
              }
             else { rowIndex = rowLimit; }
         }
-
+        // To stop the postback calling below section 
+        // 08/25/15
+        // Frank 
         public void buttonClickFirst(object sender, EventArgs e)
         {
-            rowIndex = 0;//to the beginging
+            if (IsPostBack)
+            {
 
-            fillOut();
+            }
+            else
+            {
+                rowIndex = 0;//to the beginging
 
-            grantsEntry1.Visible = false;
-            grantsEntr2.Visible = false;
-            grantsEntr3.Visible = false;
-            grantsEntr4.Visible = false;
-            newPanel.Visible = false;
-            editPanel.Visible = false;
-            viewPanel.Visible = true;
-            ClearTextBoxes(grantsEntry1); //clear grants in case it was filled in from previous entry
-            ClearTextBoxes(grantsEntr2);
-            ClearTextBoxes(grantsEntr3);
-            ClearTextBoxes(grantsEntr4);
+                fillOut();
+
+                grantsEntry1.Visible = false;
+                grantsEntr2.Visible = false;
+                grantsEntr3.Visible = false;
+                grantsEntr4.Visible = false;
+                newPanel.Visible = false;
+                editPanel.Visible = false;
+                viewPanel.Visible = true;
+                ClearTextBoxes(grantsEntry1); //clear grants in case it was filled in from previous entry
+                ClearTextBoxes(grantsEntr2);
+                ClearTextBoxes(grantsEntr3);
+                ClearTextBoxes(grantsEntr4);
+            }
+        }
+        public void _buttonClickFirst(object sender, EventArgs e)
+        {
+
 
         }
-
         public void buttonPrev(object sender, EventArgs e)
         {
 
@@ -1195,8 +1207,11 @@ namespace ParksDev
                     summerz = double.Parse(txtadd.Text.ToString().Replace("$", String.Empty));
                 }
                 summer = summer + summerz;
+                
+                // Remove the Extra $$ Sign from the payment amount section
+                // Frank Kim 08/25/2015
 
-                TextBox5.Text = String.Format("${0:C}", summer);
+                TextBox5.Text = String.Format("{0:C}", summer);
                 //PayLabel.Text = string.Format("${0:###,###.##}", float.Parse(payData.Rows[rowIndex]["TRA"].ToString()).ToString("N", nfi));
                 editPAY.Text = String.Format("{0:C}", summer);
 
@@ -1556,19 +1571,43 @@ namespace ParksDev
                         currentFylabel.Text = String.Format("${0:###,###.00}", float.Parse(currentFyRestriction.ToString()).ToString("N", nfi));
 
                         //total restricted amount
-                        float totalRestricted = currentFyRestriction + (float)yegBegin;
-                        totalResAmount.Text = String.Format("${0:###,###.00}", float.Parse(totalRestricted.ToString()).ToString("N", nfi));
+
+                        // User Request to recalulate TotalRestriced = 0.00, when PRLabel.Text < 0
+                        // Frank Kim on 8/25/15
+                        if (float.Parse(agenbalTable.Rows[0]["YEG_BEG"].ToString()) < 0)
+                        {
+                            float totalRestricted = 0;
+                            totalResAmount.Text = String.Format("${0:###,###.00}", float.Parse(totalRestricted.ToString()).ToString("N", nfi));
+                            float floatAmtBeg = Convert.ToInt64(agenbalTable.Rows[0]["AMT_BEG"]);
+                            //float floatAmtBas = Convert.ToInt64(agenbalTable.Rows[0]["AMT_BAS"]);//used already
+                            float floatAmtInt = Convert.ToInt64(agenbalTable.Rows[0]["AMT_INT"]);
+                            float floatTotalFund = floatAmtBeg + floatAmtBas + floatAmtInt;
+                            TotalLabel.Text = string.Format("${0:###,###.00}", float.Parse(floatTotalFund.ToString()));
+
+                            //unrestristed amount
+                            float unrestictedAmount = floatTotalFund - totalRestricted;
+                            URLabel.Text = String.Format("${0:###,###.00}", float.Parse(unrestictedAmount.ToString()));
+                        }
+                        else
+                        { 
+                            float totalRestricted = currentFyRestriction + (float)yegBegin;
+                            totalResAmount.Text = String.Format("${0:###,###.00}", float.Parse(totalRestricted.ToString()).ToString("N", nfi));
+                            float floatAmtBeg = Convert.ToInt64(agenbalTable.Rows[0]["AMT_BEG"]);
+                            //float floatAmtBas = Convert.ToInt64(agenbalTable.Rows[0]["AMT_BAS"]);//used already
+                            float floatAmtInt = Convert.ToInt64(agenbalTable.Rows[0]["AMT_INT"]);
+                            float floatTotalFund = floatAmtBeg + floatAmtBas + floatAmtInt;
+                            TotalLabel.Text = string.Format("${0:###,###.00}", float.Parse(floatTotalFund.ToString()));
+
+                            //unrestristed amount
+                            float unrestictedAmount = floatTotalFund - totalRestricted;
+                            URLabel.Text = String.Format("${0:###,###.00}", float.Parse(unrestictedAmount.ToString()));
+                        
+                        }
+                        
+                        
 
                         //total fund
-                        float floatAmtBeg = Convert.ToInt64(agenbalTable.Rows[0]["AMT_BEG"]);
-                        //float floatAmtBas = Convert.ToInt64(agenbalTable.Rows[0]["AMT_BAS"]);//used already
-                        float floatAmtInt = Convert.ToInt64(agenbalTable.Rows[0]["AMT_INT"]);
-                        float floatTotalFund = floatAmtBeg + floatAmtBas + floatAmtInt;
-                        TotalLabel.Text = string.Format("${0:###,###.00}", float.Parse(floatTotalFund.ToString()));
 
-                        //unrestristed amount
-                        float unrestictedAmount = floatTotalFund - totalRestricted;
-                        URLabel.Text = String.Format("${0:###,###.00}", float.Parse(unrestictedAmount.ToString()));
 
                         agencalc.Dispose();
                         agencalcTable.Dispose();

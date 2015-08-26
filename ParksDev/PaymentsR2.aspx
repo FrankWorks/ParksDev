@@ -43,12 +43,15 @@
 													        defaultValue: null // does nothing!
 													    },
 													},
-													{ name: 'TRA', index: 'TRA', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true },
-													{ name: 'Average', index: 'Average', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true },
+													{ name: 'TRA', index: 'TRA', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true },formatter: 'currency', 
+														formatoptions:{prefix:'($',suffix:')',thousandsSeparator:','},hidedlg: true },
+											
+													{ name: 'Average', index: 'Average', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true, formatter: 'currency', 
+																		formatoptions:{prefix:'($',suffix:')',thousandsSeparator:','},hidedlg: true },
 													{ name: 'MinObj', index: 'MinObj', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true },
                                                     { name: 'LUPD_USER', index: 'LUPD_USER', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true },
 													{
-													    name: 'LUPD_DATE', index: 'LUPD_DATE', width: 100, search: false, align: 'right', formatter: 'date',
+													    name: 'LUPD_DATE', index: 'LUPD_DATE', width: 100, search: false, align: 'right', formatter: 'date', hidden: true,
 													    formatoptions: {
 													        srcformat: 'ISO8601Long',
 													        newformat: 'm/d/Y',
@@ -316,6 +319,8 @@
 					$.each(data, function (name, item) {
 						ag_options.append($("<option />").val(item.AGE_CODE).text(item.AGENCY));
 					});
+					//$("#agencyFiscalYear").val = 2015
+					//getagencyFiscalYearDropDown();
 				});
 			}
 			function getagencyFiscalYearDropDown()
