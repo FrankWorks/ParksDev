@@ -42,7 +42,7 @@ namespace ParksDev.DAL
                 obj = getFiscalYear(sqlQueryString);
             }
 
-            if (mSwitch == null && mString != null)
+            if (mSwitch == null && mString != null && mStringFiscalYear !=null)
             {
                 sqlQueryString = "uspGetPaymentsMasterGrid";
 
@@ -50,6 +50,13 @@ namespace ParksDev.DAL
 
             }
 
+            if (mSwitch == null && mString != null && mStringFiscalYear == null)
+            {
+                sqlQueryString = "uspGetPaymentsMasterGrid";
+
+                obj = getPaymentsInfo(sqlQueryString: sqlQueryString, strAgency: mString, fiscalYear: DateTime.Now.AddYears(-1).Year.ToString());
+
+            }
             //sqlQueryString = "uspGetPaymentListDataR2";
             
             if (obj != null)
@@ -78,7 +85,7 @@ namespace ParksDev.DAL
             else
             {
                 cmd.Parameters.Add("@AGE_CODE", SqlDbType.Int).Value = Int32.Parse(strAgency);
-                cmd.Parameters.Add("@fiscalYear", SqlDbType.Int).Value = Int32.Parse(fiscalYear);
+                cmd.Parameters.Add("@fiscalYear", SqlDbType.Int).Value = Int32.Parse(fiscalYear??DateTime.Now.AddYears(-1).Year.ToString());
             }
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);

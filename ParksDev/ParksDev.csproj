@@ -516,6 +516,7 @@
     <Content Include="Styles\ui.jqgrid.css" />
     <Content Include="Styles\ui.jqtreeview.css" />
     <Content Include="Support.aspx" />
+    <Content Include="test.aspx" />
     <Content Include="themes\black\accordion.css" />
     <Content Include="themes\black\calendar.css" />
     <Content Include="themes\black\combo.css" />
@@ -1037,6 +1038,13 @@
     </Compile>
     <Compile Include="Support.aspx.designer.cs">
       <DependentUpon>Support.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
     </Compile>
     <Compile Include="Totals.aspx.cs">
       <DependentUpon>Totals.aspx</DependentUpon>

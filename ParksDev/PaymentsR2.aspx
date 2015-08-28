@@ -1,5 +1,27 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PaymentsR2.aspx.cs" Inherits="ParksDev.PaymentsR2" %>
-<asp:Content ID="HeaderContent" ContentPlaceHolderID="HeadContent" runat="server">
+﻿<%@ Page Title="" Language="C#" CodeBehind="PaymentsR2.aspx.cs" Inherits="ParksDev.PaymentsR2" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    
+<%--    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="Stylesheet" media="screen" type="text/css" />
+--%>
+
+<link href="~/Styles/jquery-ui-1.10.4.custom.css" rel="Stylesheet" media="screen" type="text/css" />
+    <link href="~/Styles/ui.jqgrid.css" rel="Stylesheet" media="screen" type="text/css" />
+
+
+<%--        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/jquery-1.9.1.js"));%>" type="text/javascript"></script>
+        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/jquery-ui-1.10.4.custom"));%>" type="text/javascript"></script>--%>
+   <%--     <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/jquery-1.10.2.js"));%>" type="text/javascript"></script>--%>
+        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/jquery-1.11.1.min.js"));%>" type="text/javascript"></script>
+        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/jquery-ui-1.10.4.custom.js"));%>" type="text/javascript"></script>
+        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/grid.locale-en.js"));%>" type="text/javascript"></script>
+        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/jquery.jqGrid.js"));%>" type="text/javascript"></script>
+        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/grid.import.js"));%>" type="text/javascript"></script>
+        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/Jquery.maskMoney.min.js"));%>" type="text/javascript"></script>
     <style type="text/css">
 		.style1
 		{
@@ -353,7 +375,7 @@
 
 			$("#agencyType").change(function () {
 				var selValue = $('#agencyType').val();
-				$("#<%=jQGridDemo.ClientID%>").jqGrid('setGridParam', { url: "DAL/PaymentsR2.ashx?agencies=" + selValue + "&agencyFiscalYear=null + &flag=Step1", datatype: "json", page: 1 }).trigger("reloadGrid");
+				$("#<%=jQGridDemo.ClientID%>").jqGrid('setGridParam', { url: "DAL/PaymentsR2.ashx?agencies=" + selValue + "&agencyFiscalYear=+&flag=Step1", datatype: "json", page: 1 }).trigger("reloadGrid");
 			});
 
 		    $("#agencyFiscalYear").change(function () {
@@ -377,13 +399,14 @@
 
 		});
     </script>   
-</asp:Content>
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+
+</head>
 <h1 class="page_head">Payments</h1><br />
 
 
-
-		  <!--Master-->
+<body>
+    <form id="form1" runat="server">		  
+	<!--Master-->
 		  <div id="jqGridDiv"> 
 		  
 			<div style="width:100%; background-color:#E0E0E0 ; color:Black; padding-top:7px; padding-bottom:5px">
@@ -418,7 +441,8 @@
 			<asp:Table ID="jqGridFunding" runat="server" Visible="false"></asp:Table>
 			<div id="jqGridFundingPager"></div>
 		 </div>
-
+		 </form>
+</body>
 <br /><br />
+</html>
 
-</asp:Content>
