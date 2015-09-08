@@ -50,7 +50,7 @@ namespace ParksDev.DAL
 
             }
 
-            if (mSwitch == null && mString != null && mStringFiscalYear == null)
+            if (mSwitch == null && mString != null && mStringFiscalYear == "null")
             {
                 sqlQueryString = "uspGetPaymentsMasterGrid";
 

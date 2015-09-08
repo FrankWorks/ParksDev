@@ -11,6 +11,9 @@
         {
             width: 368px;
         }
+    .auto-style1 {
+        height: 21px;
+    }
     </style>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -57,6 +60,16 @@
                 }).dialog("open");
             })
         }
+
+        // User Request for Enter Key as Tab Key Funcation
+        // 09/07/15 Frank Kim
+
+        function convertEnterToTab() {
+            if (event.keyCode == 13) {
+                event.keyCode = 9;
+            }
+        }
+        document.onkeydown = convertEnterToTab;
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -317,18 +330,16 @@
                             <table border="0" width="499" style="border:blue;">
                                 <tr><td colspan="4">
                                 <table>
-                                    <td align="left" width="135px">
-                                        TC:
-                                    </td>
-                                    <td width="120px" style="background-color:#c6c6c6">
-                                        <asp:Label ID="TCLabel" runat="server" style="background-color:#c6c6c6;" />
-                                    </td>
-                                    <td align="left" width="20px">
-                                        TD:
-                                    </td>
-                                    <td style="background-color:#c6c6c6" width="120px" >
-                                        <asp:Label ID="TDLabel" runat="server" style="background-color:#c6c6c6;"  />
-                                    </td>
+                                    <tr>
+                                        <td align="left" width="135px">TC: </td>
+                                        <td style="background-color:#c6c6c6" width="120px">
+                                            <asp:Label ID="TCLabel" runat="server" style="background-color:#c6c6c6;" />
+                                        </td>
+                                        <td align="left" width="20px">TD: </td>
+                                        <td style="background-color:#c6c6c6" width="120px">
+                                            <asp:Label ID="TDLabel" runat="server" style="background-color:#c6c6c6;" />
+                                        </td>
+                                    </tr>
                                 </table>
                                 </td>
                                 </tr>
@@ -475,10 +486,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="auto-style1">
                                         Previously Restricted Amount:
                                     </td>
-                                    <td style="background-color:#c6c6c6">
+                                    <td style="background-color:#c6c6c6" class="auto-style1">
                                         <asp:Label ID="PRLabel" runat="server" Style="text-align: right; background-color:#c6c6c6;" />
                                     </td>
                                 </tr>

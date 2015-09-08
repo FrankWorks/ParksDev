@@ -66,10 +66,17 @@
 													    },
 													},
 													{ name: 'TRA', index: 'TRA', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true },formatter: 'currency', 
-														formatoptions:{prefix:'($',suffix:')',thousandsSeparator:','},hidedlg: true },
+
+
+													    formatoptions: { prefix: '$', suffix: '', thousandsSeparator: ',' },
+
+
+
+													hidedlg: true
+													},
 											
 													{ name: 'Average', index: 'Average', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true, formatter: 'currency', 
-																		formatoptions:{prefix:'($',suffix:')',thousandsSeparator:','},hidedlg: true },
+																		formatoptions:{prefix:'$',suffix:'',thousandsSeparator:','},hidedlg: true },
 													{ name: 'MinObj', index: 'MinObj', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true },
                                                     { name: 'LUPD_USER', index: 'LUPD_USER', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true },
 													{
@@ -110,7 +117,7 @@
 					},
 					editurl: "DAL/agenciesCode.ashx"
 				});
-				$("#<%=jQGridDemo.ClientID%>").jqGrid('navGrid', '#jQGPager', { edit: true, add: true, del: true, search: false, refresh: false },
+				$("#<%=jQGridDemo.ClientID%>").jqGrid('navGrid', '#jQGPager', { edit: false, add: false, del: false, search: false, refresh: false },
 																			  {jqModal: true,
 																				  closeAfterEdit: true,
 																				  reloadAfterSubmit: true,
@@ -142,9 +149,9 @@
 																				  }
 																			  }
 													  ); // end of jqGrid - navGrid	            
-				$("#<%=jQGridDemo.ClientID%>").jqGrid('navButtonAdd', "#jQGPager", { caption: "Reload", title: "Reload Data", buttonicon: "ui-icon-refresh",
+<%--				$("#<%=jQGridDemo.ClientID%>").jqGrid('navButtonAdd', "#jQGPager", { caption: "Reload", title: "Reload Data", buttonicon: "ui-icon-refresh",
 					onClickButton: function () { $("#<%=jQGridDemo.ClientID%>").jqGrid('setGridParam', { url: "DAL/Definitions.ashx?agencies=a&agencyType=0", datatype: "json", page: 1 }).trigger("reloadGrid"); }
-				});
+				});--%>
 
 			} //end getgrid function
 
@@ -374,8 +381,10 @@
 			}
 
 			$("#agencyType").change(function () {
-				var selValue = $('#agencyType').val();
-				$("#<%=jQGridDemo.ClientID%>").jqGrid('setGridParam', { url: "DAL/PaymentsR2.ashx?agencies=" + selValue + "&agencyFiscalYear=+&flag=Step1", datatype: "json", page: 1 }).trigger("reloadGrid");
+			    var selValue = $('#agencyType').val();
+			    var selagencyFiscalYear = $("#agencyFiscalYear").val();
+			    //$("#<%=jQGridDemo.ClientID%>").jqGrid('setGridParam', { url: "DAL/PaymentsR2.ashx?agencies=" + selValue + "&agencyFiscalYear=+&flag=Step1", datatype: "json", page: 1 }).trigger("reloadGrid");
+			    $("#<%=jQGridDemo.ClientID%>").jqGrid('setGridParam', { url: "DAL/PaymentsR2.ashx?agencies=" + selValue + "&agencyFiscalYear=" + selagencyFiscalYear + "&flag=Step1", datatype: "json", page: 1 }).trigger("reloadGrid");
 			});
 
 		    $("#agencyFiscalYear").change(function () {

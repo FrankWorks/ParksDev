@@ -166,12 +166,17 @@ namespace ParksDev
 
             NumberFormatInfo nfi = new NumberFormatInfo();
             nfi.NumberNegativePattern = 0;
-
-            if (ageFilter.Checked == true)
+            // Following line is dropped for making consistancy number format with Displaying Section 
+            // Frank Kim 09/07/15
+            //if (ageFilter.Checked == true)
+            // and below float filteragecode
+            //
+            if (true)
             {
 
-                float filteragecode = float.Parse(AgencyViewScrolldown.SelectedValue.ToString());
-                SqlCommand filtercommand = new SqlCommand("SELECT * FROM [FOXPRODEV].[dbo].[TRANSFERS] LEFT OUTER JOIN [FOXPRODEV].[dbo].[AGENCIES] on [TRANSFERS].[AGE_CODE] = [AGENCIES].[AGE_CODE] where [AGENCIES].[AGE_CODE] =  " + filteragecode + " order by  [TRANSFERS].[LUPD_DATE] asc", payConnection);
+                //float filteragecode = float.Parse(AgencyViewScrolldown.SelectedValue.ToString());
+                //SqlCommand filtercommand = new SqlCommand("SELECT * FROM [FOXPRODEV].[dbo].[TRANSFERS] LEFT OUTER JOIN [FOXPRODEV].[dbo].[AGENCIES] on [TRANSFERS].[AGE_CODE] = [AGENCIES].[AGE_CODE] where [AGENCIES].[AGE_CODE] =  " + filteragecode + " order by  [TRANSFERS].[LUPD_DATE] asc", payConnection);
+                SqlCommand filtercommand = new SqlCommand("SELECT * FROM [FOXPRODEV].[dbo].[TRANSFERS] LEFT OUTER JOIN [FOXPRODEV].[dbo].[AGENCIES] on [TRANSFERS].[AGE_CODE] = [AGENCIES].[AGE_CODE]  order by  [TRANSFERS].[LUPD_DATE] asc", payConnection);
                 SqlDataAdapter payAdapter = new SqlDataAdapter(filtercommand);
 
 
@@ -239,12 +244,13 @@ namespace ParksDev
                 if (agenbalTable != null && agenbalTable.Rows.Count > 0)
                 {
                     //populate the labels for fy collected.
-                    editFCBA.Text = String.Format("${0:###,###.00}", float.Parse(agenbalTable.Rows[0]["AMT_BAS"].ToString())); //format to money
-                    editPRA.Text = String.Format("${0:###,###.00}", float.Parse(agenbalTable.Rows[0]["YEG_BEG"].ToString()));
-                    editPAY.Text = String.Format("${0:###,###.00}", float.Parse(payData.Rows[rowIndex]["TRA"].ToString()));
-                    editAVG.Text = String.Format("${0:###,###.00}", float.Parse(payData.Rows[rowIndex]["AVERAGE"].ToString()));
+                    editFCBA.Text = String.Format("${0:###,###.00}", float.Parse(agenbalTable.Rows[0]["AMT_BAS"].ToString()).ToString("N", nfi)); //format to money
+                    editPRA.Text = String.Format("${0:###,###.00}", float.Parse(agenbalTable.Rows[0]["YEG_BEG"].ToString()).ToString("N", nfi));
+                    editPAY.Text = String.Format("${0:###,###.00}", float.Parse(payData.Rows[rowIndex]["TRA"].ToString()).ToString("N", nfi));
+                    //figuring out the restriction rate, first the remaining yeg
+                    editAVG.Text = String.Format("${0:###,###.00}", float.Parse(payData.Rows[rowIndex]["AVERAGE"].ToString()).ToString("N", nfi));
                     //PRLabel.Text = payData.Rows[rowIndex]["YEG_BEG"].ToString();
-
+                    editPAY.Text = String.Format("${0:###,###.00}", float.Parse(payData.Rows[rowIndex]["TRA"].ToString()).ToString("N", nfi));
                     //figuring out the restriction rate, first the remaining yeg
                     int yegTotal = Convert.ToInt32(agenbalTable.Rows[0]["YEG_TOT"]);
                     //Response.Write(Convert.ToInt32(agenbalTable.Rows[0]["YEG_TOT"]).ToString());
@@ -545,6 +551,10 @@ namespace ParksDev
             }
 
           // User reqeust text fields display only
+
+
+
+
             editPAY.Enabled = false;
             editAVG.Enabled = false;
             editPRA.Enabled = false;
@@ -599,6 +609,8 @@ namespace ParksDev
             grantsEntry1.Visible = false;
             NewEnteredDate.Text = DateTime.Now.ToShortDateString();
             firstAgency();
+            buttongrantsclicked(sender, e);
+            
 
         }
         public void buttongrantsclicked(object sender, EventArgs e)
