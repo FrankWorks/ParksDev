@@ -44,24 +44,23 @@
 				$("#<%=jQGridDemo.ClientID%>").jqGrid({
 				    url: "DAL/PaymentsR2.ashx?agencies=" + agency + "&agencyFiscalYear=" + agencyFiscalYear + "&switch=" + flag,
 					datatype: "json",
-					colNames: ['TC', 'TD', 'Reference', 'Processed', 'Transferred', 'Trans. Amount', 'ADB', 'MinObj', 'Last Updated By', 'On Date', 'Code'],
+					colNames: ['TC', 'TD', 'Reference', 'Processed', 'Transferred', 'Trans. Amount', 'ADB', 'MinObj', 'Last Updated By', 'Last UpDate', 'Code'],
 					colModel: [
 													{ name: 'TC', index: 'TC', width: 100, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true, sorttype:'text'},
 													{ name: 'TD', index: 'TD', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true },
 													{ name: 'Reference', index: 'Reference', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true },
 													{
 													    name: 'Processed', index: 'Processed', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true, formatter: 'date',
-                                                        formatoptions: {
-                                                            srcformat: 'ISO8601Long',
-                                                            newformat: 'm/d/Y',
-                                                            defaultValue: null // does nothing!
+													    formatoptions: {
+													        srcformat: 'm/d/Y', newformat: 'ShortDate'
+
                                                         },
 													},
 													{
 													    name: 'Transferred', index: 'Transferred', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true, formatter: 'date',
 													    formatoptions: {
-													        srcformat: 'ISO8601Long',
-													        newformat: 'm/d/Y',
+													        srcformat: 'm/d/Y',
+													        newformat: 'ShortDate',
 													        defaultValue: null // does nothing!
 													    },
 													},
@@ -80,10 +79,10 @@
 													{ name: 'MinObj', index: 'MinObj', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true },
                                                     { name: 'LUPD_USER', index: 'LUPD_USER', width: 150, search: false, hidden: false, editable: true, editrules: { edithidden: true }, hidedlg: true },
 													{
-													    name: 'LUPD_DATE', index: 'LUPD_DATE', width: 100, search: false, align: 'right', formatter: 'date', hidden: true,
+													    name: 'LUPD_DATE', index: 'LUPD_DATE', width: 100, search: false, align: 'right', formatter: 'date', hidden: false,
 													    formatoptions: {
-													        srcformat: 'ISO8601Long',
-													        newformat: 'm/d/Y',
+													        srcformat: 'm/d/Y',
+													        newformat: 'ShortDate',
 													        defaultValue: null // does nothing!
 													    },
 													},
