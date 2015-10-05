@@ -87,6 +87,7 @@ namespace ParksDev.DAL
                 }
                 else if(whatToDo == "add")
                 {
+                    string lpdUserName = HttpContext.Current.User.Identity.Name.ToString();
                     string connectionString = ConfigurationManager.ConnectionStrings["FoxProDevConnectionString"].ConnectionString;
                     SqlConnection addconn = new SqlConnection(connectionString);
                     addconn.Open();
@@ -103,9 +104,37 @@ namespace ParksDev.DAL
                     addcommand.Parameters.Add("@td", SqlDbType.NVarChar).Value=btd;
                     addcommand.Parameters.Add("@reference", SqlDbType.NVarChar).Value=breference;
                     addcommand.Parameters.Add("@bas",  SqlDbType.Float).Value=bbas;
-                    addcommand.Parameters.Add("@average", SqlDbType.Float).Value= 0 ;
+                    
+                    // Below line is just wild guess, previously there is clear business logic
+                    // ( incoming amount - fee ) * ( days in this month - today's day + 1 ) /  days in this month
+                    //addcommand.Parameters.Add("@average", SqlDbType.Float).Value= 0 ;
+                    // by Frank Kim 9/21/15
+                    DateTime dtProcessed = DateTime.Parse(bprocessed);
+
+                    int daysInMonth = System.DateTime.DaysInMonth(dtProcessed.Year, dtProcessed.Month);
+                    int processeddayInMonth = dtProcessed.Day;
+                    int daysInAverageCalculation = daysInMonth - processeddayInMonth + 1;
+                    if( string.IsNullOrEmpty(bfee) )
+                    {
+                        addcommand.Parameters.Add("@fee", SqlDbType.Float).Value = 0.00;
+                        bfee = "0";
+
+                    }
+                    else
+                    {
+                        addcommand.Parameters.Add("@fee", SqlDbType.Float).Value = bfee;
+                    }
+
+                    
+                    float AverageDailyBalence = daysInAverageCalculation * (float.Parse(bbas) - float.Parse(bfee)) / daysInMonth;
+                    addcommand.Parameters.Add("@average", SqlDbType.Float).Value = AverageDailyBalence;
+
+                    // by Frank Kim 9/21/15
+
+                    // Need to implement to distribute logic Fees ,and Average for AgencyBenefit Balance, and AgebalFy, AgeBalMo...
+
                     addcommand.Parameters.Add("@comments", SqlDbType.NVarChar).Value= bcomments;
-                    addcommand.Parameters.Add("@lupd_user", SqlDbType.NVarChar).Value = "devadmin";
+                    addcommand.Parameters.Add("@lupd_user", SqlDbType.NVarChar).Value = lpdUserName;
 
                     addcommand.ExecuteNonQuery();
                     //addconn.Close(); not yet but is the end of adding to benefits
@@ -157,14 +186,15 @@ namespace ParksDev.DAL
                         // 08/04/2015 
                         // Frank Kim
                         float bas_amount = (float)Math.Round(latest_bas * rightNOWpct, 2,MidpointRounding.AwayFromZero); //the bas for this paticular agency
-                        System.Diagnostics.Debug.WriteLine("We Will test Age_CODE: {0}            and BAS_Amount:         {1}", ACcycler, bas_amount);
+                        //System.Diagnostics.Debug.WriteLine("We Will test Age_CODE: {0}            and BAS_Amount:         {1}", ACcycler, bas_amount);
 
                         AGENBENcommand.Parameters.Add("@bascode", SqlDbType.Float).Value = latest_bas_code;
                         AGENBENcommand.Parameters.Add("@age_code", SqlDbType.Float).Value = ACcycler;
                         AGENBENcommand.Parameters.Add("@bas", SqlDbType.Float).Value = bas_amount;
                         AGENBENcommand.Parameters.Add("@fee", SqlDbType.Float).Value = 0;
                         AGENBENcommand.Parameters.Add("@average", SqlDbType.Float).Value = 0; //for now i guess
-                        AGENBENcommand.Parameters.Add("@lupd_user", SqlDbType.NVarChar).Value = "DEVADMIN";
+                        AGENBENcommand.Parameters.Add("@lupd_user", SqlDbType.NVarChar).Value = lpdUserName;
+                        AGENBENcommand.Parameters.Add("@processed", SqlDbType.DateTime).Value = DateTime.Parse(bprocessed);
 
                         AGENBENcommand.ExecuteNonQuery();
                         AGENBENcommand.Dispose();
