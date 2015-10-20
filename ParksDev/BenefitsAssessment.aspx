@@ -115,7 +115,9 @@
                                                                                              return [true, response.responseText];
                                                                                          }, width: 800
                                                                                      },
-																			  { jqModal: true,
+																			  {
+																			      jqModal: true,
+                                                                                  caption: "Add New Record",
 																			      closeAfterEdit: true,
 																			      closeAfterAdd: true,
 																			      reloadAfterSubmit: true,

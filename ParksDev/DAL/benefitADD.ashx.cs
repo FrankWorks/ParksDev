@@ -43,6 +43,8 @@ namespace ParksDev.DAL
                 delagenben.Parameters.Add("@basercodes", SqlDbType.Float).Value = rmv;
 
                 delagenben.ExecuteNonQuery();
+                //TO DO
+                //Reverse AgenBalFY / AgeBalMO table
 
                 delcom.Dispose();
                 delconn.Close();
@@ -166,9 +168,38 @@ namespace ParksDev.DAL
                         
 
                         float ACcycler = float.Parse(agecodereader["AGE_CODE"].ToString());
-                        //get pct_bas 
-                        SqlCommand getpct = new SqlCommand("SELECT [PCT_BAS] FROM [FOXPRODEV].[dbo].[AGENCCALCS] WHERE ([AGE_CODE] = @agePCTcode and [CTP_CODE] = 2) or ([AGE_CODE] = @agePCTcode and [CTP_CODE] = 7)", adderconn); //might have to change ctpcode later
+                        //
+                        //getpct will based on CTP_CODE
+                        // Below is CTP_Code Grab Procedure
+
+                        SqlCommand uspGetCTPCode = new SqlCommand("uspGetCTPCode", adderconn);
+                        uspGetCTPCode.CommandType = CommandType.StoredProcedure;
+                        uspGetCTPCode.Parameters.Add("@Processed", SqlDbType.DateTime).Value = DateTime.Parse(bprocessed);
+
+
+                        //SqlParameter parm1 = new SqlParameter ("@Processed", SqlDbType.DateTime);
+                        //parm1.Value = DateTime.Parse(bprocessed);
+                        //parm1.Direction = ParameterDirection.Input;
+                        //uspGetCTPCode.Parameters.Add(parm1);
+
+
+                        SqlParameter parm2 = new SqlParameter("@Code", SqlDbType.Int);
+                        parm2.Direction = ParameterDirection.Output;
+                        uspGetCTPCode.Parameters.Add(parm2);
+
+                        uspGetCTPCode.ExecuteNonQuery();
+
+                        int intCTPCode = (int)uspGetCTPCode.Parameters["@Code"].Value;
+
+                        // Now Feeding this intCTPCode into below TSQL 
+                        // 10/5/2015 By Frank Kim
+
+                        //SqlCommand getpct = new SqlCommand("SELECT [PCT_BAS] FROM [FOXPRODEV].[dbo].[AGENCCALCS] WHERE ([AGE_CODE] = @agePCTcode and [CTP_CODE] = 2) or ([AGE_CODE] = @agePCTcode and [CTP_CODE] = 7)", adderconn); //might have to change ctpcode later
+
+                        SqlCommand getpct = new SqlCommand("SELECT [PCT_BAS] FROM [FOXPRODEV].[dbo].[AGENCCALCS] WHERE ([AGE_CODE] = @agePCTcode and [CTP_CODE] = @intCTPCode)", adderconn); //Corrected by Frank Kim 10/5/2015
+
                         getpct.Parameters.AddWithValue("agePCTcode", ACcycler.ToString()); //sets the agecode so it can grab the correct pct
+                        getpct.Parameters.AddWithValue("intCTPCode", intCTPCode);
 
                         SqlDataAdapter PCTadapter = new SqlDataAdapter(getpct); //sqladapter
                         DataTable PCTtable = new DataTable(); //datatable

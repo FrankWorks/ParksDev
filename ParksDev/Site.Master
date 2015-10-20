@@ -63,7 +63,8 @@
                             <asp:MenuItem NavigateUrl="~/runbal.aspx" Text="Agency Running Balances" />
                             <asp:MenuItem NavigateUrl="~/BenefitsAssessment.aspx" Text="Benefit Assessment Distribution" />
                             <asp:MenuItem NavigateUrl="~/MonthlyInterest.aspx" Text="Monthly Interest" />
-                            <asp:MenuItem NavigateUrl="~/Payments.aspx" Text="Payments" />
+                           <%-- <asp:MenuItem NavigateUrl="~/Payments.aspx" Text="Payments" />--%>
+                            <asp:MenuItem NavigateUrl="~/PaymentsR2.aspx" Text="Payments New@" />
                             <asp:MenuItem NavigateUrl="~/Totals.aspx" Text="Yearly/Monthly Running Balances" />
                             <asp:MenuItem NavigateUrl="~/YEG.aspx" Text="Youth Employment Credits" />
                         </asp:MenuItem>

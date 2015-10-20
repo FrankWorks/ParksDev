@@ -1,27 +1,5 @@
-﻿<%@ Page Title="" Language="C#" CodeBehind="PaymentsR2.aspx.cs" Inherits="ParksDev.PaymentsR2" %>
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-    
-<%--    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="Stylesheet" media="screen" type="text/css" />
---%>
-
-<link href="~/Styles/jquery-ui-1.10.4.custom.css" rel="Stylesheet" media="screen" type="text/css" />
-    <link href="~/Styles/ui.jqgrid.css" rel="Stylesheet" media="screen" type="text/css" />
-
-
-<%--        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/jquery-1.9.1.js"));%>" type="text/javascript"></script>
-        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/jquery-ui-1.10.4.custom"));%>" type="text/javascript"></script>--%>
-   <%--     <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/jquery-1.10.2.js"));%>" type="text/javascript"></script>--%>
-        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/jquery-1.11.1.min.js"));%>" type="text/javascript"></script>
-        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/jquery-ui-1.10.4.custom.js"));%>" type="text/javascript"></script>
-        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/grid.locale-en.js"));%>" type="text/javascript"></script>
-        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/jquery.jqGrid.js"));%>" type="text/javascript"></script>
-        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/grid.import.js"));%>" type="text/javascript"></script>
-        <script src="<%Response.Write(Page.ResolveUrl("~/Scripts/Jquery.maskMoney.min.js"));%>" type="text/javascript"></script>
+﻿<%@ Page Title="" Language="C#" CodeBehind="PaymentsR2.aspx.cs" MasterPageFile="~/Site.Master" Inherits="ParksDev.PaymentsR2" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
 		.style1
 		{
@@ -109,15 +87,25 @@
 					caption: "Payments Lookup", 
 
 					onSelectRow: function (ids) {
-						selRowId = $("#<%=jQGridDemo.ClientID%>").jqGrid('getGridParam', 'selrow');
-						selACode = $("#<%=jQGridDemo.ClientID%>").jqGrid('getCell', selRowId, 'AGE_CODE');
-						$("#<%=jqGridInterestDetail.ClientID%>").jqGrid('setGridParam', { url: "DAL/Definitions.ashx?detail=yes&agencies=" + selACode, datatype: "json", page: 1 }).trigger("reloadGrid");
-						$("#<%=jqGridFunding.ClientID%>").jqGrid('setGridParam', { url: "DAL/Definitions.ashx?funding=funding&agencies=" + selACode, datatype: "json", page: 1 }).trigger("reloadGrid");
+					    selRowId = $("#<%=jQGridDemo.ClientID%>").jqGrid('getGridParam', 'selrow');
+					    //alert(selRowId);
+					    tra_codevalue = $("#<%=jQGridDemo.ClientID%>").jqGrid('getCell', selRowId, 'TRA_CODE');
+
+					    if (tra_codevalue != '') {
+					        //alert(tra_codevalue);
+					        window.location.href = 'Payments.aspx?TransID=' + tra_codevalue;
+					    }
+					    else {
+					        alert("Please select the correct records!")
+					        return false;
+					    }
+					    
 					},
 					editurl: "DAL/agenciesCode.ashx"
 				});
 				$("#<%=jQGridDemo.ClientID%>").jqGrid('navGrid', '#jQGPager', { edit: false, add: false, del: false, search: false, refresh: false },
-																			  {jqModal: true,
+																			  {
+																			      jqModal: true,
 																				  closeAfterEdit: true,
 																				  reloadAfterSubmit: true,
 																				  afterSubmit: function (response, postdata) {
@@ -125,7 +113,8 @@
 																					  return [true, response.responseText];
 																				  }, width: 800
 																			  },
-																			  { jqModal: true,
+																			  {
+																			      jqModal: true,
 																				  closeAfterEdit: true,
 																				  reloadAfterSubmit: true,
 																				  afterSubmit: function (response, postdata) {
@@ -147,7 +136,36 @@
 																					  }
 																				  }
 																			  }
-													  ); // end of jqGrid - navGrid	            
+													  ); // end of jqGrid - navGrid
+			    $("#<%=jQGridDemo.ClientID%>").jqGrid('navGrid', '#jQGPager').navButtonAdd('#jQGPager', {
+			        caption: "Add Record",
+			        buttonicon: "ui-icon-add",
+			        onClickButton: function () {
+			            window.location.href = 'Payments.aspx'
+			        },
+			        position: "last"
+			    });
+
+			    $("#<%=jQGridDemo.ClientID%>").jqGrid('navGrid', '#jQGPager').navButtonAdd('#jQGPager', {
+			        caption: "Delete Record",
+			        buttonicon: "ui-icon-add",
+			        onClickButton: function () {
+			            var sel_id = $("#<%=jQGridDemo.ClientID%>").jqGrid('getGridParam', 'selrow');
+			            var tra_codevalue = $("#<%=jQGridDemo.ClientID%>").jqGrid('getCell', sel_id, 'TRA_CODE');
+			            if (tra_codevalue !='') {
+			                //alert(tra_codevalue);
+			                window.location.href = 'Payments.aspx?TransID='+ tra_codevalue;
+			            }
+			            else {
+			                alert("Please select the correct records!")
+			                return false;
+			            }
+			            
+			        },
+			        position: "last"
+			    });
+
+
 <%--				$("#<%=jQGridDemo.ClientID%>").jqGrid('navButtonAdd', "#jQGPager", { caption: "Reload", title: "Reload Data", buttonicon: "ui-icon-refresh",
 					onClickButton: function () { $("#<%=jQGridDemo.ClientID%>").jqGrid('setGridParam', { url: "DAL/Definitions.ashx?agencies=a&agencyType=0", datatype: "json", page: 1 }).trigger("reloadGrid"); }
 				});--%>
@@ -343,7 +361,8 @@
 
 			function getAgencyDropDown() {
 				$.getJSON("DAL/Definitions.ashx?agencies=a&agencyType=0", function (data) {
-					var ag_options = $("#agencyType");
+				    var ag_options = $("#agencyType");
+				    ag_options.append($("<option />").val('ALL').text('ALL'));
 					$.each(data, function (name, item) {
 						ag_options.append($("<option />").val(item.AGE_CODE).text(item.AGENCY));
 					});
@@ -355,6 +374,7 @@
 			{
 			    $.getJSON("DAL/PaymentsR2.ashx?agencies=null&agencyFiscalYear=null&switch=Step2",function(data){
 			        var fiscalYear_options = $("#agencyFiscalYear");
+			        fiscalYear_options.append($("<option />").val('ALL').text('ALL'));
 			        $.each(data,function (name,item) {
 			            fiscalYear_options.append($("<option />").val(item.FiscalYear).text(item.FiscalYear));
     
@@ -408,13 +428,11 @@
 		});
     </script>   
 
-</head>
-<h1 class="page_head">Payments</h1><br />
+</asp:Content>
 
-
-<body>
-    <form id="form1" runat="server">		  
-	<!--Master-->
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h1 class="page_head">Payments</h1><br />
+    
 		  <div id="jqGridDiv"> 
 		  
 			<div style="width:100%; background-color:#E0E0E0 ; color:Black; padding-top:7px; padding-bottom:5px">
@@ -449,8 +467,7 @@
 			<asp:Table ID="jqGridFunding" runat="server" Visible="false"></asp:Table>
 			<div id="jqGridFundingPager"></div>
 		 </div>
-		 </form>
-</body>
-<br /><br />
-</html>
+
+  </asp:Content>
+
 

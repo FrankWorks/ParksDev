@@ -1154,7 +1154,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>14692</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/MS</IISUrl>
+          <IISUrl>http://localhost/ParksDev</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

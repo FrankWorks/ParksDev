@@ -29,9 +29,14 @@
                     <td style="height:50px"><img src="img/go.png" style="vertical-align:sub"></img> </td>
                     <td style="height:50px"> <asp:HyperLink NavigateUrl="~/MonthlyInterest.aspx" Text="Monthly Interest"  runat="server"/></td>
                 </tr>
-                <tr>
+<%--                <tr>
                     <td style="height:50px"><img src="img/go.png" style="vertical-align:sub"></img> </td>
                     <td style="height:50px"> <asp:HyperLink NavigateUrl="~/Payments.aspx" Text="Payments"  runat="server"/></td>
+                </tr>
+ --%>
+                <tr>
+                    <td style="height:50px"><img src="img/go.png" style="vertical-align:sub"></img> </td>
+                    <td style="height:50px"> <asp:HyperLink NavigateUrl="~/PaymentsR2.aspx" Text="Payments New@"  runat="server"/></td>
                 </tr>
                 <tr>
                     <td style="height:50px"><img src="img/go.png" style="vertical-align:sub"></img> </td>

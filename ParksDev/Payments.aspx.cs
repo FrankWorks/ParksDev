@@ -22,14 +22,44 @@ namespace ParksDev
 
         public static int agecoder = new int();
 
+        public string pamTransID;
+
         public void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
+        {   
+            pamTransID = Request.QueryString["TransID"];
+
+            button1.Visible = false;
+            button2.Visible = false;
+            button3.Visible = false;
+            button4.Visible = false;
+            button5.Visible = false;
+            buttonnew.Visible = false;
+
+           
+            if (pamTransID != null)
             {
-                fillOut();
-                buttonedit(sender, e);
+                //Response.Write("Transacton ID is ");
+                //Response.Write(pamTransID);
 
             }
+            
+            if (!IsPostBack)
+            {
+                if (pamTransID != null)
+                {
+                    buttonedit(sender, e);
+                }
+                else
+                {
+                    //fillOut();
+                    //buttonedit(sender, e);
+                    buttonnewclicked(sender, e);
+                }
+
+            }
+
+            // Getting the value of Query String
+
         }
 
         public void buttonClickNext(object sender, EventArgs e)
@@ -175,8 +205,8 @@ namespace ParksDev
             {
 
                 //float filteragecode = float.Parse(AgencyViewScrolldown.SelectedValue.ToString());
-                //SqlCommand filtercommand = new SqlCommand("SELECT * FROM [FOXPRODEV].[dbo].[TRANSFERS] LEFT OUTER JOIN [FOXPRODEV].[dbo].[AGENCIES] on [TRANSFERS].[AGE_CODE] = [AGENCIES].[AGE_CODE] where [AGENCIES].[AGE_CODE] =  " + filteragecode + " order by  [TRANSFERS].[LUPD_DATE] asc", payConnection);
-                SqlCommand filtercommand = new SqlCommand("SELECT * FROM [FOXPRODEV].[dbo].[TRANSFERS] LEFT OUTER JOIN [FOXPRODEV].[dbo].[AGENCIES] on [TRANSFERS].[AGE_CODE] = [AGENCIES].[AGE_CODE]  order by  [TRANSFERS].[LUPD_DATE] asc", payConnection);
+                SqlCommand filtercommand = new SqlCommand("SELECT * FROM [FOXPRODEV].[dbo].[TRANSFERS] LEFT OUTER JOIN [FOXPRODEV].[dbo].[AGENCIES] on [TRANSFERS].[AGE_CODE] = [AGENCIES].[AGE_CODE] where TRA_CODE =  " + pamTransID + " order by  [TRANSFERS].[LUPD_DATE] asc", payConnection);
+                //SqlCommand filtercommand = new SqlCommand("SELECT * FROM [FOXPRODEV].[dbo].[TRANSFERS] LEFT OUTER JOIN [FOXPRODEV].[dbo].[AGENCIES] on [TRANSFERS].[AGE_CODE] = [AGENCIES].[AGE_CODE]  order by  [TRANSFERS].[LUPD_DATE] asc", payConnection);
                 SqlDataAdapter payAdapter = new SqlDataAdapter(filtercommand);
 
 
@@ -1104,18 +1134,63 @@ namespace ParksDev
 
             payConnection.Open();
 
-            SqlCommand payCommand = new SqlCommand("SELECT * FROM [FOXPRODEV].[dbo].[TRANSFERS] LEFT OUTER JOIN [FOXPRODEV].[dbo].[AGENCIES] on [TRANSFERS].[AGE_CODE] = [AGENCIES].[AGE_CODE] order by [TRANSFERS].[LUPD_DATE] asc", payConnection);
+            // To accomodate querystring utilization to go directly correct recods using TransID, and then use ConID
+            // Frank Kim 10/19/2015
+            //SqlCommand payCommand = new SqlCommand("SELECT * FROM [FOXPRODEV].[dbo].[TRANSFERS] LEFT OUTER JOIN [FOXPRODEV].[dbo].[AGENCIES] on [TRANSFERS].[AGE_CODE] = [AGENCIES].[AGE_CODE] order by [TRANSFERS].[LUPD_DATE] asc", payConnection);
+            // Frank Kim 10/19/2015
+            
+            //
+            // Call Server to provide ConID using
+            // stroed Procdeure uspGetConID
+            // Frank Kim 10/19/15 
+            //
 
-            SqlDataAdapter payAdapter = new SqlDataAdapter(payCommand); //new sql adapter
+            SqlCommand getConIDCommand = new SqlCommand("uspGetConID", payConnection);
 
-            DataTable payData = new DataTable(); // new datatable
+            getConIDCommand.CommandType = CommandType.StoredProcedure;
+                        
+            getConIDCommand.Parameters.Add(new SqlParameter("@tra_code", pamTransID));
+            getConIDCommand.Parameters.Add(new SqlParameter("@con", SqlDbType.Int));
+            getConIDCommand.Parameters["@con"].Direction = ParameterDirection.Output;
 
-            payAdapter.Fill(payData);
+            try
+            {
+                getConIDCommand.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            var intCon = getConIDCommand.Parameters["@con"].Value;
+            getConIDCommand.Dispose();
 
-            string grantcon = payData.Rows[rowIndex]["CON"].ToString();  //get grant control number "con"
+            // Frank Kim 10/19/15 
+            //
+            //
+
+
+            // SQL also modified 
+            // Frank Kim 10/19/15
+            //
+            
+            //SqlCommand payCommand = new SqlCommand("SELECT * FROM [FOXPRODEV].[dbo].[TRANSFERS] LEFT OUTER JOIN [FOXPRODEV].[dbo].[AGENCIES] on [TRANSFERS].[AGE_CODE] = [AGENCIES].[AGE_CODE] order by [TRANSFERS].[LUPD_DATE] asc", payConnection);
+            
+            //SqlDataAdapter payAdapter = new SqlDataAdapter(payCommand); //new sql adapter
+
+            //DataTable payData = new DataTable(); // new datatable
+
+            //payAdapter.Fill(payData);
+
+            //string grantcon = payData.Rows[rowIndex]["CON"].ToString();  //get grant control number "con"
+
+            // SQL also modified 
+            // Frank Kim 10/19/15
+            //
+
 
             SqlCommand grantcommand = new SqlCommand("SELECT * FROM [FOXPRODEV].[dbo].[Grants] WHERE [CON] = @concode", payConnection);
-            grantcommand.Parameters.AddWithValue("@concode", grantcon.ToString());
+            grantcommand.Parameters.AddWithValue("@concode", intCon.ToString());
             SqlDataAdapter grantadpt = new SqlDataAdapter(grantcommand);
             DataTable grantdata = new DataTable();
 
@@ -1166,8 +1241,8 @@ namespace ParksDev
             grantadpt.Dispose();
             grantdata.Dispose();
             grantcommand.Dispose();
-            payAdapter.Dispose();
-            payData.Dispose();
+            //payAdapter.Dispose();
+            //payData.Dispose();
             payConnection.Close();
         }
         protected void ClearTextBoxes(Control control)

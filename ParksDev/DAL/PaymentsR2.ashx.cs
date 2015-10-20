@@ -50,6 +50,8 @@ namespace ParksDev.DAL
 
             }
 
+
+
             if (mSwitch == null && mString != null && mStringFiscalYear == "null")
             {
                 sqlQueryString = "uspGetPaymentsMasterGrid";
@@ -84,8 +86,18 @@ namespace ParksDev.DAL
             }
             else
             {
+                
                 cmd.Parameters.Add("@AGE_CODE", SqlDbType.Int).Value = Int32.Parse(strAgency);
-                cmd.Parameters.Add("@fiscalYear", SqlDbType.Int).Value = Int32.Parse(fiscalYear??DateTime.Now.AddYears(-1).Year.ToString());
+                if (fiscalYear == "ALL")
+                {
+                    cmd.Parameters.Add("@fiscalYear", SqlDbType.Int).Value = null;
+                }
+                if (fiscalYear !="ALL")
+                {
+                    cmd.Parameters.Add("@fiscalYear", SqlDbType.Int).Value = Int32.Parse(fiscalYear ?? DateTime.Now.AddYears(-1).Year.ToString());    
+                }
+                
+                
             }
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -105,7 +117,7 @@ namespace ParksDev.DAL
                 ag.TRA_CODE = dr["TRA_CODE"].ToString();
                 ag.TC = dr["TC"].ToString();
                 ag.TD = dr["TD"].ToString();
-                ag.Referece = dr["Reference"].ToString();
+                ag.Reference = dr["Reference"].ToString();
                 ag.LUPD_DATE = dr["LUPD_DATE"].ToString();
                 ag.LUPD_USER = dr["LUPD_USER"].ToString();
                 ag.MinObj = dr["MinObj"].ToString();
