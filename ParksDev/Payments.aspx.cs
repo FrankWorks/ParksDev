@@ -236,12 +236,27 @@ namespace ParksDev
                 //getting the fiscal proccess year
                 DateTime prodateTime = DateTime.Parse(payData.Rows[rowIndex]["PROCESSED"].ToString());
 
-                editSubfund.Text = payData.Rows[rowIndex]["SUBFUND"].ToString();
+                editSubfund.Text = payData.Rows[rowIndex]["SUB_FUND"].ToString();
                 editloccode.Text = payData.Rows[rowIndex]["LOC_CODE"].ToString();
                 editsupdist.Text = payData.Rows[rowIndex]["DIS_CODE"].ToString(); //add subfund, location data, and supporting district
                 editpayreqnum.Text = payData.Rows[rowIndex]["PayReqNum"].ToString();
                 vunitcode.Text = payData.Rows[rowIndex]["Unit_code"].ToString();
+
+                if (string.IsNullOrEmpty(payData.Rows[rowIndex]["payee"].ToString()))
+                {
+                    editpayeedropdown.SelectedValue = "1";
+                }
+
+                else
+                {
                 editpayeedropdown.SelectedValue = payData.Rows[rowIndex]["payee"].ToString();
+                }
+
+
+                // Testing 
+                //editpayeedropdown.SelectedValue = "2";
+                // Testing
+                //
                 editComments.Text = payData.Rows[rowIndex]["COMMENTS"].ToString();
                 grantscontroler.Text = payData.Rows[rowIndex]["CON"].ToString(); //grant control number
 
@@ -423,7 +438,7 @@ namespace ParksDev
                 //getting the fiscal proccess year
                 DateTime prodateTime = DateTime.Parse(payData.Rows[rowIndex]["PROCESSED"].ToString());
 
-                editSubfund.Text = payData.Rows[rowIndex]["SUBFUND"].ToString();
+                editSubfund.Text = payData.Rows[rowIndex]["SUB_FUND"].ToString();
                 editloccode.Text = payData.Rows[rowIndex]["LOC_CODE"].ToString();
                 editsupdist.Text = payData.Rows[rowIndex]["DIS_CODE"].ToString(); //add subfund, location data, and supporting district
                 editpayreqnum.Text = payData.Rows[rowIndex]["PayReqNum"].ToString();
@@ -604,6 +619,7 @@ namespace ParksDev
             grantsEntr4.Visible = false;
             //editgrantcmd();
             editgrantcmd(sender, e);
+            
         }
 
         public void buttoneditcancel(object sender, EventArgs e)
@@ -615,6 +631,8 @@ namespace ParksDev
             grantsEntr2.Visible = false;
             grantsEntr3.Visible = false;
             grantsEntr4.Visible = false;
+            Response.Redirect("PaymentsR2.aspx");
+
         }
         public void buttonnewcancel(object sender, EventArgs e)
         {
@@ -622,6 +640,7 @@ namespace ParksDev
             editPanel.Visible = false;
             viewPanel.Visible = true;
             grantsEntry1.Visible = false;
+            
   
         }
         public void buttonnewclicked(object sender, EventArgs e) 
@@ -735,6 +754,9 @@ namespace ParksDev
             editcomm.Parameters.Add("@payee", SqlDbType.NVarChar).Value = editpayeedropdown.SelectedValue;
             editcomm.Parameters.Add("@loccode", SqlDbType.NVarChar).Value = editloccode.Text.ToString();
 
+            // introduced SubFund 10/20/2016 FK
+            editcomm.Parameters.Add("@subfund", SqlDbType.VarChar).Value = editSubfund.Text.ToString();
+
                     //try
                     //{
                     //    int editcount = editcomm.ExecuteNonQuery();
@@ -823,6 +845,8 @@ namespace ParksDev
             viewPaymentReq.Text = editpayreqnum.Text;
             AgencyViewScrolldown.SelectedValue = editAGENCY.SelectedValue;
 
+            // Redirect to Grid Page 10/19/2016 FK
+            Response.Redirect("PaymentsR2.aspx");
         }
 
         public void newsaveclick(object sender, EventArgs e)
@@ -933,6 +957,7 @@ namespace ParksDev
                 addcomm.Parameters.Add("@trandate", SqlDbType.DateTime).Value = Convert.ToDateTime(TextBox7.Text.ToString());
             }
 
+
             //addcomm.Parameters.Add("@processed", SqlDbType.DateTime).Value = Convert.ToDateTime(TextBox6.Text.ToString());
             //addcomm.Parameters.Add("@trandate", SqlDbType.DateTime).Value =  Convert.ToDateTime(TextBox7.Text.ToString());
             addcomm.Parameters.Add("@average", SqlDbType.Float).Value = thisisagain.ToString();
@@ -947,6 +972,9 @@ namespace ParksDev
 
             addcomm.Parameters.Add("@payee", SqlDbType.NVarChar).Value = newpayee.SelectedValue;
             addcomm.Parameters.Add("@loccode", SqlDbType.NVarChar).Value = newLocCode.Text.ToString();
+            
+            // Introduced for Sub_Fund for Transfers 10/20/2016 FK
+            addcomm.Parameters.Add("@subfund", SqlDbType.VarChar).Value = newSubFund.Text.ToString();
 
             for (int i = 1; i < 41; i++)
             {
@@ -1054,7 +1082,7 @@ namespace ParksDev
 
             }
             textboxt.Text = getavgage;
-            TextBox80.Text = payData.Rows[0]["SUBFUND"].ToString();
+            newSubFund.Text = payData.Rows[0]["SUBFUND"].ToString();
             newLocCode.Text = payData.Rows[0]["LOC_CODE"].ToString();
             newsupdist.Text = payData.Rows[0]["SUPDIST"].ToString();
             TextBox3.Text = payData.Rows[0]["DEPTOBJ"].ToString();
@@ -1795,7 +1823,7 @@ namespace ParksDev
 
             }
             textboxt.Text = getavgage;
-            TextBox80.Text = payData.Rows[0]["SUBFUND"].ToString();
+            newSubFund.Text = payData.Rows[0]["SUBFUND"].ToString();
             newLocCode.Text = payData.Rows[0]["LOC_CODE"].ToString();
             newsupdist.Text = payData.Rows[0]["SUPDIST"].ToString();
             TextBox3.Text = payData.Rows[0]["DEPTOBJ"].ToString();

@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using System.Web.Http;
+using Telerik.Reporting.Services.WebApi;
+
+
 
 namespace ParksDev
 {
@@ -12,6 +16,7 @@ namespace ParksDev
 
         void Application_Start(object sender, EventArgs e)
         {
+                        ReportsControllerConfiguration.RegisterRoutes(GlobalConfiguration.Configuration);
             // Code that runs on application startup
 
         }

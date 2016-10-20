@@ -15,7 +15,7 @@
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
 
             function EndRequestHandler(sender, args) {
-                $('.mydatepickerclass').datepicker({ dateFormat: 'mm-dd-yy', changeYear: true, changeMonth: true });
+                $('.mydatepickerclass').datepicker({ dateFormat: 'mm-dd-yy', changeYear: true, changeMonth: true,  yearRange: "1992:+10" });
             }
 
         });

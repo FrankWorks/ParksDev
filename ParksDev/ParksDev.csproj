@@ -78,6 +78,14 @@
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Reports, Version=0.9.2507.38892, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Reports.dll</HintPath>
@@ -88,9 +96,29 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -101,6 +129,26 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Telerik.Reporting, Version=9.2.15.930, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Telerik\Reporting Q3 2015\Bin\Telerik.Reporting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Reporting.Services.WebApi, Version=9.2.15.930, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Telerik\Reporting Q3 2015\Bin\Telerik.Reporting.Services.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Reporting.XpsRendering, Version=9.2.15.930, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Telerik\Reporting Q3 2015\Bin\Telerik.Reporting.XpsRendering.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.ReportViewer.Html5.WebForms, Version=9.2.15.930, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Telerik\Reporting Q3 2015\Bin\Telerik.ReportViewer.Html5.WebForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
@@ -343,10 +391,13 @@
     <Content Include="demo\window\inlinewindow.html" />
     <Content Include="demo\window\modalwindow.html" />
     <Content Include="demo\window\windowlayout.html" />
+    <Content Include="Html5ReportViewer1.html" />
     <Content Include="HtmlAgilityPack.dll" />
     <Content Include="img\add.png" />
     <Content Include="img\applications.png" />
     <Content Include="img\back.png" />
+    <Content Include="img\BestTest.jpg" />
+    <Content Include="img\Beta.jpg" />
     <Content Include="img\bg.png" />
     <Content Include="img\binoculars.png" />
     <Content Include="img\bluebackr.png" />
@@ -414,6 +465,10 @@
     <Content Include="reports\ReportsCalcYouthEmploymentGoal.aspx" />
     <Content Include="reports\ReportsListMontlyInterest.aspx" />
     <Content Include="reports\ReportsListOFAllocatedRevenuesByAgency.aspx" />
+    <Content Include="ReportViewerForm1.aspx" />
+    <Content Include="ReportViewer\js\telerikReportViewer-9.2.15.930.min.js" />
+    <Content Include="ReportViewer\styles\telerikReportViewer-9.2.15.930.css" />
+    <Content Include="ReportViewer\templates\telerikReportViewerTemplate-9.2.15.930.html" />
     <Content Include="runbal.aspx" />
     <Content Include="Scripts\datagrid-detailview.js" />
     <Content Include="Scripts\grid.import.js" />
@@ -766,6 +821,9 @@
     <Content Include="themes\metro\window.css" />
     <Content Include="Totals.aspx" />
     <Content Include="DAL\PaymentsR2.ashx" />
+    <Content Include="reports\Basic Balance.trdx" />
+    <Content Include="reports\HB3R01C.trdx" />
+    <Content Include="reports\Menu.trdx" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -834,6 +892,7 @@
     <Compile Include="clipboard.aspx.designer.cs">
       <DependentUpon>clipboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="DAL\agenciesCode.ashx.cs">
       <DependentUpon>agenciesCode.ashx</DependentUpon>
     </Compile>
@@ -1011,6 +1070,13 @@
     <Compile Include="reports\ReportsListOFAllocatedRevenuesByAgency.aspx.designer.cs">
       <DependentUpon>ReportsListOFAllocatedRevenuesByAgency.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ReportViewerForm1.aspx.cs">
+      <DependentUpon>ReportViewerForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportViewerForm1.aspx.designer.cs">
+      <DependentUpon>ReportViewerForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="runbal.aspx.cs">
       <DependentUpon>runbal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1117,6 +1183,7 @@
     <None Include="FOXPRO2linq.dbml.layout">
       <DependentUpon>FOXPRO2linq.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -1138,6 +1205,12 @@
       <LastGenOutput>FOXPRO2linq.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ReportLibrary\ReportLibrary.csproj">
+      <Project>{bb57d64a-4b21-4a9e-8ef4-cf794e0da691}</Project>
+      <Name>ReportLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

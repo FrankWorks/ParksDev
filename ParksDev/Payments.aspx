@@ -20,7 +20,7 @@
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
 
             function EndRequestHandler(sender, args) {
-                $('.mydatepickerclasser').datepicker({ dateFormat: 'mm-dd-yy', changeYear: true , changeMonth: true});
+                $('.mydatepickerclasser').datepicker({ dateFormat: 'mm-dd-yy', changeYear: true , changeMonth: true, yearRange: "1992:+10"});
             }
 
         });
@@ -245,7 +245,7 @@
                                         Sub Fund:
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="TextBox80" runat="server" />
+                                        <asp:TextBox ID="newSubFund" runat="server" />
                                     </td>
                                     </tr>
                                     <tr>
